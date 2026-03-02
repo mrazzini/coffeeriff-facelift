@@ -4,9 +4,10 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
-from .models import QuizAnswers, Recommendation
+from .models import QuizAnswers, QuizConfig, Recommendation
 from .recommender import get_recommendations
 from .products import load_products
+from .quiz_config import build_quiz_config
 
 load_dotenv()
 
@@ -33,6 +34,11 @@ async def root():
 @app.get("/products")
 async def products():
     return load_products()
+
+
+@app.get("/quiz-config", response_model=QuizConfig)
+async def quiz_config():
+    return build_quiz_config(load_products())
 
 
 @app.post("/recommend", response_model=list[Recommendation])

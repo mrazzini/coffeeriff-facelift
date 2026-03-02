@@ -1,5 +1,6 @@
 import json
 import os
+import re
 from pathlib import Path
 
 from groq import Groq
@@ -12,6 +13,9 @@ load_dotenv(Path(__file__).parent.parent / ".env")
 
 _client = None
 
+# Labels that appear in product descriptions (in typical order)
+_DESCRIPTION_LABELS = ["Processo", "Origine", "Altitudine", "Varietà", "Grade", "Crop", "Punteggio"]
+
 
 def _get_client() -> Groq:
     global _client
@@ -20,15 +24,40 @@ def _get_client() -> Groq:
     return _client
 
 
+def parse_description_bullets(description: str) -> list[str]:
+    """Split a product description string into concise bullet-point fragments."""
+    bullets = []
+    first_label = re.search(r"\b(?:" + "|".join(_DESCRIPTION_LABELS) + r"):", description)
+    if first_label:
+        flavor_notes = description[:first_label.start()].strip().rstrip("—").strip()
+        if flavor_notes:
+            bullets.append(flavor_notes)
+        remainder = description[first_label.start():]
+    else:
+        return [description.strip()[:200]]
+
+    # Split on each known label boundary
+    pattern = r"(?=" + "|".join(f"{lbl}:" for lbl in _DESCRIPTION_LABELS) + r")"
+    for part in re.split(pattern, remainder):
+        part = part.strip()
+        if part:
+            # Truncate at em-dash separator that precedes the product story narrative
+            part = re.split(r"\s+—\s+", part)[0]
+            part = part.split("\n")[0].strip().rstrip("—").strip()
+            bullets.append(part)
+
+    return bullets
+
+
 def build_prompt(answers: QuizAnswers, product_catalog: str) -> str:
     return f"""Sei un esperto sommelier del caffè specialty. Un cliente ha completato un quiz sulle sue preferenze.
 
 RISPOSTE DEL CLIENTE:
 - Tostatura preferita: {answers.roast}
-- Sapori preferiti: {answers.flavors}
+- Profilo di sapori preferito: {answers.flavor_profile}
 - Metodo di preparazione: {answers.brew_method}
-- Intensità desiderata: {answers.intensity}
-- Livello di avventura: {answers.adventure}
+- Origine preferita: {answers.origin}
+- Tipo di processo preferito: {answers.process}
 
 CATALOGO PRODOTTI DISPONIBILI:
 {product_catalog}
@@ -40,15 +69,17 @@ ISTRUZIONI:
    - Profilo di tostatura
    - Note aromatiche e di sapore
    - Compatibilità con il metodo di preparazione
-   - Complessità e qualità del caffè
-4. Per ogni prodotto, spiega PERCHÉ è adatto al cliente in 1-2 frasi in italiano
+   - Origine geografica e processo di lavorazione
+4. Per ogni prodotto, rivolgiti direttamente all'utente usando "tu".
+   Spiega perché è la scelta perfetta PER TE in 1-2 frasi in italiano.
+   Esempio: "Con le tue preferenze per i sapori fruttati, questo caffè ti sorprenderà con le sue note di..."
 
 Rispondi SOLO con un JSON array valido, senza markdown, senza commenti. Ogni elemento deve avere:
 - "product_name": nome esatto dal catalogo
-- "match_reason": spiegazione in italiano (1-2 frasi)
+- "match_reason": spiegazione in italiano rivolta direttamente all'utente (1-2 frasi, usa "tu")
 
 Esempio formato:
-[{{"product_name": "Nome Prodotto", "match_reason": "Motivo in italiano"}}]"""
+[{{"product_name": "Nome Prodotto", "match_reason": "Con il tuo amore per..."}}]"""
 
 
 async def get_recommendations(answers: QuizAnswers) -> list[Recommendation]:
@@ -77,15 +108,16 @@ async def get_recommendations(answers: QuizAnswers) -> list[Recommendation]:
         name = pick["product_name"]
         product = product_map.get(name.lower())
         if not product:
-            # Fuzzy fallback: find closest match
             for key, p in product_map.items():
                 if name.lower() in key or key in name.lower():
                     product = p
                     break
         if product:
+            full_desc = product.get("description", "")
             results.append(Recommendation(
                 product_name=product["title"],
-                description=product.get("description", "")[:200],
+                description=full_desc[:200],
+                description_bullets=parse_description_bullets(full_desc),
                 match_reason=pick["match_reason"],
                 price=product["price"],
                 image_url=product.get("image_url", ""),

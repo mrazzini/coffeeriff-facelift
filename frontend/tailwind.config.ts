@@ -7,28 +7,25 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        cream: "#F7F4EF",
+        charcoal: "#1C1C1C",
+        brown: "#8B6239",
+        muted: "#6B6057",
+        border: "#E0D8CF",
+      },
+      fontFamily: {
+        serif: ["var(--font-playfair)", "Georgia", "serif"],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+      },
       keyframes: {
-        fadeIn: {
-          "0%": { opacity: "0", transform: "translateY(10px)" },
+        fadeUp: {
+          "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
       },
       animation: {
-        fadeIn: "fadeIn 0.4s ease-out forwards",
-      },
-      colors: {
-        coffee: {
-          50: "#FDF8F0",
-          100: "#F5E6D3",
-          200: "#D4A574",
-          300: "#B8865A",
-          400: "#8B6914",
-          500: "#6F4E37",
-          600: "#5C3D2E",
-          700: "#4A2C20",
-          800: "#3A1F15",
-          900: "#2C1810",
-        },
+        fadeUp: "fadeUp 0.4s ease-out forwards",
       },
     },
   },

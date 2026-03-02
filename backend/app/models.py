@@ -2,17 +2,28 @@ from pydantic import BaseModel
 
 
 class QuizAnswers(BaseModel):
-    roast: str          # Leggero / Medio / Scuro / Sorprendimi
-    flavors: str        # Fruttato & Vivace / Cioccolato & Nocciola / etc.
-    brew_method: str    # Filtro / Espresso / Moka / French Press / Non lo so ancora
-    intensity: str      # Delicato / Bilanciato / Forte / Fortissimo
-    adventure: str      # Classico & affidabile / Aperto a suggerimenti / Sorprendimi!
+    roast: str           # Chiara / Media / Scura / Sorprendimi
+    flavor_profile: str  # Fruttato & Vivace / Floreale & Delicato / etc.
+    brew_method: str     # Espresso / Filtro / Moka / French Press
+    origin: str          # Africa / America / El Salvador / Sorprendimi
+    process: str         # Pulito (lavato) / Dolce (naturale) / Fermentato / Non lo so ancora
 
 
 class Recommendation(BaseModel):
     product_name: str
     description: str
+    description_bullets: list[str]
     match_reason: str
     price: str
     image_url: str
     shopify_url: str
+
+
+class QuizQuestion(BaseModel):
+    key: str
+    question: str
+    options: list[str]
+
+
+class QuizConfig(BaseModel):
+    questions: list[QuizQuestion]

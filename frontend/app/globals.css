@@ -2,7 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  background-color: #F7F4EF;
+  color: #1C1C1C;
+}
+
 body {
-  background-color: #2C1810;
-  color: #FDF8F0;
+  background-color: #F7F4EF;
+  color: #1C1C1C;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

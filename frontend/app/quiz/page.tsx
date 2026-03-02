@@ -1,68 +1,42 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import QuizStep from "@/components/QuizStep";
-import ProgressBar from "@/components/ProgressBar";
+import StepDots from "@/components/StepDots";
 import ResultsCard from "@/components/ResultsCard";
-import { getRecommendations, type Recommendation, type QuizAnswers } from "@/lib/api";
-
-const QUESTIONS = [
-  {
-    key: "roast" as const,
-    question: "Come preferisci il tuo caffè?",
-    options: ["Leggero", "Medio", "Scuro", "Sorprendimi"],
-  },
-  {
-    key: "flavors" as const,
-    question: "Quali sapori ti attraggono?",
-    options: [
-      "Fruttato & Vivace",
-      "Cioccolato & Nocciola",
-      "Terroso & Intenso",
-      "Floreale & Complesso",
-    ],
-  },
-  {
-    key: "brew_method" as const,
-    question: "Come prepari il caffè di solito?",
-    options: ["Filtro", "Espresso", "Moka", "French Press", "Non lo so ancora"],
-  },
-  {
-    key: "intensity" as const,
-    question: "Quanto lo vuoi forte?",
-    options: ["Delicato", "Bilanciato", "Forte", "Fortissimo"],
-  },
-  {
-    key: "adventure" as const,
-    question: "Quanto sei avventuroso?",
-    options: [
-      "Classico & affidabile",
-      "Aperto a suggerimenti",
-      "Sorprendimi!",
-    ],
-  },
-];
-
-type AnswerKey = (typeof QUESTIONS)[number]["key"];
+import {
+  getQuizConfig,
+  getRecommendations,
+  type QuizConfig,
+  type QuizAnswers,
+  type Recommendation,
+} from "@/lib/api";
 
 export default function QuizPage() {
+  const [config, setConfig] = useState<QuizConfig | null>(null);
+  const [configError, setConfigError] = useState(false);
   const [step, setStep] = useState(0);
-  const [answers, setAnswers] = useState<Partial<Record<AnswerKey, string>>>({});
+  const [answers, setAnswers] = useState<Partial<QuizAnswers>>({});
   const [results, setResults] = useState<Recommendation[] | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  useEffect(() => {
+    getQuizConfig()
+      .then(setConfig)
+      .catch(() => setConfigError(true));
+  }, []);
+
   const handleSelect = async (value: string) => {
-    const currentQ = QUESTIONS[step];
+    if (!config) return;
+    const currentQ = config.questions[step];
     const updated = { ...answers, [currentQ.key]: value };
     setAnswers(updated);
 
-    if (step < QUESTIONS.length - 1) {
-      // Small delay for animation feel
-      setTimeout(() => setStep(step + 1), 300);
+    if (step < config.questions.length - 1) {
+      setTimeout(() => setStep(step + 1), 250);
     } else {
-      // Last question — submit
       setLoading(true);
       setError(null);
       try {
@@ -83,52 +57,58 @@ export default function QuizPage() {
     setError(null);
   };
 
-  // Loading state
-  if (loading) {
+  const Spinner = () => (
+    <div className="flex min-h-screen flex-col items-center justify-center gap-6 px-4 text-center">
+      <div className="h-10 w-10 animate-spin rounded-full border-2 border-brown border-t-transparent" />
+      <p className="font-serif text-lg italic text-muted">
+        Il nostro sommelier AI sta analizzando i tuoi gusti…
+      </p>
+    </div>
+  );
+
+  if (!config && !configError) return <Spinner />;
+
+  if (configError) {
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
-        <div className="space-y-6">
-          <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-coffee-700 border-t-coffee-200" />
-          <p className="text-xl text-coffee-200">
-            Il nostro sommelier AI sta analizzando i tuoi gusti...
-          </p>
-        </div>
-      </main>
+      <div className="flex min-h-screen flex-col items-center justify-center gap-6 px-4 text-center">
+        <p className="text-lg text-red-500">
+          Impossibile caricare il quiz. Controlla che il backend sia attivo.
+        </p>
+        <Link href="/" className="text-sm text-brown underline underline-offset-4">
+          ← Torna alla home
+        </Link>
+      </div>
     );
   }
 
-  // Results state
+  if (loading) return <Spinner />;
+
   if (results) {
     return (
-      <main className="flex min-h-screen flex-col items-center px-4 py-12">
-        <div className="w-full max-w-4xl space-y-8">
-          <div className="text-center space-y-3">
-            <h1 className="text-3xl font-bold text-coffee-100 sm:text-4xl">
-              I Tuoi Caffè Perfetti
+      <main className="min-h-screen bg-cream px-4 py-16">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-12 text-center">
+            <h1 className="font-serif text-4xl font-bold italic text-charcoal sm:text-5xl">
+              I tuoi caffè perfetti
             </h1>
-            <p className="text-coffee-200">
-              Ecco i 3 caffè che meglio si adattano ai tuoi gusti
-            </p>
+            <p className="mt-3 text-muted">Tre selezioni scelte apposta per te</p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {results.map((rec, i) => (
-              <ResultsCard key={rec.product_name} rec={rec} index={i} />
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {results.map((rec) => (
+              <ResultsCard key={rec.product_name} rec={rec} />
             ))}
           </div>
 
-          <div className="flex flex-col items-center gap-4 pt-4">
+          <div className="mt-14 flex flex-col items-center gap-4">
             <button
               onClick={restart}
-              className="rounded-full border-2 border-coffee-200 px-6 py-3 font-semibold text-coffee-200 transition-all hover:bg-coffee-200/10"
+              className="border border-charcoal px-8 py-3 text-sm font-semibold text-charcoal transition-colors hover:bg-charcoal hover:text-cream"
             >
               Rifai il Quiz
             </button>
-            <Link
-              href="/"
-              className="text-sm text-coffee-200/60 hover:text-coffee-200"
-            >
-              ← Torna alla Home
+            <Link href="/" className="text-sm text-muted underline-offset-4 hover:underline">
+              ← Torna alla home
             </Link>
           </div>
         </div>
@@ -136,47 +116,46 @@ export default function QuizPage() {
     );
   }
 
-  // Error state
   if (error) {
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
-        <div className="space-y-6">
-          <p className="text-xl text-red-400">{error}</p>
-          <button
-            onClick={restart}
-            className="rounded-full bg-coffee-200 px-6 py-3 font-semibold text-coffee-900 hover:bg-coffee-100"
-          >
-            Riprova
-          </button>
-        </div>
-      </main>
+      <div className="flex min-h-screen flex-col items-center justify-center gap-6 px-4 text-center">
+        <p className="text-lg text-red-500">{error}</p>
+        <button
+          onClick={restart}
+          className="border border-charcoal px-8 py-3 text-sm font-semibold text-charcoal hover:bg-charcoal hover:text-cream"
+        >
+          Riprova
+        </button>
+      </div>
     );
   }
 
-  // Quiz steps
+  const questions = config!.questions;
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center px-4">
-      <div className="w-full max-w-xl space-y-8">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-cream px-4 py-12">
+      <div className="w-full max-w-xl">
         <Link
           href="/"
-          className="block text-center text-2xl font-bold text-coffee-200"
+          className="mb-10 block text-center font-serif text-2xl font-bold italic tracking-wide text-charcoal"
         >
           Coffeeriff
         </Link>
 
-        <ProgressBar current={step} total={QUESTIONS.length} />
+        <StepDots current={step} total={questions.length} />
 
-        <QuizStep
-          question={QUESTIONS[step].question}
-          options={QUESTIONS[step].options}
-          onSelect={handleSelect}
-          selected={answers[QUESTIONS[step].key]}
-        />
+        <div className="mt-8">
+          <QuizStep
+            question={questions[step].question}
+            options={questions[step].options}
+            onSelect={handleSelect}
+            selected={answers[questions[step].key as keyof QuizAnswers]}
+          />
+        </div>
 
         {step > 0 && (
           <button
             onClick={() => setStep(step - 1)}
-            className="mx-auto block text-sm text-coffee-200/60 hover:text-coffee-200"
+            className="mx-auto mt-6 block text-sm text-muted underline-offset-4 hover:underline"
           >
             ← Domanda precedente
           </button>

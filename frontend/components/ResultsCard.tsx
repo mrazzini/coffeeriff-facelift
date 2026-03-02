@@ -4,44 +4,67 @@ import type { Recommendation } from "@/lib/api";
 
 interface ResultsCardProps {
   rec: Recommendation;
-  index: number;
 }
 
-export default function ResultsCard({ rec, index }: ResultsCardProps) {
+export default function ResultsCard({ rec }: ResultsCardProps) {
+  const bullets = rec.description_bullets?.length
+    ? rec.description_bullets
+    : [rec.description];
+
+  // First bullet is flavor notes — display them prominently, rest are metadata
+  const [flavorNotes, ...metaBullets] = bullets;
+
   return (
-    <div
-      className="rounded-2xl border border-coffee-700 bg-coffee-800/60 overflow-hidden transition-all hover:border-coffee-200/50 hover:shadow-lg"
-      style={{ animationDelay: `${index * 150}ms` }}
-    >
+    <div className="flex flex-col border border-border bg-white transition-shadow hover:shadow-md">
       {rec.image_url && (
-        <div className="aspect-square w-full overflow-hidden bg-coffee-800">
+        <div className="aspect-square w-full overflow-hidden bg-cream">
           <img
             src={rec.image_url}
             alt={rec.product_name}
-            className="h-full w-full object-cover transition-transform hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
           />
         </div>
       )}
-      <div className="p-5 space-y-3">
-        <div className="flex items-start justify-between gap-2">
-          <h3 className="text-xl font-semibold text-coffee-100">
+
+      <div className="flex flex-1 flex-col gap-4 p-5">
+        {/* Name + price */}
+        <div className="flex items-start justify-between gap-3">
+          <h3 className="font-serif text-base font-semibold leading-snug text-charcoal">
             {rec.product_name}
           </h3>
-          <span className="shrink-0 rounded-full bg-coffee-200/20 px-3 py-1 text-sm font-medium text-coffee-200">
+          <span className="shrink-0 text-sm font-semibold text-brown">
             €{rec.price}
           </span>
         </div>
-        <p className="text-sm text-coffee-200/80">{rec.description}</p>
-        <div className="rounded-lg bg-coffee-900/50 p-3">
-          <p className="text-sm italic text-coffee-200">
-            &ldquo;{rec.match_reason}&rdquo;
-          </p>
-        </div>
+
+        {/* Flavor notes */}
+        {flavorNotes && (
+          <p className="text-sm font-medium text-charcoal">{flavorNotes}</p>
+        )}
+
+        {/* Metadata bullets */}
+        {metaBullets.length > 0 && (
+          <ul className="space-y-1 border-t border-border pt-3">
+            {metaBullets.map((line, i) => (
+              <li key={i} className="flex gap-2 text-xs text-muted">
+                <span className="mt-0.5 shrink-0 text-brown">—</span>
+                <span>{line}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {/* AI match reason */}
+        <blockquote className="border-l-2 border-brown pl-3 font-serif text-sm italic text-muted">
+          {rec.match_reason}
+        </blockquote>
+
+        {/* CTA */}
         <a
           href={rec.shopify_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-2 inline-block w-full rounded-xl bg-coffee-200 py-3 text-center font-semibold text-coffee-900 transition-all hover:bg-coffee-100 hover:scale-[1.02] active:scale-[0.98]"
+          className="mt-auto block border border-charcoal py-3 text-center text-xs font-semibold uppercase tracking-widest text-charcoal transition-colors hover:bg-charcoal hover:text-cream"
         >
           Vai al Prodotto →
         </a>
