@@ -202,7 +202,7 @@ cp .env.example .env  # then add your GROQ_API_KEY
 uvicorn app.main:app --reload --port 8000
 ```
 
-### Frontend (Next.js)
+### Frontend (Next.js) — requires Node >= 18
 ```bash
 cd frontend
 npm install
@@ -215,12 +215,52 @@ npm run dev
 python scripts/fetch_products.py
 ```
 
-## CURRENT STATUS
+## CURRENT STATUS — HANDOFF NOTES
 
-Feature implemented: **Option A — Coffee Recommender Quiz**
-- 5-question Italian quiz → Groq AI → Top 3 product recommendations
-- Links to real coffeeriff.com product pages
-- 33 products fetched, ~24 coffee products filtered for recommendations
+**Date**: 2026-03-02
+**Feature implemented**: Option A — Coffee Recommender Quiz (Italian)
+
+### What is DONE and VERIFIED WORKING:
+- **Backend (FastAPI)**: Fully functional, tested locally
+  - `GET /` — health check ✓
+  - `GET /products` — returns 32 coffee products (grinder filtered out) ✓
+  - `POST /recommend` — takes quiz answers, calls Groq llama-3.3-70b-versatile, returns 3 product recommendations with Italian reasoning, real prices, real Shopify URLs ✓
+  - CORS configured via `ALLOWED_ORIGINS` env var
+  - Groq client is lazy-initialized (server starts even without API key)
+  - `.env` file with `GROQ_API_KEY=gsk_...` exists in `backend/.env` (not committed)
+- **Product data**: 33 products fetched from coffeeriff.com/products.json, saved to `backend/data/products.json`
+  - Rich Italian descriptions with flavor notes, origin, SCA scores
+  - Product types: 20 "Caffè" + 4 "CAFFE'" + 9 misc (grinder filtered out)
+- **Frontend (Next.js 14)**: All code written, NOT yet built/tested
+  - `app/page.tsx` — Hero landing page "Trova il Tuo Caffè Perfetto"
+  - `app/quiz/page.tsx` — 5-step Italian quiz with state machine, loading spinner, error handling, results display
+  - `components/QuizStep.tsx` — Card-based option selector with hover animations
+  - `components/ResultsCard.tsx` — Product card with image, reasoning, "Vai al Prodotto →" link
+  - `components/ProgressBar.tsx` — Quiz progress indicator
+  - `lib/api.ts` — Backend client (uses `NEXT_PUBLIC_API_URL`)
+  - Dark coffee palette (Tailwind: coffee-50 through coffee-900)
+  - `package.json` and all configs present, `node_modules` installed (but for Node 14)
+- **Deployment configs**: `backend/Procfile`, `backend/railway.toml`, `frontend/vercel.json`
+
+### What REMAINS TO DO:
+1. **Build and test the frontend** — needs Node >= 18 (use GitHub Codespace or machine with modern Node)
+   - Run `cd frontend && npm install && npm run dev`
+   - Verify quiz flow works end-to-end against the backend
+   - Check mobile responsiveness
+2. **Deploy backend** to Railway/Render
+   - Set env vars: `GROQ_API_KEY`, `ALLOWED_ORIGINS` (include Vercel URL)
+   - The backend runs with: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+3. **Deploy frontend** to Vercel
+   - Set env var: `NEXT_PUBLIC_API_URL` (point to deployed backend URL)
+4. **Update `ALLOWED_ORIGINS`** in backend to include the Vercel production URL
+5. **End-to-end test** on production URLs
+6. **Optional polish**: favicon, Open Graph meta tags, loading skeleton improvements
+
+### Known Issues / Notes:
+- Corporate network (PPG) blocks some HTTPS downloads (SSL inspection proxy) — use `verify=False` for Python httpx or work in Codespace
+- The `.env` key format must be `GROQ_API_KEY=gsk_...` (not `groq_api-key`)
+- Model `llama3-70b-8192` is decommissioned — code already uses `llama-3.3-70b-versatile`
+- `node_modules/` in frontend was installed with Node 14 — delete and reinstall with Node 18+ before building
 
 ## DEPLOYMENT
 
