@@ -5,6 +5,7 @@ import Link from "next/link";
 import QuizStep from "@/components/QuizStep";
 import StepDots from "@/components/StepDots";
 import ResultsCard from "@/components/ResultsCard";
+import DiscoveryBoxCard from "@/components/DiscoveryBoxCard";
 import {
   getQuizConfig,
   getRecommendations,
@@ -84,6 +85,21 @@ export default function QuizPage() {
   if (loading) return <Spinner />;
 
   if (results) {
+    // Grinder note: user has no grinder and chose espresso or moka
+    const bm = (answers.brew_method ?? "").toLowerCase();
+    const needsGrinderNote =
+      answers.has_grinder === "No, compro già macinato" &&
+      (bm.includes("espresso") || bm.includes("moka"));
+    const brewLabel = bm.includes("espresso") ? "espresso" : "moka";
+
+    // Discovery card: ≥2 uncertain signals
+    const uncertaintyCount = [
+      answers.roast === "Sorprendimi",
+      answers.process?.endsWith("— scegli tu"),
+      answers.has_grinder === "Non lo so",
+    ].filter(Boolean).length;
+    const showDiscoveryCard = uncertaintyCount >= 2;
+
     return (
       <main className="min-h-screen bg-cream px-4 py-16">
         <div className="mx-auto max-w-5xl">
@@ -94,7 +110,18 @@ export default function QuizPage() {
             <p className="mt-3 text-muted">Tre selezioni scelte apposta per te</p>
           </div>
 
+          {/* Grinder note banner */}
+          {needsGrinderNote && (
+            <p className="mb-8 rounded border border-brown/30 bg-brown/5 px-4 py-3 text-sm text-charcoal">
+              Non hai un macinacaffè: sul sito seleziona la versione{" "}
+              <strong>macinata per {brewLabel}</strong> dove disponibile.
+            </p>
+          )}
+
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Discovery card first when user is very uncertain */}
+            {showDiscoveryCard && <DiscoveryBoxCard />}
+
             {results.map((rec) => (
               <ResultsCard key={rec.product_name} rec={rec} />
             ))}
@@ -160,6 +187,16 @@ export default function QuizPage() {
             ← Domanda precedente
           </button>
         )}
+
+        {/* Store shortcut for users who already know what they want */}
+        <a
+          href="https://coffeeriff.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mx-auto mt-4 block text-center text-xs text-muted underline-offset-4 hover:underline"
+        >
+          So già quello che voglio. Portami al sito →
+        </a>
       </div>
     </main>
   );

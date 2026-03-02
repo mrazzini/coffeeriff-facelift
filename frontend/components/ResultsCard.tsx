@@ -27,14 +27,20 @@ export default function ResultsCard({ rec }: ResultsCardProps) {
       )}
 
       <div className="flex flex-1 flex-col gap-4 p-5">
-        {/* Name + price */}
+        {/* Name + price + whole-bean tooltip */}
         <div className="flex items-start justify-between gap-3">
           <h3 className="font-serif text-base font-semibold leading-snug text-charcoal">
             {rec.product_name}
           </h3>
-          <span className="shrink-0 text-sm font-semibold text-brown">
-            €{rec.price}
-          </span>
+          <div className="flex shrink-0 items-center gap-2">
+            <span className="text-sm font-semibold text-brown">€{rec.price}</span>
+            <div className="group/tip relative">
+              <span className="cursor-default select-none text-xs text-muted">ⓘ</span>
+              <div className="pointer-events-none absolute right-0 top-5 z-10 hidden w-60 rounded border border-border bg-white px-3 py-2 text-xs leading-relaxed text-muted shadow-md group-hover/tip:block">
+                I chicchi interi conservano gli aromi più a lungo del macinato. Per il massimo del gusto, acquista in grani e macina al momento.
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Flavor notes */}

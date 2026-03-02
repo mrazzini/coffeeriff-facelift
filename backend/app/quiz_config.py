@@ -1,7 +1,9 @@
 from .models import QuizConfig, QuizQuestion
 
+# Origin grouping constants kept for reference / future restoration.
+# El Salvador is intentionally grouped with Americas.
 _AFRICA = {"Etiopia", "Kenya", "Rwanda", "Uganda", "Burundi"}
-_AMERICAS = {"Colombia", "Nicaragua", "Brasile", "Guatemala", "Honduras", "Bolivia"}
+_AMERICAS = {"Colombia", "Nicaragua", "Brasile", "Guatemala", "Honduras", "Bolivia", "El Salvador"}
 
 _ROAST_LABEL = {
     "chiara": "Chiara — leggera, fruttata, acida",
@@ -44,19 +46,6 @@ def build_quiz_config(products: list[dict]) -> QuizConfig:
             seen_labels.add(label)
     process_options.append("Non lo so ancora — scegli tu")
 
-    # Origin: group by region from actual catalog data
-    countries = {e["origin_country"] for e in enriched_entries if e.get("origin_country")}
-    origin_options: list[str] = []
-    africa_found = sorted(countries & _AFRICA)
-    americas_found = sorted(countries & _AMERICAS)
-    if africa_found:
-        origin_options.append(f"Africa — floreale, fruttato ({', '.join(africa_found)})")
-    if americas_found:
-        origin_options.append(f"America — dolce, bilanciato ({', '.join(americas_found)})")
-    if "El Salvador" in countries:
-        origin_options.append("El Salvador — strutturato, complesso")
-    origin_options.append("Sorprendimi — ovunque nel mondo")
-
     # Flavor profiles: fixed sensory archetypes (not catalog-derived)
     flavor_options = [
         "Fruttato & vivace — agrumi, frutti di bosco",
@@ -66,11 +55,6 @@ def build_quiz_config(products: list[dict]) -> QuizConfig:
     ]
 
     return QuizConfig(questions=[
-        QuizQuestion(
-            key="roast",
-            question="Come preferisci la tostatura?",
-            options=roast_options,
-        ),
         QuizQuestion(
             key="flavor_profile",
             question="Quale profilo aromatico ti attira di più?",
@@ -82,13 +66,18 @@ def build_quiz_config(products: list[dict]) -> QuizConfig:
             options=["Espresso", "Filtro — V60, Chemex, dripper", "Moka", "French Press o Aeropress"],
         ),
         QuizQuestion(
-            key="origin",
-            question="Da quale parte del mondo vorresti il tuo caffè?",
-            options=origin_options,
+            key="has_grinder",
+            question="Hai un macinacaffè a casa?",
+            options=["Sì", "No, compro già macinato", "Non lo so"],
         ),
         QuizQuestion(
             key="process",
-            question="Quanto ami la complessità nel caffè?",
+            question="Vuoi provare qualcosa di diverso da quello che berresti di solito al bar?",
             options=process_options,
+        ),
+        QuizQuestion(
+            key="roast",
+            question="Come preferisci la tostatura?",
+            options=roast_options,
         ),
     ])

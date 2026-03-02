@@ -11,11 +11,11 @@ export interface QuizConfig {
 }
 
 export interface QuizAnswers {
-  roast: string;
   flavor_profile: string;
   brew_method: string;
-  origin: string;
+  has_grinder: string;
   process: string;
+  roast: string;
 }
 
 export interface Recommendation {
