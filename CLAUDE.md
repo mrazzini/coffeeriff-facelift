@@ -191,12 +191,38 @@ Always respond with:
 
 ***
 
-## START NOW
+## BUILD & RUN
 
-***
+### Backend (FastAPI)
+```bash
+cd backend
+python -m venv venv && source venv/bin/activate  # or venv\Scripts\activate on Windows
+pip install -r requirements.txt
+cp .env.example .env  # then add your GROQ_API_KEY
+uvicorn app.main:app --reload --port 8000
+```
 
-Begin with Phase 1: System Design.
+### Frontend (Next.js)
+```bash
+cd frontend
+npm install
+cp .env.example .env.local  # set NEXT_PUBLIC_API_URL
+npm run dev
+```
 
-Propose the simplest viable MVP for this project.
+### Fetch Products
+```bash
+python scripts/fetch_products.py
+```
 
-***
+## CURRENT STATUS
+
+Feature implemented: **Option A — Coffee Recommender Quiz**
+- 5-question Italian quiz → Groq AI → Top 3 product recommendations
+- Links to real coffeeriff.com product pages
+- 33 products fetched, ~24 coffee products filtered for recommendations
+
+## DEPLOYMENT
+
+- Frontend → Vercel (set `NEXT_PUBLIC_API_URL` env var)
+- Backend → Railway/Render (set `GROQ_API_KEY` and `ALLOWED_ORIGINS` env vars)
