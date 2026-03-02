@@ -1,5 +1,6 @@
 import json
 import os
+from pathlib import Path
 
 from groq import Groq
 from dotenv import load_dotenv
@@ -7,9 +8,16 @@ from dotenv import load_dotenv
 from .models import QuizAnswers, Recommendation
 from .products import load_products, get_product_summary
 
-load_dotenv()
+load_dotenv(Path(__file__).parent.parent / ".env")
 
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+_client = None
+
+
+def _get_client() -> Groq:
+    global _client
+    if _client is None:
+        _client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+    return _client
 
 
 def build_prompt(answers: QuizAnswers, product_catalog: str) -> str:
@@ -48,9 +56,9 @@ async def get_recommendations(answers: QuizAnswers) -> list[Recommendation]:
     catalog_text = get_product_summary(products)
     prompt = build_prompt(answers, catalog_text)
 
-    chat = client.chat.completions.create(
+    chat = _get_client().chat.completions.create(
         messages=[{"role": "user", "content": prompt}],
-        model="llama3-70b-8192",
+        model="llama-3.3-70b-versatile",
         temperature=0.7,
         max_tokens=1024,
     )
