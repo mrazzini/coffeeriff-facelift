@@ -1,20 +1,16 @@
 import json
 import os
-import re
 from pathlib import Path
 
 from groq import Groq
 from dotenv import load_dotenv
 
 from .models import QuizAnswers, Recommendation
-from .products import load_products, get_product_summary
+from .products import load_products
 
 load_dotenv(Path(__file__).parent.parent / ".env")
 
 _client = None
-
-# Labels that appear in product descriptions (in typical order)
-_DESCRIPTION_LABELS = ["Processo", "Origine", "Altitudine", "Varietà", "Grade", "Crop", "Punteggio"]
 
 
 def _get_client() -> Groq:
@@ -24,68 +20,55 @@ def _get_client() -> Groq:
     return _client
 
 
-def parse_description_bullets(description: str) -> list[str]:
-    """Split a product description string into concise bullet-point fragments."""
-    bullets = []
-    first_label = re.search(r"\b(?:" + "|".join(_DESCRIPTION_LABELS) + r"):", description)
-    if first_label:
-        flavor_notes = description[:first_label.start()].strip().rstrip("—").strip()
-        if flavor_notes:
-            bullets.append(flavor_notes)
-        remainder = description[first_label.start():]
-    else:
-        return [description.strip()[:200]]
-
-    # Split on each known label boundary
-    pattern = r"(?=" + "|".join(f"{lbl}:" for lbl in _DESCRIPTION_LABELS) + r")"
-    for part in re.split(pattern, remainder):
-        part = part.strip()
-        if part:
-            # Truncate at em-dash separator that precedes the product story narrative
-            part = re.split(r"\s+—\s+", part)[0]
-            part = part.split("\n")[0].strip().rstrip("—").strip()
-            bullets.append(part)
-
-    return bullets
+def build_catalog_context(products: list[dict]) -> str:
+    """Build clean structured context for the recommendation LLM."""
+    lines = []
+    for p in products:
+        e = p.get("enriched", {})
+        entry = {
+            "title": p["title"],
+            "handle": p["handle"],
+            "price": p["price"],
+            "roast": e.get("roast"),
+            "process": e.get("process"),
+            "origin": f"{e.get('origin_country')} – {e.get('origin_region')}",
+            "flavor_notes": e.get("flavor_notes", []),
+            "brew": e.get("brew_compatibility", []),
+            "sca": e.get("sca_score"),
+        }
+        lines.append(json.dumps(entry, ensure_ascii=False))
+    return "\n".join(lines)
 
 
-def build_prompt(answers: QuizAnswers, product_catalog: str) -> str:
+def build_prompt(answers: QuizAnswers, catalog_context: str) -> str:
     return f"""Sei un esperto sommelier del caffè specialty. Un cliente ha completato un quiz sulle sue preferenze.
 
 RISPOSTE DEL CLIENTE:
 - Tostatura preferita: {answers.roast}
-- Profilo di sapori preferito: {answers.flavor_profile}
+- Profilo di sapori: {answers.flavor_profile}
 - Metodo di preparazione: {answers.brew_method}
 - Origine preferita: {answers.origin}
-- Tipo di processo preferito: {answers.process}
+- Tipo di processo: {answers.process}
 
-CATALOGO PRODOTTI DISPONIBILI:
-{product_catalog}
+CATALOGO PRODOTTI (JSON strutturato):
+{catalog_context}
 
 ISTRUZIONI:
-1. Analizza le preferenze del cliente
-2. Confrontale con i prodotti disponibili nel catalogo
-3. Scegli i 3 prodotti che meglio corrispondono, basandoti su:
-   - Profilo di tostatura
-   - Note aromatiche e di sapore
-   - Compatibilità con il metodo di preparazione
-   - Origine geografica e processo di lavorazione
-4. Per ogni prodotto, rivolgiti direttamente all'utente usando "tu".
-   Spiega perché è la scelta perfetta PER TE in 1-2 frasi in italiano.
-   Esempio: "Con le tue preferenze per i sapori fruttati, questo caffè ti sorprenderà con le sue note di..."
+1. Scegli i 3 prodotti che meglio corrispondono alle preferenze del cliente
+2. Per ogni prodotto, rivolgiti direttamente all'utente usando "tu"
+   Spiega perché è la scelta perfetta PER TE in 1-2 frasi in italiano
 
-Rispondi SOLO con un JSON array valido, senza markdown, senza commenti. Ogni elemento deve avere:
-- "product_name": nome esatto dal catalogo
-- "match_reason": spiegazione in italiano rivolta direttamente all'utente (1-2 frasi, usa "tu")
+Rispondi SOLO con un JSON array valido, senza markdown. Ogni elemento deve avere:
+- "product_name": nome esatto dal campo "title" nel catalogo
+- "match_reason": spiegazione in italiano rivolta all'utente (usa "tu", 1-2 frasi)
 
-Esempio formato:
-[{{"product_name": "Nome Prodotto", "match_reason": "Con il tuo amore per..."}}]"""
+Esempio: [{{"product_name": "Nome Prodotto", "match_reason": "Con le tue preferenze per..."}}]"""
 
 
 async def get_recommendations(answers: QuizAnswers) -> list[Recommendation]:
     products = load_products()
-    catalog_text = get_product_summary(products)
-    prompt = build_prompt(answers, catalog_text)
+    catalog_context = build_catalog_context(products)
+    prompt = build_prompt(answers, catalog_context)
 
     chat = _get_client().chat.completions.create(
         messages=[{"role": "user", "content": prompt}],
@@ -95,13 +78,11 @@ async def get_recommendations(answers: QuizAnswers) -> list[Recommendation]:
     )
 
     raw = chat.choices[0].message.content.strip()
-    # Strip markdown fences if present
     if raw.startswith("```"):
         raw = raw.split("\n", 1)[1]
         raw = raw.rsplit("```", 1)[0]
     picks = json.loads(raw)
 
-    # Map LLM picks back to full product data
     product_map = {p["title"].lower(): p for p in products}
     results = []
     for pick in picks[:3]:
@@ -113,11 +94,12 @@ async def get_recommendations(answers: QuizAnswers) -> list[Recommendation]:
                     product = p
                     break
         if product:
-            full_desc = product.get("description", "")
+            e = product.get("enriched", {})
+            bullets = e.get("bullets") or [product.get("description", "")[:200]]
             results.append(Recommendation(
                 product_name=product["title"],
-                description=full_desc[:200],
-                description_bullets=parse_description_bullets(full_desc),
+                description=product.get("description", "")[:200],
+                description_bullets=bullets,
                 match_reason=pick["match_reason"],
                 price=product["price"],
                 image_url=product.get("image_url", ""),

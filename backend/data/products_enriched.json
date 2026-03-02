@@ -1,0 +1,602 @@
+{
+  "el-salvador-san-antonio-geisha-168-hrs": {
+    "roast": "chiara",
+    "process": "anaerobico",
+    "origin_country": "El Salvador",
+    "origin_region": "Ahuachapán",
+    "flavor_notes": [
+      "agrumi",
+      "prugna",
+      "lattico",
+      "nocciolato"
+    ],
+    "brew_compatibility": [
+      "filtro",
+      "french-press"
+    ],
+    "sca_score": 87,
+    "bullets": [
+      "Agrumi, prugna, lattico, nocciolato",
+      "Processo: Naturale anaerobico",
+      "Origine: El Salvador – Ahuachapán",
+      "Altitudine: 1.600 m s.l.m.",
+      "Varietà: Geisha",
+      "SCA: 87 punti"
+    ]
+  },
+  "etiopia-sidama-karamo-gara-agena-natural-g1-premium": {
+    "roast": "chiara",
+    "process": "naturale",
+    "origin_country": "Etiopia",
+    "origin_region": "Sidama",
+    "flavor_notes": [
+      "floreale",
+      "camomilla",
+      "melone",
+      "arancia"
+    ],
+    "brew_compatibility": [
+      "filtro",
+      "french-press"
+    ],
+    "sca_score": 89,
+    "bullets": [
+      "Floreale, camomilla, melone, arancia",
+      "Processo: Naturale",
+      "Origine: Etiopia – Sidama",
+      "Altitudine: 1.995–2.300 m s.l.m.",
+      "Varietà: Heirloom",
+      "SCA: 89 punti"
+    ]
+  },
+  "colombia-tolima-100-anos-3-letras-caturra-naturale": {
+    "roast": "chiara",
+    "process": "naturale-fermentato",
+    "origin_country": "Colombia",
+    "origin_region": "Tolima",
+    "flavor_notes": [
+      "frutti di bosco",
+      "mela",
+      "zucchero di canna",
+      "miele"
+    ],
+    "brew_compatibility": [
+      "filtro",
+      "french-press"
+    ],
+    "sca_score": 87,
+    "bullets": [
+      "Frutti di bosco, mela, zucchero di canna, miele",
+      "Processo: Naturale con fermentazione alcolica",
+      "Origine: Colombia – Tolima",
+      "Varietà: Caturra",
+      "SCA: 87 punti"
+    ]
+  },
+  "colombia-buena-vista-pink-bourbon-lavato": {
+    "roast": "media",
+    "process": "lavato",
+    "origin_country": "Colombia",
+    "origin_region": null,
+    "flavor_notes": [
+      "arancia",
+      "ribes rosso",
+      "floreale"
+    ],
+    "brew_compatibility": [
+      "espresso",
+      "moka"
+    ],
+    "sca_score": 87,
+    "bullets": [
+      "Arancia, ribes rosso, floreale",
+      "Processo: Lavato con ossidazione pre-fermentativa",
+      "Origine: Colombia",
+      "Altitudine: circa 1.770 m s.l.m.",
+      "Varietà: Pink Bourbon",
+      "SCA: 87 punti"
+    ]
+  },
+  "etiopia-sidama-bura-natural-espresso": {
+    "roast": "media",
+    "process": "naturale",
+    "origin_country": "Etiopia",
+    "origin_region": "Sidama",
+    "flavor_notes": [
+      "floreale",
+      "miele",
+      "mandarino",
+      "fragola"
+    ],
+    "brew_compatibility": [
+      "espresso",
+      "moka"
+    ],
+    "sca_score": 88,
+    "bullets": [
+      "Floreale, miele, mandarino, fragola",
+      "Processo: Naturale",
+      "Origine: Etiopia – Sidama",
+      "Varietà: 774110, 74158",
+      "SCA: 88 punti"
+    ]
+  },
+  "decaf-sugar-cane-colombia-risaralda": {
+    "roast": "media",
+    "process": "naturale",
+    "origin_country": "Colombia",
+    "origin_region": "Risaralda",
+    "flavor_notes": [
+      "panela",
+      "cioccolato",
+      "cocco"
+    ],
+    "brew_compatibility": [
+      "espresso",
+      "moka"
+    ],
+    "sca_score": 86,
+    "bullets": [
+      "Panela, cioccolato, cocco",
+      "Processo: naturale",
+      "Origine: Colombia – Risaralda",
+      "Altitudine: non disponibile",
+      "Varietà: Caturra, Bourbon",
+      "SCA: 86 punti"
+    ]
+  },
+  "geisha-blue-finca-monteverde": {
+    "roast": "chiara",
+    "process": "anaerobico",
+    "origin_country": "Colombia",
+    "origin_region": "Tolima",
+    "flavor_notes": [
+      "fiori",
+      "fragole",
+      "arancia"
+    ],
+    "brew_compatibility": [
+      "filtro",
+      "espresso"
+    ],
+    "sca_score": 89,
+    "bullets": [
+      "Fiori, fragole, arancia",
+      "Processo: fermentazione anaerobica",
+      "Origine: Colombia – Tolima",
+      "Altitudine: 1790–1900 m",
+      "Varietà: Geisha",
+      "SCA: 89 punti"
+    ]
+  },
+  "christmas-geisha-box": {
+    "roast": null,
+    "process": null,
+    "origin_country": null,
+    "origin_region": null,
+    "flavor_notes": null,
+    "brew_compatibility": null,
+    "sca_score": null,
+    "bullets": [
+      "Non disponibile",
+      "Processo: non disponibile",
+      "Origine: non disponibile",
+      "Altitudine: non disponibile",
+      "Varietà: non disponibile",
+      "SCA: non disponibile"
+    ]
+  },
+  "finca-mierisc-finca-mierisch-los-placeres-nicaragua-funky-natural": {
+    "roast": "chiara",
+    "process": "naturale",
+    "origin_country": "Nicaragua",
+    "origin_region": "Los Placeres",
+    "flavor_notes": [
+      "frutta tropicale",
+      "rum",
+      "prugna"
+    ],
+    "brew_compatibility": [
+      "filtro",
+      "french-press"
+    ],
+    "sca_score": null,
+    "bullets": [
+      "Frutta tropicale, rum, prugna",
+      "Processo: naturale",
+      "Origine: Nicaragua – Los Placeres",
+      "Altitudine: non disponibile",
+      "Varietà: Ethiosar",
+      "SCA: non disponibile"
+    ]
+  },
+  "finca-montreal-geisha-natural-colombia": {
+    "roast": "chiara",
+    "process": "naturale",
+    "origin_country": "Colombia",
+    "origin_region": "Tolima",
+    "flavor_notes": [
+      "fragola",
+      "miele",
+      "gelsomino"
+    ],
+    "brew_compatibility": [
+      "filtro",
+      "espresso"
+    ],
+    "sca_score": 89,
+    "bullets": [
+      "Fragola, miele, gelsomino",
+      "Processo: naturale",
+      "Origine: Colombia – Tolima",
+      "Altitudine: 2050 m",
+      "Varietà: Geisha",
+      "SCA: 89 punti"
+    ]
+  },
+  "dalia": {
+    "roast": "chiara",
+    "process": "anaerobico",
+    "origin_country": "El Salvador",
+    "origin_region": "Ahuachapán",
+    "flavor_notes": [
+      "mango",
+      "papaya",
+      "ananas",
+      "zucchero di canna"
+    ],
+    "brew_compatibility": [
+      "espresso",
+      "filtro"
+    ],
+    "sca_score": null,
+    "bullets": [
+      "Mango, papaya, ananas, zucchero di canna",
+      "Processo: Anaerobico",
+      "Origine: El Salvador – Ahuachapán",
+      "Altitudine: 1.350–1.400 m s.l.m.",
+      "Varietà: Pacamara"
+    ]
+  },
+  "rwanda-busanze-ikawa-house-washed": {
+    "roast": "chiara",
+    "process": "lavato",
+    "origin_country": "Rwanda",
+    "origin_region": "Nyaruguru",
+    "flavor_notes": [
+      "frutti rossi",
+      "arancia",
+      "datteri",
+      "miele"
+    ],
+    "brew_compatibility": [
+      "filtro",
+      "espresso"
+    ],
+    "sca_score": null,
+    "bullets": [
+      "Frutti rossi, arancia, datteri, miele",
+      "Processo: Lavato",
+      "Origine: Rwanda – Nyaruguru",
+      "Varietà: Bourbon"
+    ]
+  },
+  "brasile-yellow-catuai-natural-mantiqueira-de-minas": {
+    "roast": "media",
+    "process": "naturale",
+    "origin_country": "Brasile",
+    "origin_region": "Mantiqueira de Minas",
+    "flavor_notes": [
+      "cioccolato al latte",
+      "caramello",
+      "nocciole"
+    ],
+    "brew_compatibility": [
+      "moka",
+      "espresso"
+    ],
+    "sca_score": 84,
+    "bullets": [
+      "Cioccolato al latte, caramello, nocciole",
+      "Processo: Naturale",
+      "Origine: Brasile – Mantiqueira de Minas",
+      "Altitudine: non specificata",
+      "SCA: 84 punti"
+    ]
+  },
+  "kenya-kamunyaka-aa-copia": {
+    "roast": null,
+    "process": null,
+    "origin_country": null,
+    "origin_region": null,
+    "flavor_notes": [],
+    "brew_compatibility": [],
+    "sca_score": null,
+    "bullets": []
+  },
+  "confezione-da-30-capsule-pop": {
+    "roast": null,
+    "process": null,
+    "origin_country": null,
+    "origin_region": null,
+    "flavor_notes": [
+      "cioccolato fondente"
+    ],
+    "brew_compatibility": [],
+    "sca_score": null,
+    "bullets": [
+      "Cioccolato fondente",
+      "Processo: non specificato",
+      "Origine: non specificata"
+    ]
+  },
+  "kamunyakaaa": {
+    "roast": "chiara",
+    "process": "lavato",
+    "origin_country": "Kenya",
+    "origin_region": "Kamunyaka",
+    "flavor_notes": [
+      "frutta rossa",
+      "agrumi",
+      "more",
+      "fragole"
+    ],
+    "brew_compatibility": [
+      "filtro",
+      "espresso"
+    ],
+    "sca_score": null,
+    "bullets": [
+      "Frutta rossa, agrumi, more, fragole",
+      "Processo: lavato",
+      "Origine: Kenya – Kamunyaka",
+      "Varietà: AA"
+    ]
+  },
+  "gift-card": {
+    "roast": null,
+    "process": null,
+    "origin_country": null,
+    "origin_region": null,
+    "flavor_notes": null,
+    "brew_compatibility": null,
+    "sca_score": null,
+    "bullets": []
+  },
+  "kenya-lavato-nyeri-kagunyu-ab-copia": {
+    "roast": null,
+    "process": null,
+    "origin_country": null,
+    "origin_region": null,
+    "flavor_notes": null,
+    "brew_compatibility": null,
+    "sca_score": null,
+    "bullets": []
+  },
+  "capsule-compatibili-nespresso-brasile-cerrado-dulce": {
+    "roast": "media",
+    "process": "naturale",
+    "origin_country": "Brasile",
+    "origin_region": "Cerrado",
+    "flavor_notes": [
+      "cioccolato",
+      "nocciole"
+    ],
+    "brew_compatibility": [
+      "espresso"
+    ],
+    "sca_score": null,
+    "bullets": [
+      "Cioccolato, nocciole",
+      "Processo: naturale",
+      "Origine: Brasile – Cerrado"
+    ]
+  },
+  "miscela-elettronica": {
+    "roast": "media",
+    "process": "altro",
+    "origin_country": null,
+    "origin_region": null,
+    "flavor_notes": [
+      "dolcezza",
+      "morbidezza"
+    ],
+    "brew_compatibility": [
+      "espresso",
+      "moka"
+    ],
+    "sca_score": null,
+    "bullets": [
+      "Dolcezza, morbidezza",
+      "Processo: miscela",
+      "Origine: Centro America"
+    ]
+  },
+  "miscela-blues": {
+    "roast": "media",
+    "process": "altro",
+    "origin_country": "America",
+    "origin_region": null,
+    "flavor_notes": [
+      "cacao",
+      "nocciola",
+      "miele",
+      "frutta matura"
+    ],
+    "brew_compatibility": [
+      "espresso",
+      "moka"
+    ],
+    "sca_score": null,
+    "bullets": [
+      "Cacao, nocciola, miele, frutta matura",
+      "Processo: Miscela",
+      "Origine: America",
+      "Varietà: Arabica"
+    ]
+  },
+  "miscela-pop": {
+    "roast": "media",
+    "process": "altro",
+    "origin_country": "America",
+    "origin_region": null,
+    "flavor_notes": [
+      "cioccolato",
+      "mandorle",
+      "cereali"
+    ],
+    "brew_compatibility": [
+      "espresso",
+      "moka"
+    ],
+    "sca_score": null,
+    "bullets": [
+      "Cioccolato, mandorle, cereali",
+      "Processo: Miscela",
+      "Origine: America",
+      "Varietà: Arabica"
+    ]
+  },
+  "box-cialde-compatibili-nespresso": {
+    "roast": null,
+    "process": null,
+    "origin_country": null,
+    "origin_region": null,
+    "flavor_notes": null,
+    "brew_compatibility": [
+      "espresso"
+    ],
+    "sca_score": null,
+    "bullets": [
+      "",
+      "",
+      ""
+    ]
+  },
+  "copia-del-hario-filtro-carta-v60-mod-01-da-1-2-tazze-scatola-la-40-pz-vcf-01-40w": {
+    "roast": null,
+    "process": null,
+    "origin_country": null,
+    "origin_region": null,
+    "flavor_notes": null,
+    "brew_compatibility": null,
+    "sca_score": null,
+    "bullets": [
+      "",
+      "",
+      ""
+    ]
+  },
+  "hario-filtro-carta-v60-mod-01-da-1-2-tazze-scatola-la-40-pz-vcf-01-40w": {
+    "roast": null,
+    "process": null,
+    "origin_country": null,
+    "origin_region": null,
+    "flavor_notes": null,
+    "brew_compatibility": null,
+    "sca_score": null,
+    "bullets": [
+      "",
+      "",
+      ""
+    ]
+  },
+  "hario-kettle-bollitore-1-2l": {
+    "roast": null,
+    "process": null,
+    "origin_country": null,
+    "origin_region": null,
+    "flavor_notes": null,
+    "brew_compatibility": null,
+    "sca_score": null,
+    "bullets": null
+  },
+  "filtri-quadrati-chemex-6-tazze": {
+    "roast": null,
+    "process": null,
+    "origin_country": null,
+    "origin_region": null,
+    "flavor_notes": null,
+    "brew_compatibility": null,
+    "sca_score": null,
+    "bullets": null
+  },
+  "chemex-6-tazze": {
+    "roast": null,
+    "process": null,
+    "origin_country": null,
+    "origin_region": null,
+    "flavor_notes": null,
+    "brew_compatibility": null,
+    "sca_score": null,
+    "bullets": null
+  },
+  "santos-bbrasile": {
+    "roast": "media",
+    "process": "naturale",
+    "origin_country": "Brasile",
+    "origin_region": "Cerrado",
+    "flavor_notes": [
+      "pane tostato",
+      "miele",
+      "cacao",
+      "nocciola tostata"
+    ],
+    "brew_compatibility": [
+      "espresso",
+      "moka"
+    ],
+    "sca_score": null,
+    "bullets": [
+      "Pane tostato, miele, cacao, nocciola tostata",
+      "Processo: Naturale",
+      "Origine: Brasile - Cerrado",
+      "Altitudine: null",
+      "Varietà: null",
+      "SCA: null"
+    ]
+  },
+  "box-degustazione-caffe-artigianale-coffeeriff": {
+    "roast": null,
+    "process": null,
+    "origin_country": null,
+    "origin_region": null,
+    "flavor_notes": null,
+    "brew_compatibility": null,
+    "sca_score": null,
+    "bullets": null
+  },
+  "moka": {
+    "roast": null,
+    "process": null,
+    "origin_country": null,
+    "origin_region": null,
+    "flavor_notes": null,
+    "brew_compatibility": null,
+    "sca_score": null,
+    "bullets": null
+  },
+  "decafeinato": {
+    "roast": "media",
+    "process": "decaf",
+    "origin_country": "Brasile",
+    "origin_region": "Minas Gerais",
+    "flavor_notes": [
+      "cioccolato",
+      "mandorla",
+      "nocciola",
+      "cacao"
+    ],
+    "brew_compatibility": [
+      "espresso",
+      "moka"
+    ],
+    "sca_score": null,
+    "bullets": [
+      "Cioccolato, mandorla, nocciola, cacao",
+      "Processo: decaffeinato",
+      "Origine: Brasile – Minas Gerais",
+      "Varietà: non specificata"
+    ]
+  }
+}

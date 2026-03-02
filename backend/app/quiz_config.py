@@ -1,87 +1,85 @@
-import re
 from .models import QuizConfig, QuizQuestion
 
+_AFRICA = {"Etiopia", "Kenya", "Rwanda", "Uganda", "Burundi"}
+_AMERICAS = {"Colombia", "Nicaragua", "Brasile", "Guatemala", "Honduras", "Bolivia"}
 
-# Country → region groupings for the origin question
-_AFRICA = ["Etiopia", "Kenya", "Rwanda", "Uganda", "Burundi"]
-_CENTRAL_SOUTH_AMERICA = ["Colombia", "Nicaragua", "Brasile", "Guatemala", "Honduras", "Bolivia"]
-_EL_SALVADOR = ["El Salvador"]
+_ROAST_LABEL = {
+    "chiara": "Chiara — leggera, fruttata, acida",
+    "media": "Media — bilanciata, versatile",
+}
+
+# "altro" (blends with no single process) is excluded from quiz options intentionally.
+# Both fermented variants collapse to the same display label so they don't appear twice.
+_PROCESS_LABEL = {
+    "lavato": "Pulito & bilanciato (lavato)",
+    "naturale": "Dolce & fruttato (naturale)",
+    "anaerobico": "Avventuroso & fermentato",
+    "naturale-fermentato": "Avventuroso & fermentato",
+    "decaf": "Decaffeinato",
+}
+
+# Preferred display order for process options
+_PROCESS_ORDER = ["lavato", "naturale", "anaerobico", "naturale-fermentato", "decaf"]
 
 
 def build_quiz_config(products: list[dict]) -> QuizConfig:
-    """Build quiz questions whose options reflect the actual product catalog."""
+    """Build quiz questions derived entirely from enriched product catalog data."""
+    enriched_entries = [p["enriched"] for p in products if p.get("enriched")]
 
-    # --- Determine which origin groups are actually represented ---
-    has_africa = any(
-        any(c in p["title"] for c in _AFRICA) for p in products
-    )
-    has_americas = any(
-        any(c in p["title"] for c in _CENTRAL_SOUTH_AMERICA) for p in products
-    )
-    has_el_salvador = any("El Salvador" in p["title"] for p in products)
+    # Roast: only levels that genuinely appear in the catalog
+    roast_values = sorted({e["roast"] for e in enriched_entries if e.get("roast")})
+    roast_options = [_ROAST_LABEL[r] for r in roast_values if r in _ROAST_LABEL]
+    roast_options.append("Sorprendimi")
 
+    # Process: iterate in preferred order, skip "altro", deduplicate collapsed labels
+    catalog_processes = {e["process"] for e in enriched_entries if e.get("process")}
+    seen_labels: set[str] = set()
+    process_options: list[str] = []
+    for key in _PROCESS_ORDER:
+        if key not in catalog_processes:
+            continue
+        label = _PROCESS_LABEL.get(key)
+        if label and label not in seen_labels:
+            process_options.append(label)
+            seen_labels.add(label)
+    process_options.append("Non lo so ancora — scegli tu")
+
+    # Origin: group by region from actual catalog data
+    countries = {e["origin_country"] for e in enriched_entries if e.get("origin_country")}
     origin_options: list[str] = []
-    if has_africa:
-        origin_options.append("Africa — floreale, fruttato (Etiopia, Kenya…)")
-    if has_americas:
-        origin_options.append("America — dolce, bilanciato (Colombia, Nicaragua…)")
-    if has_el_salvador:
+    africa_found = sorted(countries & _AFRICA)
+    americas_found = sorted(countries & _AMERICAS)
+    if africa_found:
+        origin_options.append(f"Africa — floreale, fruttato ({', '.join(africa_found)})")
+    if americas_found:
+        origin_options.append(f"America — dolce, bilanciato ({', '.join(americas_found)})")
+    if "El Salvador" in countries:
         origin_options.append("El Salvador — strutturato, complesso")
     origin_options.append("Sorprendimi — ovunque nel mondo")
 
-    # --- Determine which processes are in the catalog ---
-    processes: set[str] = set()
-    for p in products:
-        desc = p.get("description", "")
-        m = re.search(r"Processo:\s*([^\n]+?)(?:\s+Origine:|\s+Altitudine:|$)", desc)
-        if m:
-            raw = m.group(1).strip().lower()
-            if "lavato" in raw or "washed" in raw:
-                processes.add("washed")
-            elif "anaerobico" in raw or "ferment" in raw or "blu" in raw:
-                processes.add("anaerobic")
-            else:
-                processes.add("natural")
+    # Flavor profiles: fixed sensory archetypes (not catalog-derived)
+    flavor_options = [
+        "Fruttato & vivace — agrumi, frutti di bosco",
+        "Floreale & delicato — camomilla, gelsomino",
+        "Cioccolato & cremoso — cacao, nocciola, caramello",
+        "Speziato & complesso — spezie dolci, miele, tabacco",
+    ]
 
-    process_options: list[str] = []
-    if "washed" in processes:
-        process_options.append("Pulito & bilanciato (lavato)")
-    if "natural" in processes:
-        process_options.append("Dolce & fruttato (naturale)")
-    if "anaerobic" in processes:
-        process_options.append("Avventuroso & fermentato (anaerobico)")
-    process_options.append("Non lo so ancora — scegli tu")
-
-    questions = [
+    return QuizConfig(questions=[
         QuizQuestion(
             key="roast",
             question="Come preferisci la tostatura?",
-            options=[
-                "Chiara — acida, fruttata, complessa",
-                "Media — bilanciata, versatile",
-                "Scura — intensa, corpo pieno",
-                "Sorprendimi",
-            ],
+            options=roast_options,
         ),
         QuizQuestion(
             key="flavor_profile",
             question="Quale profilo aromatico ti attira di più?",
-            options=[
-                "Fruttato & vivace — agrumi, frutti di bosco",
-                "Floreale & delicato — camomilla, gelsomino",
-                "Cioccolato & cremoso — cacao, nocciola, caramello",
-                "Speziato & complesso — spezie dolci, miele, tabacco",
-            ],
+            options=flavor_options,
         ),
         QuizQuestion(
             key="brew_method",
             question="Come prepari il caffè di solito?",
-            options=[
-                "Espresso",
-                "Filtro — V60, Chemex, dripper",
-                "Moka",
-                "French Press o Aeropress",
-            ],
+            options=["Espresso", "Filtro — V60, Chemex, dripper", "Moka", "French Press o Aeropress"],
         ),
         QuizQuestion(
             key="origin",
@@ -93,6 +91,4 @@ def build_quiz_config(products: list[dict]) -> QuizConfig:
             question="Quanto ami la complessità nel caffè?",
             options=process_options,
         ),
-    ]
-
-    return QuizConfig(questions=questions)
+    ])
