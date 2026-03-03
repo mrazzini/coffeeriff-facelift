@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -15,8 +17,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Coffeeriff — Trova il Tuo Caffè Perfetto",
-  description: "Quiz interattivo per scoprire il caffè specialty perfetto per te",
+  title: "Coffeeriff",
+  description:
+    "Caffè specialty tostato artigianalmente. Microlotti selezionati, tostature personalizzate, spedizione in tutta Italia.",
 };
 
 export default function RootLayout({
@@ -26,8 +29,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="it" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="min-h-screen bg-cream font-sans text-charcoal antialiased">
-        {children}
+      <body className="flex min-h-screen flex-col bg-cream font-sans text-charcoal antialiased">
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );

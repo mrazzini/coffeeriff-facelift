@@ -3,10 +3,9 @@ from pydantic import BaseModel
 
 class QuizAnswers(BaseModel):
     flavor_profile: str  # Fruttato & Vivace / Floreale & Delicato / etc.
-    brew_method: str     # Espresso / Filtro / Moka / French Press
-    has_grinder: str     # Sì / No, compro già macinato / Non lo so
-    process: str         # Pulito (lavato) / Dolce (naturale) / Fermentato / Non lo so ancora
-    roast: str           # Chiara / Media / Sorprendimi
+    brew_method: str     # Espresso / Filtro / Moka / Capsule Nespresso
+    has_grinder: str     # Sì / No, compro già macinato / Uso capsule Nespresso / Non lo so
+    process: str         # Certo, sono aperto... / No, voglio qualcosa di familiare / sorprendimi
 
 
 class Recommendation(BaseModel):

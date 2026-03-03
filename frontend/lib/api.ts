@@ -17,7 +17,6 @@ export interface QuizAnswers {
   brew_method: string;
   has_grinder: string;
   process: string;
-  roast: string;
 }
 
 export interface Recommendation {

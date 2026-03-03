@@ -52,7 +52,6 @@ RISPOSTE DEL CLIENTE:
 - Metodo di preparazione: {answers.brew_method}
 - Ha un macinacaffè: {answers.has_grinder}
 - Preferenza complessità: {answers.process}
-- Tostatura preferita: {answers.roast}
 
 CATALOGO PRODOTTI (JSON strutturato, ordine casuale):
 {catalog_context}
@@ -74,14 +73,14 @@ def _fallback_products(products: list[dict], answers: QuizAnswers, exclude_handl
     """Fill remaining slots from catalog filtered by brew_compatibility."""
     brew_key = None
     bm = answers.brew_method.lower()
+    if "nespresso" in bm or "capsule" in bm:
+        return []
     if "espresso" in bm:
         brew_key = "espresso"
-    elif "filtro" in bm or "v60" in bm or "chemex" in bm:
+    elif "filtro" in bm or "v60" in bm or "chemex" in bm or "aeropress" in bm:
         brew_key = "filtro"
     elif "moka" in bm:
         brew_key = "moka"
-    elif "french" in bm or "aeropress" in bm:
-        brew_key = "french-press"
 
     candidates = [
         p for p in products

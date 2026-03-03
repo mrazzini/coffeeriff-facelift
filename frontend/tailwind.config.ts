@@ -13,6 +13,7 @@ const config: Config = {
         brown: "#8B6239",
         muted: "#6B6057",
         border: "#E0D8CF",
+        "cream-dark": "#EDE8E0",
       },
       fontFamily: {
         serif: ["var(--font-playfair)", "Georgia", "serif"],

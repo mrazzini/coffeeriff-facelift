@@ -83,7 +83,7 @@ export default function Home() {
                   Le nostre selezioni
                 </h2>
                 <p className="mt-1 text-sm text-muted">
-                  I caffè con il punteggio SCA più alto del nostro catalogo.
+                  Una selezione curata dal nostro tostatore.
                 </p>
               </div>
               <Link
@@ -157,7 +157,7 @@ export default function Home() {
             Non sai quale scegliere?
           </h2>
           <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-muted">
-            Rispondi a 5 domande e la nostra AI abbinerà i tuoi gusti ai
+            Rispondi a 4 domande e la nostra AI abbinerà i tuoi gusti ai
             migliori caffè del nostro catalogo.
           </p>
           <Link
@@ -167,7 +167,7 @@ export default function Home() {
             Inizia il Quiz
           </Link>
           <p className="mt-3 text-[11px] uppercase tracking-widest text-muted">
-            5 domande · meno di un minuto
+            4 domande · meno di un minuto
           </p>
         </div>
       </section>

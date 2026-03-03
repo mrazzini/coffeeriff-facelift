@@ -17,7 +17,9 @@ def _get_category(p: dict) -> str | None:
     title_lower = p.get("title", "").lower()
 
     if ptype == "caffe'":
-        return "capsule"
+        if "capsul" in title_lower or "nespresso" in title_lower:
+            return "capsule"
+        return "coffee"
     if ptype in ("caffè", "caffe"):
         return "coffee"
     if ptype == "":

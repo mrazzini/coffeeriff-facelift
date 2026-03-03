@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import QuizStep from "@/components/QuizStep";
 import StepDots from "@/components/StepDots";
 import ResultsCard from "@/components/ResultsCard";
@@ -15,6 +16,7 @@ import {
 } from "@/lib/api";
 
 export default function QuizPage() {
+  const router = useRouter();
   const [config, setConfig] = useState<QuizConfig | null>(null);
   const [configError, setConfigError] = useState(false);
   const [step, setStep] = useState(0);
@@ -22,6 +24,7 @@ export default function QuizPage() {
   const [results, setResults] = useState<Recommendation[] | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [capsuleMode, setCapsuleMode] = useState(false);
 
   useEffect(() => {
     getQuizConfig()
@@ -34,6 +37,12 @@ export default function QuizPage() {
     const currentQ = config.questions[step];
     const updated = { ...answers, [currentQ.key]: value };
     setAnswers(updated);
+
+    // Nespresso short-circuit: redirect to capsule page
+    if (currentQ.key === "brew_method" && value === "Capsule Nespresso") {
+      setCapsuleMode(true);
+      return;
+    }
 
     if (step < config.questions.length - 1) {
       setTimeout(() => setStep(step + 1), 250);
@@ -56,6 +65,7 @@ export default function QuizPage() {
     setAnswers({});
     setResults(null);
     setError(null);
+    setCapsuleMode(false);
   };
 
   const Spinner = () => (
@@ -84,21 +94,49 @@ export default function QuizPage() {
 
   if (loading) return <Spinner />;
 
+  // Capsule redirect screen
+  if (capsuleMode) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center gap-6 px-4 text-center">
+        <p className="font-serif text-2xl font-bold italic text-charcoal">
+          Sei nel posto giusto
+        </p>
+        <p className="max-w-sm text-sm leading-relaxed text-muted">
+          Esplora le nostre capsule specialty — caffè di alta qualità nel
+          formato che preferisci.
+        </p>
+        <Link
+          href="/capsule"
+          className="inline-block border border-brown bg-brown px-10 py-4 text-xs font-semibold uppercase tracking-widest text-cream transition-colors hover:bg-transparent hover:text-brown"
+        >
+          Esplora le capsule →
+        </Link>
+        <button
+          onClick={restart}
+          className="text-sm text-muted underline-offset-4 hover:underline"
+        >
+          ← Ricomincia il quiz
+        </button>
+      </div>
+    );
+  }
+
   if (results) {
-    // Grinder note: user has no grinder and chose espresso or moka
+    // Grinder note: user has no grinder (or uses capsules) and chose espresso or moka
     const bm = (answers.brew_method ?? "").toLowerCase();
     const needsGrinderNote =
-      answers.has_grinder === "No, compro già macinato" &&
+      (answers.has_grinder === "No, compro già macinato" ||
+        answers.has_grinder === "Uso capsule Nespresso") &&
       (bm.includes("espresso") || bm.includes("moka"));
     const brewLabel = bm.includes("espresso") ? "espresso" : "moka";
 
-    // Discovery card: ≥2 uncertain signals
+    // Discovery card: ≥1 uncertain signal
     const uncertaintyCount = [
-      answers.roast === "Sorprendimi",
-      answers.process?.endsWith("— scegli tu"),
+      answers.process?.endsWith("sorprendimi!"),
+      answers.flavor_profile?.endsWith("sorprendimi"),
       answers.has_grinder === "Non lo so",
     ].filter(Boolean).length;
-    const showDiscoveryCard = uncertaintyCount >= 2;
+    const showDiscoveryCard = uncertaintyCount >= 1;
 
     return (
       <main className="min-h-screen bg-cream px-4 py-16">
@@ -119,7 +157,7 @@ export default function QuizPage() {
           )}
 
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {/* Discovery card first when user is very uncertain */}
+            {/* Discovery card first when user is uncertain */}
             {showDiscoveryCard && <DiscoveryBoxCard />}
 
             {results.map((rec) => (
@@ -161,13 +199,6 @@ export default function QuizPage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-cream px-4 py-12">
       <div className="w-full max-w-xl">
-        <Link
-          href="/"
-          className="mb-10 block text-center font-serif text-2xl font-bold italic tracking-wide text-charcoal"
-        >
-          Coffeeriff
-        </Link>
-
         <StepDots current={step} total={questions.length} />
 
         <div className="mt-8">
@@ -189,14 +220,12 @@ export default function QuizPage() {
         )}
 
         {/* Store shortcut for users who already know what they want */}
-        <a
-          href="https://coffeeriff.com"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          href="/caffetteria"
           className="mx-auto mt-4 block text-center text-xs text-muted underline-offset-4 hover:underline"
         >
-          So già quello che voglio. Portami al sito →
-        </a>
+          So già quello che voglio →
+        </Link>
       </div>
     </main>
   );
