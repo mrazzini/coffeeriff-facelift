@@ -15,7 +15,7 @@ const REVIEWS = [
   {
     name: "Davide",
     product: "Abbonamento Specialty coffee",
-    text: "Un piccolo rito mensile che vale ogni centesimo. Si sente la qualità della selezione e della tostatura: niente bruciato, niente amarezza aggressiva, solo carattere. Ogni caffè ha una sua identità precisa, e questa è la parte più affascinante dell'abbonamento: non bevi "caffè", bevi storie diverse ogni mese.",
+    text: "Un piccolo rito mensile che vale ogni centesimo. Si sente la qualità della selezione e della tostatura: niente bruciato, niente amarezza aggressiva, solo carattere. Ogni caffè ha una sua identità precisa, e questa è la parte più affascinante dell'abbonamento: non bevi solo caffè, bevi storie diverse ogni mese.",
   },
   {
     name: "Giorgio Sguazzini",
