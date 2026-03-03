@@ -21,39 +21,11 @@ export default function Footer() {
 
           {/* Nav */}
           <nav className="flex flex-col gap-3 text-xs uppercase tracking-widest text-cream/60 sm:items-end">
-            <Link href="/caffetteria" className="transition-colors hover:text-cream">
-              Caffè
-            </Link>
-            <a
-              href="https://coffeeriff.com/collections/capsule-compatibili-nespresso-specialty"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-cream"
-            >
-              Capsule
-            </a>
-            <a
-              href="https://coffeeriff.com/collections/accessori"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-cream"
-            >
-              Accessori
-            </a>
-            <Link href="/filosofia" className="transition-colors hover:text-cream">
-              Filosofia
-            </Link>
-            <Link href="/quiz" className="transition-colors hover:text-cream">
-              Quiz AI
-            </Link>
-            <a
-              href="https://coffeeriff.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-cream"
-            >
-              Shop
-            </a>
+            <Link href="/caffetteria" className="transition-colors hover:text-cream">Caffè</Link>
+            <Link href="/capsule" className="transition-colors hover:text-cream">Capsule</Link>
+            <Link href="/accessori" className="transition-colors hover:text-cream">Accessori</Link>
+            <Link href="/filosofia" className="transition-colors hover:text-cream">Filosofia</Link>
+            <Link href="/quiz" className="transition-colors hover:text-cream">Quiz AI</Link>
           </nav>
         </div>
 

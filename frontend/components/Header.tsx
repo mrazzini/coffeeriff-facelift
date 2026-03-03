@@ -4,16 +4,8 @@ import MobileMenu from "./MobileMenu";
 
 export const NAV_LINKS = [
   { href: "/caffetteria", label: "Caffè" },
-  {
-    href: "https://coffeeriff.com/collections/capsule-compatibili-nespresso-specialty",
-    label: "Capsule",
-    external: true,
-  },
-  {
-    href: "https://coffeeriff.com/collections/accessori",
-    label: "Accessori",
-    external: true,
-  },
+  { href: "/capsule", label: "Capsule" },
+  { href: "/accessori", label: "Accessori" },
   { href: "/filosofia", label: "Filosofia" },
   { href: "/quiz", label: "Quiz AI" },
 ];
@@ -25,10 +17,10 @@ export default function Header() {
         <Link href="/" aria-label="Coffeeriff — Home">
           {/* Logo is white; invert makes it black on the light cream header */}
           <Image
-            src="/logo.webp"
-            alt="Coffeeriff"
-            width={120}
-            height={40}
+            src="/small_logo_header.png"
+            alt="Coffeeriff-small-logo"
+            width={20}
+            height={10}
             className="invert"
             priority
           />
@@ -36,27 +28,15 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-8 sm:flex">
-          {NAV_LINKS.map((link) =>
-            link.external ? (
-              <a
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-medium uppercase tracking-widest text-muted transition-colors hover:text-charcoal"
-              >
-                {link.label}
-              </a>
-            ) : (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium uppercase tracking-widest text-muted transition-colors hover:text-charcoal"
-              >
-                {link.label}
-              </Link>
-            )
-          )}
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-sm font-medium uppercase tracking-widest text-muted transition-colors hover:text-charcoal"
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
         {/* Mobile hamburger */}

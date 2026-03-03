@@ -93,7 +93,7 @@ def _fallback_products(products: list[dict], answers: QuizAnswers, exclude_handl
 
 
 async def get_recommendations(answers: QuizAnswers) -> list[Recommendation]:
-    products = load_products()
+    products = load_products("coffee")
     catalog_context = build_catalog_context(products)
     prompt = build_prompt(answers, catalog_context)
 

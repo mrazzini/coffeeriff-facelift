@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 import httpx
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
@@ -147,13 +147,13 @@ async def root():
 
 
 @app.get("/products")
-async def products():
-    return load_products()
+async def products(category: str | None = Query(None)):
+    return load_products(category)
 
 
 @app.get("/quiz-config", response_model=QuizConfig)
 async def quiz_config():
-    return build_quiz_config(load_products())
+    return build_quiz_config(load_products("coffee"))
 
 
 @app.post("/recommend", response_model=list[Recommendation])

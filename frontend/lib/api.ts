@@ -1,5 +1,7 @@
 const API_URL = "/api";
 
+// --- Quiz types ---
+
 export interface QuizQuestion {
   key: string;
   question: string;
@@ -28,6 +30,34 @@ export interface Recommendation {
   shopify_url: string;
 }
 
+// --- Product / Storefront types ---
+
+export interface EnrichedData {
+  roast: string | null;
+  process: string | null;
+  origin_country: string | null;
+  origin_region: string | null;
+  flavor_notes: string[] | null;
+  brew_compatibility: string[] | null;
+  sca_score: number | null;
+  bullets: string[] | null;
+}
+
+export interface Product {
+  title: string;
+  handle: string;
+  description: string;
+  price: string;
+  tags: string;
+  image_url: string;
+  product_type: string;
+  vendor: string;
+  category: "coffee" | "capsule" | "accessory";
+  enriched: EnrichedData;
+}
+
+// --- Quiz API ---
+
 export async function getQuizConfig(): Promise<QuizConfig> {
   const res = await fetch(`${API_URL}/quiz-config`);
   if (!res.ok) throw new Error("Impossibile caricare il quiz");
@@ -47,5 +77,14 @@ export async function getRecommendations(
     throw new Error("Errore nel recupero delle raccomandazioni");
   }
 
+  return res.json();
+}
+
+// --- Storefront API ---
+
+export async function getProducts(category?: string): Promise<Product[]> {
+  const url = category ? `${API_URL}/products?category=${category}` : `${API_URL}/products`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("Impossibile caricare i prodotti");
   return res.json();
 }

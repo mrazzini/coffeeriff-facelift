@@ -37,29 +37,16 @@ export default function MobileMenu({ links }: MobileMenuProps) {
       {open && (
         <div className="absolute left-0 right-0 top-full border-b border-border bg-cream px-6 py-6">
           <nav className="flex flex-col gap-4">
-            {links.map((link) =>
-              link.external ? (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setOpen(false)}
-                  className="text-sm font-medium uppercase tracking-widest text-muted transition-colors hover:text-charcoal"
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="text-sm font-medium uppercase tracking-widest text-muted transition-colors hover:text-charcoal"
-                >
-                  {link.label}
-                </Link>
-              )
-            )}
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="text-sm font-medium uppercase tracking-widest text-muted transition-colors hover:text-charcoal"
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
         </div>
       )}

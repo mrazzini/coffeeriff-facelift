@@ -11,12 +11,22 @@ _ENRICHED_FILE = _DATA_DIR / "products_enriched.json"
 _catalog: list[dict] | None = None
 
 
-def _is_coffee(p: dict) -> bool:
-    return (
-        p.get("product_type", "").lower() in ("caffè", "caffe'", "")
-        and "grinder" not in p.get("title", "").lower()
-        and "macinacaff" not in p.get("title", "").lower()
-    )
+def _get_category(p: dict) -> str | None:
+    """Return 'coffee', 'capsule', 'accessory', or None (skip)."""
+    ptype = p.get("product_type", "").lower().strip()
+    title_lower = p.get("title", "").lower()
+
+    if ptype == "caffe'":
+        return "capsule"
+    if ptype in ("caffè", "caffe"):
+        return "coffee"
+    if ptype == "":
+        if "macinacaff" in title_lower or "grinder" in title_lower:
+            return None  # skip grinder
+        if "miscela" in title_lower:
+            return "coffee"  # decaf/blend with missing product_type
+        return "accessory"
+    return None
 
 
 def load_enriched() -> dict[str, dict]:
@@ -37,8 +47,8 @@ def invalidate_cache() -> None:
     _catalog = None
 
 
-def load_products() -> list[dict]:
-    """Return filtered coffee products with enriched data merged in."""
+def load_products(category: str | None = None) -> list[dict]:
+    """Return products with enriched data merged in, optionally filtered by category."""
     global _catalog
     if _catalog is None:
         with open(_PRODUCTS_FILE, encoding="utf-8") as f:
@@ -46,9 +56,14 @@ def load_products() -> list[dict]:
         enriched = load_enriched()
         _catalog = []
         for p in all_products:
-            if _is_coffee(p):
-                p["enriched"] = enriched.get(p["handle"], {})
-                _catalog.append(p)
+            cat = _get_category(p)
+            if cat is None:
+                continue
+            p["enriched"] = enriched.get(p["handle"], {})
+            p["category"] = cat
+            _catalog.append(p)
+    if category:
+        return [p for p in _catalog if p.get("category") == category]
     return _catalog
 
 

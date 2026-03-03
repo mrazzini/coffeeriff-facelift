@@ -28,7 +28,7 @@ export default function Home() {
   const [featured, setFeatured] = useState<Product[]>([]);
 
   useEffect(() => {
-    getProducts()
+    getProducts("coffee")
       .then((products) => {
         const sorted = [...products]
           .filter((p) => p.enriched?.sca_score)
@@ -45,9 +45,7 @@ export default function Home() {
       <section className="flex min-h-[70vh] flex-col items-center justify-center px-6 text-center">
         <div className="max-w-2xl space-y-8">
           <div>
-            <h1 className="font-serif text-5xl font-bold italic tracking-tight text-charcoal sm:text-7xl">
-              Coffeeriff
-            </h1>
+            <img src="/logo.webp" alt="Coffeeriff" className="invert mx-auto h-auto w-auto max-w-[60%] sm:max-w-[50%]" />
             <p className="mt-3 font-serif text-lg italic text-brown">
               è tutta un&apos;altra musica
             </p>
