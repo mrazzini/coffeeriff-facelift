@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import MobileMenu from "./MobileMenu";
 
 export const NAV_LINKS = [
@@ -21,8 +22,16 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-cream/90 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="font-serif text-2xl font-bold italic text-charcoal">
-          Coffeeriff
+        <Link href="/" aria-label="Coffeeriff — Home">
+          {/* Logo is white; invert makes it black on the light cream header */}
+          <Image
+            src="/logo.webp"
+            alt="Coffeeriff"
+            width={120}
+            height={40}
+            className="invert"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}

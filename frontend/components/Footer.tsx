@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -7,7 +8,8 @@ export default function Footer() {
         <div className="flex flex-col gap-8 sm:flex-row sm:justify-between">
           {/* Brand */}
           <div>
-            <p className="font-serif text-xl font-bold italic">Coffeeriff</p>
+            {/* Logo is white — no filter needed on dark charcoal footer */}
+            <Image src="/logo.webp" alt="Coffeeriff" width={110} height={36} />
             <address className="mt-3 space-y-1 text-xs not-italic text-cream/50 leading-relaxed">
               <p>Coffeeriff di JL</p>
               <p>Via Palmiro Togliatti 9, 45010 Papozze</p>
