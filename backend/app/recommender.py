@@ -85,7 +85,7 @@ def _fallback_products(products: list[dict], answers: QuizAnswers, exclude_handl
     candidates = [
         p for p in products
         if p["handle"] not in exclude_handles
-        and (brew_key is None or brew_key in p.get("enriched", {}).get("brew_compatibility", []))
+        and (brew_key is None or brew_key in (p.get("enriched", {}).get("brew_compatibility") or []))
     ]
     random.shuffle(candidates)
     return candidates
