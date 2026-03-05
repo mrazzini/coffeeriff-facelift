@@ -4,18 +4,34 @@ import type { Recommendation } from "@/lib/api";
 
 interface ResultsCardProps {
   rec: Recommendation;
+  rank?: number;
 }
 
-export default function ResultsCard({ rec }: ResultsCardProps) {
+const RANK_LABELS: Record<number, string> = {
+  1: "1ª Scelta",
+  2: "2ª Scelta",
+  3: "3ª Scelta",
+};
+
+export default function ResultsCard({ rec, rank }: ResultsCardProps) {
   const bullets = rec.description_bullets?.length
     ? rec.description_bullets
     : [rec.description];
 
-  // First bullet is flavor notes — display them prominently, rest are metadata
+  // First bullet is flavor notes — display prominently, rest are metadata
   const [flavorNotes, ...metaBullets] = bullets;
 
   return (
-    <div className="flex flex-col border border-border bg-white transition-shadow hover:shadow-md">
+    <div className="relative flex flex-col border border-border bg-white transition-shadow hover:shadow-lg hover:shadow-charcoal/10">
+      {/* Rank badge */}
+      {rank !== undefined && RANK_LABELS[rank] && (
+        <div className="absolute left-3 top-3 z-10">
+          <span className="rounded-full bg-brown px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-cream shadow-sm">
+            {RANK_LABELS[rank]}
+          </span>
+        </div>
+      )}
+
       {rec.image_url && (
         <div className="aspect-square w-full overflow-hidden bg-cream">
           <img
@@ -33,7 +49,9 @@ export default function ResultsCard({ rec }: ResultsCardProps) {
             {rec.product_name}
           </h3>
           <div className="flex shrink-0 items-center gap-2">
-            <span className="text-sm font-semibold text-brown">€{rec.price}</span>
+            <span className="rounded bg-cream-dark px-2 py-0.5 text-sm font-semibold text-brown">
+              €{rec.price}
+            </span>
             <div className="group/tip relative">
               <span className="cursor-default select-none text-xs text-muted">ⓘ</span>
               <div className="pointer-events-none absolute right-0 top-5 z-10 hidden w-60 rounded border border-border bg-white px-3 py-2 text-xs leading-relaxed text-muted shadow-md group-hover/tip:block">
@@ -60,20 +78,30 @@ export default function ResultsCard({ rec }: ResultsCardProps) {
           </ul>
         )}
 
-        {/* AI match reason */}
-        <blockquote className="border-l-2 border-brown pl-3 font-serif text-sm italic text-muted">
-          {rec.match_reason}
-        </blockquote>
+        {/* AI match reason — editorial blockquote */}
+        <div className="relative pl-5">
+          <span
+            className="pointer-events-none absolute left-0 top-[-4px] select-none font-serif text-3xl leading-none text-brown/30"
+            aria-hidden="true"
+          >
+            ❝
+          </span>
+          <blockquote className="border-l-2 border-brown/40 pl-3 font-serif text-sm italic leading-relaxed text-muted">
+            {rec.match_reason}
+          </blockquote>
+        </div>
 
         {/* CTA */}
-        <a
-          href={rec.shopify_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-auto block border border-charcoal py-3 text-center text-xs font-semibold uppercase tracking-widest text-charcoal transition-colors hover:bg-charcoal hover:text-cream"
-        >
-          Vai al Prodotto →
-        </a>
+        <div className="mt-auto border-t border-border/60 pt-4">
+          <a
+            href={rec.shopify_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full border border-charcoal py-3 text-center text-xs font-semibold uppercase tracking-widest text-charcoal transition-colors hover:bg-charcoal hover:text-cream focus-ring sm:inline-block sm:w-auto sm:px-8"
+          >
+            Vai al Prodotto →
+          </a>
+        </div>
       </div>
     </div>
   );
