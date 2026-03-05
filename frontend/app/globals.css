@@ -12,4 +12,39 @@ body {
   color: #1C1C1C;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+/* Balanced text wrapping for headings */
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+
+/* Consistent type scale */
+@layer base {
+  h1 {
+    @apply font-serif text-4xl font-bold italic leading-tight tracking-tight sm:text-5xl;
+  }
+  h2 {
+    @apply font-serif text-2xl font-bold italic sm:text-3xl;
+  }
+  h3 {
+    @apply font-serif text-lg font-semibold italic;
+  }
+}
+
+/* Keyboard focus ring — accessible */
+@layer utilities {
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brown focus-visible:ring-offset-2;
+  }
+}
+
+/* Swipeable scrollbar hide for review cards */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
