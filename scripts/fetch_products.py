@@ -40,13 +40,16 @@ def parse_product(raw: dict) -> dict:
     variant = raw.get("variants", [{}])[0]
     images = raw.get("images", [])
 
+    all_image_urls = [img["src"] for img in images]
+
     return {
         "title": raw["title"],
         "handle": raw["handle"],
         "description": body[:500] if body else "",
         "price": variant.get("price", "0.00"),
         "tags": ", ".join(raw.get("tags", [])) if isinstance(raw.get("tags"), list) else raw.get("tags", ""),
-        "image_url": images[0]["src"] if images else "",
+        "image_url": all_image_urls[0] if all_image_urls else "",
+        "images": all_image_urls,  # full list — useful for galleries / hover-swap
         "product_type": raw.get("product_type", ""),
         "vendor": raw.get("vendor", ""),
     }
