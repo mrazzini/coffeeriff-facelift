@@ -6,22 +6,56 @@ interface ProductCardProps {
   href?: string;
 }
 
-/** Render filled/empty stars proportional to SCA score (range ~80–100 → 1–5 stars) */
+const STAR_PATH = "M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z";
+
+/**
+ * Render 4–5 star rating from SCA score.
+ * SCA 84–89 (all specialty-grade coffees in the catalog) maps to 4.0–5.0 stars.
+ * Supports half-star rendering via SVG clipPath.
+ */
 function ScaStars({ score }: { score: number }) {
-  // Map 80–100 → 1–5 stars
-  const stars = Math.round(((score - 79) / 21) * 5);
-  const clamped = Math.min(5, Math.max(1, stars));
+  // Map actual data range 84–89 → 4.0–5.0, clamped
+  const raw = 4.0 + (score - 84) / 5.0;
+  const starsFloat = Math.min(5.0, Math.max(4.0, raw));
+  // Round to nearest 0.5
+  const starsRounded = Math.round(starsFloat * 2) / 2;
+
   return (
-    <div className="flex items-center gap-0.5" aria-label={`SCA ${score}`} title={`SCA ${score}`}>
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg
-          key={i}
-          className={`h-3 w-3 ${i < clamped ? "fill-brown text-brown" : "fill-border text-border"}`}
-          viewBox="0 0 20 20"
-        >
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-      ))}
+    <div
+      className="flex items-center gap-0.5"
+      aria-label={`SCA ${score} — ${starsRounded} stelle su 5`}
+      title={`SCA ${score}`}
+    >
+      {Array.from({ length: 5 }).map((_, i) => {
+        const clipId = `half-${score}-${i}`;
+        const isFull = i + 1 <= starsRounded;
+        const isHalf = !isFull && i + 0.5 <= starsRounded;
+
+        if (isHalf) {
+          return (
+            <svg key={i} className="h-3 w-3" viewBox="0 0 20 20">
+              <defs>
+                <clipPath id={clipId}>
+                  <rect x="0" y="0" width="10" height="20" />
+                </clipPath>
+              </defs>
+              {/* Empty star base */}
+              <path d={STAR_PATH} className="fill-border text-border" />
+              {/* Half-filled overlay */}
+              <path d={STAR_PATH} className="fill-brown text-brown" clipPath={`url(#${clipId})`} />
+            </svg>
+          );
+        }
+
+        return (
+          <svg key={i} className="h-3 w-3" viewBox="0 0 20 20">
+            <path
+              d={STAR_PATH}
+              className={isFull ? "fill-brown text-brown" : "fill-border text-border"}
+            />
+          </svg>
+        );
+      })}
     </div>
   );
 }

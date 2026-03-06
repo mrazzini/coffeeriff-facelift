@@ -10,25 +10,34 @@ const REVIEWS = [
   {
     name: "Alex",
     product: "Box Degustazione 4 Microlotti Specialty",
+    rating: 5,
     text: "Quattro tipi di microlotti, tutti straordinari per intensità e caratteristiche. Il mio preferito nel box: Busanze Red Bourbon. Un altro microlotto che spero di ritrovare e riacquistare è il Colombia Golden Huila, semplicemente divino!",
   },
   {
     name: "Davide",
     product: "Abbonamento Specialty coffee",
+    rating: 5,
     text: "Un piccolo rito mensile che vale ogni centesimo. Si sente la qualità della selezione e della tostatura: niente bruciato, niente amarezza aggressiva, solo carattere. Ogni caffè ha una sua identità precisa, e questa è la parte più affascinante dell'abbonamento: non bevi solo caffè, bevi storie diverse ogni mese.",
   },
   {
     name: "Giorgio Sguazzini",
     product: "India Plantation Bababudan AA",
+    rating: 4,
     text: "È un caffè ben tostato con un corpo non pienissimo ma con profumo e sapore eccellente.",
   },
 ];
 
-function StarRow() {
+function StarRow({ rating }: { rating: number }) {
   return (
-    <div className="flex gap-0.5" aria-label="5 stelle">
+    <div className="flex gap-0.5" aria-label={`${rating} stelle su 5`}>
       {Array.from({ length: 5 }).map((_, i) => (
-        <svg key={i} className="h-4 w-4 fill-brown text-brown" viewBox="0 0 20 20">
+        <svg
+          key={i}
+          className={`h-4 w-4 ${i < rating ? "fill-brown text-brown" : "fill-transparent text-border"}`}
+          viewBox="0 0 20 20"
+          stroke="currentColor"
+          strokeWidth={i < rating ? 0 : 1.5}
+        >
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
         </svg>
       ))}
@@ -257,7 +266,7 @@ export default function Home() {
                   &ldquo;
                 </span>
 
-                <StarRow />
+                <StarRow rating={r.rating} />
                 <p className="relative mt-3 text-sm leading-relaxed text-charcoal">
                   &ldquo;{r.text}&rdquo;
                 </p>
