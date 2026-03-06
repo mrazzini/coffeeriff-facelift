@@ -49,6 +49,7 @@ export interface Product {
   price: string;
   tags: string;
   image_url: string;
+  images: string[];
   product_type: string;
   vendor: string;
   category: "coffee" | "capsule" | "accessory";

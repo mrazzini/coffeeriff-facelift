@@ -72,10 +72,11 @@ async def _fetch_shopify() -> list[dict]:
                 parsed.append({
                     "title": raw["title"],
                     "handle": raw["handle"],
-                    "description": body[:500],
+                    "description": body,
                     "price": variant.get("price", "0.00"),
                     "tags": ", ".join(tags) if isinstance(tags, list) else tags,
                     "image_url": images[0]["src"] if images else "",
+                    "images": [img["src"] for img in images],
                     "product_type": raw.get("product_type", ""),
                     "vendor": raw.get("vendor", ""),
                 })

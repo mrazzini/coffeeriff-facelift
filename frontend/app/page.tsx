@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import type { Product } from "@/lib/api";
 import { getProducts } from "@/lib/api";
 import ProductCard from "@/components/ProductCard";
@@ -62,53 +63,69 @@ export default function Home() {
 
   return (
     <>
-      {/* 1. Hero */}
-      <section className="relative flex min-h-[85vh] flex-col items-center justify-center overflow-hidden px-6 text-center">
-        {/* Subtle noise texture overlay */}
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-            backgroundSize: "200px",
-          }}
-        />
+      {/* 1. Hero — split layout: text left / image right on desktop */}
+      <section className="relative flex min-h-[85vh] overflow-hidden">
+        {/* Left: text content */}
+        <div className="relative z-10 flex w-full flex-col items-center justify-center px-6 text-center lg:w-[56%] lg:items-start lg:pl-16 lg:pr-10 lg:text-left">
+          {/* Subtle noise texture */}
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage:
+                "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+              backgroundSize: "200px",
+            }}
+          />
 
-        <div className="relative max-w-2xl space-y-10 animate-fadeUp">
-          <div>
-            <img
-              src="/logo.webp"
-              alt="Coffeeriff"
-              className="invert mx-auto h-auto w-auto max-w-[55%] sm:max-w-[45%]"
-            />
-            <p className="mt-4 font-serif text-lg italic text-brown">
-              è tutta un&apos;altra musica
+          <div className="relative max-w-2xl space-y-10 animate-fadeUp lg:max-w-none">
+            <div>
+              <img
+                src="/logo.webp"
+                alt="Coffeeriff"
+                className="invert mx-auto h-auto w-auto max-w-[55%] sm:max-w-[45%] lg:mx-0 lg:max-w-[260px]"
+              />
+              <p className="mt-4 font-serif text-lg italic text-brown lg:text-xl">
+                è tutta un&apos;altra musica
+              </p>
+              <div className="mx-auto mt-5 h-px w-16 bg-brown/40 lg:mx-0" />
+            </div>
+
+            <p className="mx-auto max-w-md text-base leading-relaxed text-muted lg:mx-0">
+              Bere caffè non è solo un gesto, è un piacere da gustare.
             </p>
-            <div className="mx-auto mt-5 h-px w-16 bg-brown/40" />
-          </div>
 
-          <p className="mx-auto max-w-md text-base leading-relaxed text-muted">
-            Bere caffè non è solo un gesto, è un piacere da gustare.
-          </p>
-
-          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <Link
-              href="/caffetteria"
-              className="inline-block bg-brown px-10 py-4 text-xs font-semibold uppercase tracking-widest text-cream shadow-sm transition-all hover:bg-charcoal focus-ring"
-            >
-              Esplora i Caffè
-            </Link>
-            <Link
-              href="/quiz"
-              className="inline-block border border-brown/60 px-10 py-4 text-xs font-semibold uppercase tracking-widest text-brown transition-all hover:border-brown hover:bg-brown/5 focus-ring"
-            >
-              Trova il Tuo Caffè
-            </Link>
+            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
+              <Link
+                href="/caffetteria"
+                className="inline-block bg-brown px-10 py-4 text-xs font-semibold uppercase tracking-widest text-cream shadow-sm transition-all hover:bg-charcoal focus-ring"
+              >
+                Esplora i Caffè
+              </Link>
+              <Link
+                href="/quiz"
+                className="inline-block border border-brown/60 px-10 py-4 text-xs font-semibold uppercase tracking-widest text-brown transition-all hover:border-brown hover:bg-brown/5 focus-ring"
+              >
+                Trova il Tuo Caffè
+              </Link>
+            </div>
           </div>
         </div>
 
+        {/* Right: image panel — desktop only */}
+        <div className="hidden lg:block lg:w-[44%] relative">
+          <Image
+            src="/images/CoffeeRiff00771.jpg"
+            alt="Caffè specialty Coffeeriff"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          {/* Vignette: blend left edge into cream background */}
+          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-cream to-transparent" />
+        </div>
+
         {/* Wave divider at the bottom */}
-        <div className="absolute bottom-0 left-0 right-0">
+        <div className="absolute bottom-0 left-0 right-0 z-20">
           <svg
             viewBox="0 0 1440 48"
             fill="none"
@@ -133,9 +150,6 @@ export default function Home() {
                 <h2 className="font-serif text-2xl font-bold italic text-charcoal sm:text-3xl">
                   Le nostre selezioni
                 </h2>
-                <p className="mt-1 text-sm text-muted">
-                  Una selezione curata dal nostro tostatore.
-                </p>
               </div>
               <Link
                 href="/caffetteria"
@@ -223,21 +237,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. Brand identity */}
+      {/* 5. Brand identity — 2-col with origin image on desktop */}
       <section className="bg-cream-dark px-6 py-24 md:py-32">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-serif text-2xl font-bold italic text-charcoal sm:text-3xl">
-            Dai ritmo alla tua giornata con un riff
-          </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-muted">
-            Il riff è una frase musicale distintiva, composta da una successione di note che
-            si ripete frequentemente in una composizione, spesso utilizzata come accompagnamento.
-          </p>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted">
-            Ogni nostro caffè è paragonabile a un diverso strumento musicale: dalle note gravi
-            e profonde di un Brasile naturale alle note acute e brillanti di un Kenya lavato,
-            ogni tazza offre un&apos;esperienza unica e ricca di sfumature.
-          </p>
+        <div className="mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            {/* Text */}
+            <div className="text-center lg:text-left">
+              <h2 className="font-serif text-2xl font-bold italic text-charcoal sm:text-3xl">
+                Dai ritmo alla tua giornata con un riff
+              </h2>
+              <p className="mt-6 text-sm leading-relaxed text-muted">
+                Il riff è una frase musicale distintiva, composta da una successione di note che
+                si ripete frequentemente in una composizione, spesso utilizzata come accompagnamento.
+              </p>
+              <p className="mt-4 text-sm leading-relaxed text-muted">
+                Ogni nostro caffè è paragonabile a un diverso strumento musicale: dalle note gravi
+                e profonde di un Brasile naturale alle note acute e brillanti di un Kenya lavato,
+                ogni tazza offre un&apos;esperienza unica e ricca di sfumature.
+              </p>
+            </div>
+
+            {/* Origin image */}
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <Image
+                src="/images/monteverdeguzntr3m3f2g4vvdvdj3-md.png"
+                alt="Origini del caffè specialty Coffeeriff"
+                fill
+                className="object-cover object-center"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -280,9 +309,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. Filosofia teaser */}
-      <section className="bg-charcoal px-6 py-24 text-cream md:py-32">
-        <div className="mx-auto max-w-2xl text-center">
+      {/* 7. Filosofia teaser — dark section with atmospheric background image */}
+      <section className="relative overflow-hidden bg-charcoal px-6 py-24 text-cream md:py-32">
+        {/* Background image — subtle, dark overlay */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/BishanWate6.jpg"
+            alt=""
+            fill
+            className="object-cover object-center opacity-20"
+          />
+          <div className="absolute inset-0 bg-charcoal/70" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-cream/50">
             La nostra filosofia
           </p>

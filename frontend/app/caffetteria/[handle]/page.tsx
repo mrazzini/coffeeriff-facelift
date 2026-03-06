@@ -18,7 +18,6 @@ const BREW_LABELS: Record<string, string> = {
   espresso: "Espresso",
   filtro: "Filtro",
   moka: "Moka",
-  "french-press": "French Press",
 };
 
 export default function ProductDetailPage({
@@ -28,7 +27,6 @@ export default function ProductDetailPage({
 }) {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
-  const [descExpanded, setDescExpanded] = useState(false);
 
   useEffect(() => {
     getProducts()
@@ -86,13 +84,7 @@ export default function ProductDetailPage({
     details.push({ label: "Punteggio SCA", value: `${enriched.sca_score} punti` });
   }
 
-  // Truncate description for display
   const descriptionFull = product.description || "";
-  const descriptionShort =
-    descriptionFull.length > 300
-      ? descriptionFull.slice(0, 300) + "…"
-      : descriptionFull;
-  const showExpandButton = descriptionFull.length > 300;
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-8">
@@ -216,16 +208,8 @@ export default function ProductDetailPage({
             La Storia
           </h2>
           <p className="max-w-2xl text-sm leading-relaxed text-muted">
-            {descExpanded ? descriptionFull : descriptionShort}
+            {descriptionFull}
           </p>
-          {showExpandButton && (
-            <button
-              onClick={() => setDescExpanded(!descExpanded)}
-              className="mt-2 text-xs font-medium text-brown underline"
-            >
-              {descExpanded ? "Mostra meno" : "Leggi tutto"}
-            </button>
-          )}
         </div>
       )}
 

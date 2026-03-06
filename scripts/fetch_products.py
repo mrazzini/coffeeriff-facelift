@@ -45,7 +45,7 @@ def parse_product(raw: dict) -> dict:
     return {
         "title": raw["title"],
         "handle": raw["handle"],
-        "description": body[:500] if body else "",
+        "description": body,
         "price": variant.get("price", "0.00"),
         "tags": ", ".join(raw.get("tags", [])) if isinstance(raw.get("tags"), list) else raw.get("tags", ""),
         "image_url": all_image_urls[0] if all_image_urls else "",

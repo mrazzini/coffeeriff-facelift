@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function FilosofiaPage() {
   return (
@@ -27,6 +28,17 @@ export default function FilosofiaPage() {
           un percorso fatto di scelte consapevoli e rispetto per chi lo coltiva.
         </p>
 
+        {/* Lead image — roastery / brand */}
+        <div className="relative mt-10 aspect-[16/9] overflow-hidden">
+          <Image
+            src="/images/a._480x480.jpg"
+            alt="Coffeeriff — tostatura artigianale"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+        </div>
+
         <div className="mt-10 space-y-6 text-sm leading-relaxed text-muted">
           <p>
             Coffeeriff nasce dal desiderio di creare tazze pulite, luminose e vive, capaci di
@@ -42,6 +54,19 @@ export default function FilosofiaPage() {
             parte da analisi, assaggi e confronto: il nostro obiettivo è valorizzare la materia
             prima e portare in tazza l&apos;identità di ogni origine.
           </p>
+
+          {/* Origin image — inline with text */}
+          <div className="relative my-8 aspect-[3/2] overflow-hidden">
+            <Image
+              src="/images/Manizales_Colombia_2_480x480.jpg"
+              alt="Piantagione di caffè — Colombia, Manizales"
+              fill
+              className="object-cover object-center"
+            />
+            <p className="absolute bottom-0 left-0 right-0 bg-charcoal/60 px-4 py-2 text-[11px] uppercase tracking-widest text-cream/80">
+              Piantagione, Colombia · Manizales
+            </p>
+          </div>
 
           <p>
             In laboratorio tostiamo micro-lotti con la nostra IMF a gas, controllando ogni

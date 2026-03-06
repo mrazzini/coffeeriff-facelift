@@ -37,7 +37,7 @@ return a JSON array — one object per product — with EXACTLY these fields:
 - origin_region: (string) region/area, or null if not mentioned
 - flavor_notes: (array of 3-5 strings) clean Italian flavor nouns only, no sentences
   (e.g. ["agrumi", "prugna", "caramello"])
-- brew_compatibility: (array) subset of ["espresso","filtro","moka","french-press"]
+- brew_compatibility: (array) subset of ["espresso","filtro","moka"]
   inferred from roast level (chiara = filtro-friendly, media = moka/espresso-friendly)
   and any explicit mentions in the description
 - sca_score: (integer) SCA score if mentioned, or null

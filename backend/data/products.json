@@ -2,170 +2,236 @@
   {
     "title": "El Salvador San Antonio – Geisha 168 hrs",
     "handle": "el-salvador-san-antonio-geisha-168-hrs",
-    "description": "Agrumi, confettura di prugna, lattico, cremoso, finale nocciolato Processo: Naturale anaerobico a bassa temperatura (168 ore) Origine: El Salvador – Ahuachapán Altitudine: 1.600 m s.l.m. Varietà: Geisha Crop: 2025 Punteggio: 87 SCA points Questo lotto proviene dalla Finca San Antonio , di proprietà della famiglia Guillen , nel distretto di Ahuachapán , nella parte occidentale di El Salvador. José Guillen rappresenta la quinta generazione di coltivatori della famiglia, attiva da oltre un secolo n",
+    "description": "Agrumi, confettura di prugna, lattico, cremoso, finale nocciolato Processo: Naturale anaerobico a bassa temperatura (168 ore) Origine: El Salvador – Ahuachapán Altitudine: 1.600 m s.l.m. Varietà: Geisha Crop: 2025 Punteggio: 87 SCA points Questo lotto proviene dalla Finca San Antonio , di proprietà della famiglia Guillen , nel distretto di Ahuachapán , nella parte occidentale di El Salvador. José Guillen rappresenta la quinta generazione di coltivatori della famiglia, attiva da oltre un secolo nella zona dei monti Apaneca. Dal 2013, insieme ai genitori, ha convertito tutta la produzione da caffè commerciale a caffè specialty . Questa è la quarta raccolta della Geisha coltivata a San Antonio. Il lotto è stato acquistato integralmente per supportare il progetto varietale avviato da José. La Geisha rappresenta circa il 5% della produzione totale della finca, che si estende su 25 ettari . Il processo prevede una fermentazione naturale anaerobica a bassa temperatura . Le ciliegie mature vengono inserite in barili alimentari ermetici e poste in una cella a temperatura controllata , costruita nel 2019, mantenuta tra 8 e 20 °C tramite sistemi di raffreddamento. La fermentazione si protrae per 168 ore , consentendo uno sviluppo controllato delle componenti aromatiche senza eccessi fermentativi. Terminata la fermentazione, le ciliegie vengono asciugate su letti africani in strato sottile per 29 giorni , con movimentazioni giornaliere per preservarne l’integrità. Una volta raggiunta l’umidità desiderata, il caffè viene stabilizzato in magazzino ventilato, quindi sgusciato e lasciato riposare come caffè verde per permettere l’equilibrio finale dei profili aromatici. In tazza il carattere Geisha è morbido e composto , con note agrumate , confettura di prugna , una sensazione lattica e cremosa ben integrata e un finale leggermente nocciolato . Un profilo elegante, controllato, che privilegia equilibrio e bevibilità.",
     "price": "16.60",
     "tags": "Acidità Media, alta acidità, CAFFE' SPECIALITY, Complessità Media, Intensità Media, microlotto",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-san-antonio_1_3b3fa907-dd58-466e-9aae-01a80f5e3327.jpg?v=1770659320",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-san-antonio_1_3b3fa907-dd58-466e-9aae-01a80f5e3327.jpg?v=1770659320",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/1a3281772b13a7478892ac858fdf7fc0.jpg?v=1770659868",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/2c5f363271f9a03fe24ea336fb0134fa.jpg?v=1770659867",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/8caa4f2f6b6d8fa658132c24e33c9ad1.jpg?v=1770659867",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/43c15dc1bcc0b9b9456391429ad64947.jpg?v=1770659867",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/781bc6234d3a5e42e78916965b30b8d9.jpg?v=1770659867",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/1562fb51d1bbfe4464172fd3a9d72d54.jpg?v=1770659867",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/a09f9a96768f24f81b80bd2902808d67.jpg?v=1770659867",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/c8f4efc7b233951b3d557edb3508799b.jpg?v=1770659867"
+    ],
     "product_type": "Caffè",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Etiopia Sidama Karamo – Gara Agena Natural G1 Premium",
     "handle": "etiopia-sidama-karamo-gara-agena-natural-g1-premium",
-    "description": "Floreale, camomilla, melone honeydew, arancia candita, pera Processo: Naturale Origine: Etiopia – Sidama, Bura woreda, Karamo Altitudine: 1.995–2.300 m s.l.m. Varietà: Heirloom Grade: 1 Crop: 2025 Punteggio: 89 SCA points — Questo lotto proviene dalla Gara Agena Washing Station , situata nel kebele di Karamo , nel distretto di Bura , Sidama. La stazione è di proprietà di Testi Coffee , azienda familiare fondata da Faysel A. Yonis , ed è stata costruita nel 2020 come struttura premium. Il sito si",
+    "description": "Floreale, camomilla, melone honeydew, arancia candita, pera Processo: Naturale Origine: Etiopia – Sidama, Bura woreda, Karamo Altitudine: 1.995–2.300 m s.l.m. Varietà: Heirloom Grade: 1 Crop: 2025 Punteggio: 89 SCA points — Questo lotto proviene dalla Gara Agena Washing Station , situata nel kebele di Karamo , nel distretto di Bura , Sidama. La stazione è di proprietà di Testi Coffee , azienda familiare fondata da Faysel A. Yonis , ed è stata costruita nel 2020 come struttura premium. Il sito si trova sulle pendici del fiume Geta , che circonda i letti africani creando un microclima fresco ideale per un’essiccazione lenta e controllata. Le ciliegie sono conferite quotidianamente da circa 600 piccoli produttori indipendenti . La selezione è estremamente rigorosa: 85% ciliegie perfettamente mature , 0% sovramature e 5% semi-mature . Dopo la raccolta, le ciliegie vengono flottate per eliminare completamente i difetti, portando il livello di floaters a zero . Il processo è naturale , con un’attenzione particolare alla fase di essiccazione. Le ciliegie vengono stese su letti africani rialzati in strati molto sottili (circa 125 kg per letto ) e posizionate in aree con più ventilazione e meno esposizione diretta al sole . L’essiccazione avviene lentamente per circa 30 giorni sotto shade net , mantenendo l’embrione attivo e preservando l’integrità del chicco. Le aziende agricole della zona operano su piccoli appezzamenti, mediamente di un ettaro, con pratiche prevalentemente organiche . Il caffè cresce insieme a colture alimentari e sotto ombra naturale di alberi autoctoni. L’elevata altitudine e le temperature fresche favoriscono una maturazione lenta , che si traduce in chicchi più densi e profili aromatici più complessi. In tazza il profilo è elegante e definito , con un bouquet floreale netto, note di camomilla , arancia candita , pera e una dolcezza delicata di melone honeydew . Corpo raffinato, pulizia elevata e finale lungo.",
     "price": "18.40",
     "tags": "Acidità Media, alta acidità, CAFFE' SPECIALITY, Complessità Media, Intensità Media, microlotto",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-gara-agena.webp?v=1770657165",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-gara-agena.webp?v=1770657165",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/5bb5b8a9e9d66b969869273194c52f37.jpg?v=1770657295",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/54f60a206dbcc8d21928c89127eac6aa.jpg?v=1770657296",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/885b5f16d601638b41fa154101f3ebb3.jpg?v=1770657296",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/b76411cdf8877f24fd657379c06c6427.jpg?v=1770657297",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/e4cdf4cc713e4623ace81104a9105ef5.jpg?v=1770657296",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/e476de7aea6dcc6335c8a3da535ae3e4.jpg?v=1770657297"
+    ],
     "product_type": "Caffè",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Colombia Tolima – 100 Años  Caturra Natural",
     "handle": "colombia-tolima-100-anos-3-letras-caturra-naturale",
-    "description": "Frutti di bosco, mela rossa, zucchero di canna, miele, spezie dolci Processo: Naturale con fermentazione alcolica Origine: Colombia – Tolima, Rioblanco Varietà: Caturra Crop: 2025 Punteggio: 87 SCA points — Questo lotto proviene dal progetto 3 Letras , sviluppato da Arnulfo Herrera insieme a Duver Sánchez nel municipio di Rioblanco , dipartimento del Tolima. Il nome prende ispirazione dal Cerro 3 Letras , uno dei punti più alti e simbolici della zona, e rappresenta il legame tra territorio, comu",
+    "description": "Frutti di bosco, mela rossa, zucchero di canna, miele, spezie dolci Processo: Naturale con fermentazione alcolica Origine: Colombia – Tolima, Rioblanco Varietà: Caturra Crop: 2025 Punteggio: 87 SCA points — Questo lotto proviene dal progetto 3 Letras , sviluppato da Arnulfo Herrera insieme a Duver Sánchez nel municipio di Rioblanco , dipartimento del Tolima. Il nome prende ispirazione dal Cerro 3 Letras , uno dei punti più alti e simbolici della zona, e rappresenta il legame tra territorio, comunità e rinnovamento agricolo. La raccolta avviene manualmente nel mese di gennaio 2025 , esclusivamente a piena maturazione. Arnulfo lavora direttamente con i suoi sei figli, garantendo un controllo diretto su ogni fase. Dopo la raccolta, le ciliegie vengono selezionate manualmente presso il centro di lavorazione 3 Letras , eliminando i difetti prima dell’avvio del processo. Il caffè viene lavorato con processo naturale , seguito da una fermentazione alcolica in sacchi di plastica per 48 ore , passaggio che contribuisce allo sviluppo di note dolci e speziate. L’essiccazione avviene in tre fasi: – esposizione diretta al sole per circa 4 giorni su letti rialzati, – riduzione dell’umidità fino al 30% in silo , – asciugatura finale in marquesina . Questo metodo progressivo consente un controllo preciso dell’umidità e favorisce la definizione aromatica del lotto. In tazza il profilo è caldo e strutturato , con note di frutta cotta e frutti di bosco , zucchero di canna , miele , mela rossa e spezie dolci . Un naturale intenso ma equilibrato, con una fermentazione presente ma ben integrata.",
     "price": "16.00",
     "tags": "Acidità Media, alta acidità, CAFFE' SPECIALITY, Complessità Media, Intensità Media, microlotto",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-duber-sanchez.webp?v=1771339654",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-duber-sanchez.webp?v=1771339654"
+    ],
     "product_type": "Caffè",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Colombia Buena Vista – Glop coffee - Pink Bourbon Lavato - Espresso",
     "handle": "colombia-buena-vista-pink-bourbon-lavato",
-    "description": "Arancia, ribes rosso, floreale Processo: Lavato con ossidazione pre-fermentativa Origine: Colombia – Finca Buena Vista Altitudine: circa 1.770 m s.l.m. Varietà: Pink Bourbon Punteggio: 87 SCA points Questo lotto di Pink Bourbon proviene dalla Finca Buena Vista , gestita da Edier Perdomo Claro , terza generazione di produttori di caffè. Edier lavora quotidianamente in azienda insieme alla sua famiglia e ha una formazione tecnica specifica nella produzione e lavorazione di caffè specialty. Il suo ",
+    "description": "Arancia, ribes rosso, floreale Processo: Lavato con ossidazione pre-fermentativa Origine: Colombia – Finca Buena Vista Altitudine: circa 1.770 m s.l.m. Varietà: Pink Bourbon Punteggio: 87 SCA points Questo lotto di Pink Bourbon proviene dalla Finca Buena Vista , gestita da Edier Perdomo Claro , terza generazione di produttori di caffè. Edier lavora quotidianamente in azienda insieme alla sua famiglia e ha una formazione tecnica specifica nella produzione e lavorazione di caffè specialty. Il suo approccio privilegia la qualità rispetto alla quantità , con particolare attenzione ai dettagli di raccolta e processo. La raccolta si basa sulla selezione delle ciliegie Pink Bourbon con tonalità salmone , indicatore di piena maturazione. Dopo una prima selezione in campo, le ciliegie vengono ulteriormente cernite manualmente in stazione e successivamente flottate per rimuovere i difetti. Prima della spolpatura, le ciliegie vengono lasciate per 24 ore in tramogge aperte per favorire una fase di ossidazione controllata . Durante questo passaggio avviene un imbrunimento enzimatico, una riduzione del pH e un aumento della disponibilità di acidi, elementi che contribuiscono allo sviluppo delle componenti fruttate. Dopo l’ossidazione, le ciliegie vengono risciacquate, spolpate e sottoposte a 24 ore di fermentazione in contenitori ermetici . Il caffè viene poi lavato e asciugato in marquesina per circa 25 giorni . In tazza il profilo è succoso ed elegante , con note di arancia e ribes rosso , una componente floreale ben integrata e una struttura pulita. Un Pink Bourbon lavato che esprime precisione varietale e controllo del processo, senza eccessi fermentativi.",
     "price": "15.40",
     "tags": "Acidità Media, alta acidità, CAFFE' SPECIALITY, Complessità Media, Intensità Media, microlotto",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-glop-coffee_1.webp?v=1770806674",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-glop-coffee_1.webp?v=1770806674"
+    ],
     "product_type": "Caffè",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Etiopia Sidama Bura – Natural - Espresso",
     "handle": "etiopia-sidama-bura-natural-espresso",
-    "description": "Etiopia Sidama Bura – Stazione di lavaggio di Adnan Floreale, miele, mandarino, fragola, cioccolato al latte Processo: Naturale Origine: Etiopia – Sidama, distretto di Bura Varietà: 774110, 74158 (varietà autoctone) Punteggio: 88 punti SCA — Questo lotto proviene dalla Adnan Washing Station , situata nel kebele di Hamasho , nel distretto di Bura (Sidama) . La stazione è di proprietà di Testi Coffee , azienda familiare fondata da Faysel A. Yonis , ed è stata costruita nel 2021 come sito premium, ",
+    "description": "Etiopia Sidama Bura – Stazione di lavaggio di Adnan Floreale, miele, mandarino, fragola, cioccolato al latte Processo: Naturale Origine: Etiopia – Sidama, distretto di Bura Varietà: 774110, 74158 (varietà autoctone) Punteggio: 88 punti SCA — Questo lotto proviene dalla Adnan Washing Station , situata nel kebele di Hamasho , nel distretto di Bura (Sidama) . La stazione è di proprietà di Testi Coffee , azienda familiare fondata da Faysel A. Yonis , ed è stata costruita nel 2021 come sito premium, selezionato per altitudine elevata , clima fresco e accesso ad acqua pulita . Le ciliegie sono conferite quotidianamente da circa 500 piccoli produttori indipendenti , che coltivano appezzamenti inferiori a un ettaro con pratiche prevalentemente biologiche . Il caffè cresce in consociazione con colture alimentari e sotto ombra naturale di alberi autoctoni , a un'altitudine compresa tra 2.000 e 2.200 metri . Queste condizioni favoriscono una maturazione lenta delle ciliegie e una maggiore densità del chicco . Il lotto è prodotto nell'ambito del programma Premium Cherry Selection (PCS) di Testi Coffee, che prevede il pagamento di un premio dedicato agli agricoltori che consegnano esclusivamente ciliegie completamente mature . Alla stazione, le ciliegie vengono preselezionate , flottate per eliminare i difetti e lavorate separando i lotti per kebele, garantendo elevata tracciabilità . Per questo naturale , l'essiccazione avviene su letti africani in strati sottili, con rivolte frequenti (5–6 volte al giorno) per assicurare uniformità. Il processo dura mediamente 15–21 giorni , fino al raggiungimento di un'umidità finale dell' 11–12% . In tazza il profilo è pulito e luminoso , con una componente floreale evidente , dolcezza di miele , agrumi maturi come il mandarino e una base morbida di fragola e cioccolato al latte . Un Sidama naturale equilibrato , definito, coerente con l'altitudine e con il lavoro in stazione.",
     "price": "14.70",
     "tags": "Acidità Media, alta acidità, CAFFE' SPECIALITY, Complessità Media, Intensità Media, microlotto",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-sidamo-bura.webp?v=1770566337",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-sidamo-bura.webp?v=1770566337",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/0f5b6e9b9ead7a0c3a36d32a5589c91b.jpg?v=1770566479",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/6b3231421cd549c4c7bac9eaeca44422.jpg?v=1770566488",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/029bc441e0ae754787c3da1a8fa48df8.jpg?v=1770566490",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/360f99372b4e11d35da682bea95b65b2.jpg?v=1770566488"
+    ],
     "product_type": "Caffè",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Decaf Sugar Cane – Colombia Risaralda",
     "handle": "decaf-sugar-cane-colombia-risaralda",
-    "description": "Panela, cioccolato al latte, cocco Processo naturale + decaffeinato con etil-acetato da canna da zucchero Colombia – Risaralda Caturra, Bourbon 2024/2025 harvest 86 SCA points — Decaffeinato con metodo naturale a base di etil-acetato, questo lotto proveniente dal dipartimento di Risaralda, Colombia, conserva una struttura morbida e una dolcezza nitida. In tazza si distinguono note di zucchero panela, cocco e cioccolato al latte. Il profilo è rotondo, pulito, con corpo medio e acidità tenue. La d",
+    "description": "Panela, cioccolato al latte, cocco Processo naturale + decaffeinato con etil-acetato da canna da zucchero Colombia – Risaralda Caturra, Bourbon 2024/2025 harvest 86 SCA points — Decaffeinato con metodo naturale a base di etil-acetato, questo lotto proveniente dal dipartimento di Risaralda, Colombia, conserva una struttura morbida e una dolcezza nitida. In tazza si distinguono note di zucchero panela, cocco e cioccolato al latte. Il profilo è rotondo, pulito, con corpo medio e acidità tenue. La decaffeinizzazione è curata da Descafecol, impianto specializzato con sede a Manizales, che utilizza etil-acetato estratto da canna da zucchero fermentata e acqua di sorgente del Nevado del Ruiz. Le drupe verdi vengono vaporizzate per aprire i pori, immerse nella soluzione per rimuovere la caffeina, e poi nuovamente vaporizzate per eliminare ogni residuo. Il livello finale di etil-acetato è di circa 30 ppm. Il lotto è composto da raccolti di piccoli produttori tra i 1500 e i 1900 m di altitudine, su suoli vulcanici e in condizioni climatiche ottimali. La selezione e la lavorazione sono gestite da Cafezam, azienda familiare attiva da oltre trent’anni nel caffè colombiano. È un deca senza compromessi, pensato per chi vuole continuare a bere specialty anche la sera",
     "price": "15.40",
     "tags": "Acidità Media, alta acidità, CAFFE' SPECIALITY, Complessità Media, Intensità Media, microlotto",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-decaffeinato.jpg?v=1768231703",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-decaffeinato.jpg?v=1768231703"
+    ],
     "product_type": "Caffè",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Pietro Grinders Macinacaffè Manuale FULL PACK",
     "handle": "macinacaffe-pietro-fiorenzato",
-    "description": "Pietro non è solo un macinacaffè manuale, è uno stile che offre agli amanti del caffè la massima libertà di espressione. Il risultato di un processo di ricerca che unisce passione, design e tecnologia al vostro servizio. Pietro è disponibile in un FULL PACK , che include base, scovolino per la pulizia e imbuto dosatore. Pietro è un innovativo macinacaffè manuale costruito con materiali di prima qualità e progettato pensando all'ergonomia: le sue linee pulite ne esaltano la solidità e la funziona",
+    "description": "Pietro non è solo un macinacaffè manuale, è uno stile che offre agli amanti del caffè la massima libertà di espressione. Il risultato di un processo di ricerca che unisce passione, design e tecnologia al vostro servizio. Pietro è disponibile in un FULL PACK , che include base, scovolino per la pulizia e imbuto dosatore. Pietro è un innovativo macinacaffè manuale costruito con materiali di prima qualità e progettato pensando all'ergonomia: le sue linee pulite ne esaltano la solidità e la funzionalità. Al suo interno si trova la vera innovazione tecnologica, due macine piane verticali, diametro 58 mm , realizzate in acciaio inox primario alimentare prodotto internamente da Fiorenzato, garanzia di prestazioni e durata. Utilizzando invece le macine M-MODAL si ottiene una curva unimodale che riduce il più possibile la concentrazione di fines e presenta un picco elevato di boulder, in modo da estrarre il massimo dal caffè e avere una tazza brillante e pulita. Materiali Corpo in alluminio solido e resistente Tutte le parti a contatto con il caffè realizzate con materiali certificati per uso alimentare Sistema di macinatura Frese piane verticali da 58 mm in acciaio M340 food-grade, prodotte internamente da Fiorenzato M-MODAL : curva unimodale per ridurre i fini ed esaltare la complessità aromatica nei metodi filtro Regolazione Ghiera di regolazione continua a 360° con riferimenti numerici Regolazione micrometrica di circa 15 micron per clic, per un settaggio preciso e ripetibile Pulizia e conservazione Zero ritenzione per evitare sprechi e contaminazioni tra macinature Accesso rapido alla camera di macinazione per una pulizia semplice Contenitore e tappo superiore a chiusura ermetica per preservare l’aroma del caffè Contenuto confezione Macinacaffè Pietro Base Imbuto dosatore Scovolino per la pulizia",
     "price": "297.00",
     "tags": "accessori, acessori",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/pietro-manual-coffee-grindergrey.png?v=1766058121",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/pietro-manual-coffee-grindergrey.png?v=1766058121"
+    ],
     "product_type": "",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Colombia — Monteverde Geisha “Blu",
     "handle": "geisha-blue-finca-monteverde",
-    "description": "Finca Monteverde · Tolima Varietà: Geisha · Processo: Fermentazione “Blu” 24 ore di ossidazione controllata, 48 ore di fermentazione anaerobica · Altitudine: 1790–1900 m Punteggio SCA: 89 Note di assaggio Fiori freschi · Frullato di fragole · Arancia dolce Tazza brillante e croccante, con una dolcezza fine e una succosità agrumata. Finale elegante e strutturato. Un'introduzione al profilo Una Geisha raffinata e densa di energia . Questo lotto speciale della Finca Monteverde esprime una dolcezza ",
+    "description": "Finca Monteverde · Tolima Varietà: Geisha · Processo: Fermentazione “Blu” 24 ore di ossidazione controllata, 48 ore di fermentazione anaerobica · Altitudine: 1790–1900 m Punteggio SCA: 89 Note di assaggio Fiori freschi · Frullato di fragole · Arancia dolce Tazza brillante e croccante, con una dolcezza fine e una succosità agrumata. Finale elegante e strutturato. Un'introduzione al profilo Una Geisha raffinata e densa di energia . Questo lotto speciale della Finca Monteverde esprime una dolcezza delicata e stratificata, con note floreali e di frutta rossa, amplificate da una fermentazione naturale in ambiente controllato. È un caffè da assaporare con attenzione . Raccomandiamo un riposo minimo di 10 giorni dalla tostatura per coglierne tutta la complessità. Terroir e altitudine Tolima è una delle regioni più centrali della Colombia, nota per le altitudini elevate ei suoi terreni vulcanici ricchi. Un tempo segnato da conflitti armati, oggi è tra le aree più attive per la produzione di caffè speciality . Finca Monteverde si trova a 1.790–1.900 m slm , in una valle nebbiosa circondata da biodiversità e microclimi ideali per la maturazione lenta delle ciliegie. Metodo e intenzione Il processo “blu” è unico: 24 ore di ossidazione controllata , seguite da 48 ore di fermentazione anaerobica in contenitori sigillati, con inoculo di microrganismi autoctoni raccolti tra le querce nelle zone alte della finca. Durante la fermentazione, i chicchi assumono una tonalità blu , segno della stabilità e ricchezza del processo. L'essiccazione lenta avviene per 20 giorni su letti rialzati e patii ombreggiati. La storia del produttore Monteverde è una tenuta di 50 ettari , gestita da Newerley Gutierrez , Q-Grader e specialista in fermentazioni. La famiglia Gutierrez Falla coltiva caffè da cinque generazioni e ha costruito una solida reputazione per il suo lavoro innovativo e sostenibile . Questo lotto è il risultato di una visione ambiziosa e di una profonda conoscenza del territorio.",
     "price": "29.40",
     "tags": "Acidità Media, alta acidità, CAFFE' SPECIALITY, Complessità Media, Intensità Media, microlotto",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-geisha-blue-V01.webp?v=1765816141",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-geisha-blue-V01.webp?v=1765816141",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/monteverdeguzntr3m3f2g4vvdvdj3-md.png?v=1765816141"
+    ],
     "product_type": "Caffè",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Geisha Box",
     "handle": "christmas-geisha-box",
-    "description": "Tre letture della varietà Geisha Questa box riunisce tre Geisha molto diversi tra loro per stile, approccio produttivo e risultato in tazza. Un Geisha elegante e avvolgente, uno più stravagante e complesso, uno più spensierato e cremoso. Stessa varietà, tre espressioni distinte. Un percorso pensato per assaggiare, confrontare e divertirsi. Ogni box contiene 3 confezioni da 250 g di caffè in grani. 1. Colombia – Finca Montreal Geisha Natural · 2025 Produttore: Duberney Cifuentes Fajardo Altitudin",
+    "description": "Tre letture della varietà Geisha Questa box riunisce tre Geisha molto diversi tra loro per stile, approccio produttivo e risultato in tazza. Un Geisha elegante e avvolgente, uno più stravagante e complesso, uno più spensierato e cremoso. Stessa varietà, tre espressioni distinte. Un percorso pensato per assaggiare, confrontare e divertirsi. Ogni box contiene 3 confezioni da 250 g di caffè in grani. 1. Colombia – Finca Montreal Geisha Natural · 2025 Produttore: Duberney Cifuentes Fajardo Altitudine: 2.050 m – Planadas, Tolima Punteggio SCA: 89 Note di assaggio Fragola · Miele · Gelsomino · Arancia Un Geisha elegante e avvolgente. Confettura di fragole, miele chiaro e agrumi succosi, con accenti floreali di gelsomino. Corpo setoso e dolcezza precisa, con un equilibrio naturale e continuo. Caratteristiche del profilo Geisha naturale coltivato ad alta quota nella zona di Planadas, Tolima. Un caffè profondo, espressivo e pulito, che mette al centro l’identità varietale senza eccessi fermentativi. Metodo di lavorazione Raccolta manuale selettiva delle ciliegie più mature, doppia selezione e flottazione. Fermentazione in ciliegia per 52 ore in ambiente anaerobico . Essiccazione lenta di circa 30 giorni in marquesinas coperte, con movimentazione frequente. Stabilizzazione finale in magazzino una volta raggiunto l’11% di umidità. Il produttore Duberney Cifuentes Fajardo conduce Finca Montreal insieme alla moglie Neyireth. È uno dei produttori più premiati della Colombia, vincitore della Cup of Excellence Colombia 2023 , con una produzione focalizzata su varietà pregiate come Geisha e Pink Bourbon. Profilo in tazza Tazza dolce, nitida e profumata. Fragola matura e arancia dolce, miele e fiori bianchi. Elegante ma accessibile, espressivo sia in filtro sia in espresso. Riposo consigliato: minimo 15 giorni dalla tostatura. 2. Colombia – Finca Monteverde, Tolima Geisha · Processo “Blu” Altitudine: 1.790–1.900 m Punteggio SCA: 89 Note di assaggio Fiori freschi · Fragola · Arancia dolce Un Geisha stravagante e complesso. Tazza brillante e croccante, con una dolcezza fine e una succosità agrumata ben integrata. Profilo dinamico, energico, stratificato. Caratteristiche del profilo Una Geisha raffinata ma intensa, costruita attraverso una fermentazione controllata che amplifica le note floreali e di frutta rossa senza perdere pulizia. Metodo di lavorazione Processo “blu”: – 24 ore di ossidazione controllata – 48 ore di fermentazione anaerobica in contenitori sigillati Inoculo di microrganismi autoctoni raccolti tra le querce della finca. Durante la fermentazione i chicchi assumono una tonalità blu, indicatore della stabilità del processo. Essiccazione lenta per circa 20 giorni su letti rialzati e patii ombreggiati. Terroir e produttore Finca Monteverde è una tenuta di 50 ettari situata in una valle nebbiosa del Tolima, regione centrale per il caffè specialty colombiano. È gestita da Newerley Gutierrez , Q-Grader e specialista in fermentazioni, quinta generazione della famiglia Gutierrez Falla. 3. El Salvador – San Antonio Geisha · Naturale · Fermentazione anaerobica 168 ore Altitudine: 1.600 m – Monti Apaneca Anno di raccolto: 2025 Note di assaggio Agrumi · Prugna · Cremoso · Finale nocciolato Un Geisha più spensierato e immediato. Agrumi evidenti, prugna matura, sensazione lattica e cremosa, con un finale morbido e nocciolato. Caratteristiche del profilo Una lettura più semplice e rilassata della varietà Geisha, dove la fermentazione lunga lavora sulla rotondità e sulla texture più che sull’intensità aromatica. Metodo di lavorazione Fermentazione anaerobica naturale a bassa temperatura per 168 ore . Le ciliegie mature vengono poste in barili alimentari sigillati e trasferite in una cella a temperatura controllata (8–20 °C). Essiccazione per 29 giorni su letti africani, con movimentazione quotidiana. Segue stabilizzazione e riposo dei chicchi verdi per l’equilibrio finale dei sapori. La famiglia Guillen La famiglia Guillen coltiva caffè da cinque generazioni nei monti Apaneca. Dal 2013 ha convertito tutte le proprie piantagioni alla produzione specialty. La Finca San Antonio, di 25 ettari, ospita principalmente Bourbon e Pacamara, con una piccola ma promettente quota di Geisha. In sintesi La Geisha Box CoffeeRiff è un viaggio dentro la varietà Geisha: – elegante – complessa – spensierata Tre profili distinti, pensati per essere assaggiati con attenzione.",
     "price": "67.00",
     "tags": "Acidità Media, alta acidità, CAFFE' SPECIALITY, Complessità Media, Intensità Media, microlotto",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-xmas-box.jpg?v=1765816048",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-xmas-box.jpg?v=1765816048",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-geisha-blue-V01.webp?v=1765816141",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-geisha-V01.webp?v=1765824506",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-san-antonio_1.jpg?v=1765824508"
+    ],
     "product_type": "Caffè",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Finca Mierisch, Los Placeres - Nicaragua  Funky Natural",
     "handle": "finca-mierisc-finca-mierisch-los-placeres-nicaragua-funky-natural",
-    "description": "Frutta tropicale, rum, vino rosso, prugna fermentata, menta balsamica. Questo caffè coltivato dalla famiglia Mierisch nella finca Los Placeres, Nicaragua, è il risultato di oltre dieci anni di sperimentazione varietale e di una fermentazione naturale spinta. L’Ethiosar è un ibrido complesso che unisce rusticità, produttività e una sorprendente vivacità in tazza. Il risultato? Un “workhorse” genetico che sa parlare il linguaggio del cup score. Il profilo aromatico è intenso e stratificato: frutta",
+    "description": "Frutta tropicale, rum, vino rosso, prugna fermentata, menta balsamica. Questo caffè coltivato dalla famiglia Mierisch nella finca Los Placeres, Nicaragua, è il risultato di oltre dieci anni di sperimentazione varietale e di una fermentazione naturale spinta. L’Ethiosar è un ibrido complesso che unisce rusticità, produttività e una sorprendente vivacità in tazza. Il risultato? Un “workhorse” genetico che sa parlare il linguaggio del cup score. Il profilo aromatico è intenso e stratificato: frutta tropicale matura (ananas, mango), rum, note vinose da macerazione, prugna, e un finale fresco che richiama la menta selvatica. È un caffè fermentato, funky, ma estremamente pulito: i sentori acetici sono presenti, ma bilanciati, grazie a un metodo messo a punto in anni di lavoro sul campo. La fermentazione viene condotta in modo controllato lasciando le drupe in strato spesso, coperte per 36 ore a circa 38 °C, senza rimescolamento frequente. Dopo questa fase, il caffè viene asciugato al sole per 5 giorni e poi per 28 giorni su letti africani, per un totale di 33 giorni di essiccazione. Viene quindi lasciato riposare prima come ciliegia secca, poi come green coffee. Questo è un caffè per chi cerca esperienze fuori dagli schemi, ma non rinuncia alla precisione. Funky, sì, ma anche nitido e gastronomico.",
     "price": "16.00",
     "tags": "Acidità Media, alta acidità, CAFFE' SPECIALITY, Complessità Media, Intensità Media, microlotto",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-finca-V01.webp?v=1765454101",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-finca-V01.webp?v=1765454101"
+    ],
     "product_type": "Caffè",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Finca Montreal Geisha Natural Colombia",
     "handle": "finca-montreal-geisha-natural-colombia",
-    "description": "Colombia – Finca Montreal Geisha Natural 2025 – Duberney Cifuentes Fajardo Fragola • Miele • Gelsomino • Arancia Un Geisha elegante e avvolgente : confettura di fragole, miele chiaro, agrumi succosi e accenti floreali di gelsomino. Corpo setoso e dolcezza precisa, con un equilibrio che conquista ad ogni sorso. Punteggio SCA 89 punti Introduzione al profilo Un Geisha naturale coltivato a 2.050 m di altitudine nella zona di Planadas, Tolima. Profondo, espressivo e pulito: ogni dettaglio di lavoraz",
+    "description": "Colombia – Finca Montreal Geisha Natural 2025 – Duberney Cifuentes Fajardo Fragola • Miele • Gelsomino • Arancia Un Geisha elegante e avvolgente : confettura di fragole, miele chiaro, agrumi succosi e accenti floreali di gelsomino. Corpo setoso e dolcezza precisa, con un equilibrio che conquista ad ogni sorso. Punteggio SCA 89 punti Introduzione al profilo Un Geisha naturale coltivato a 2.050 m di altitudine nella zona di Planadas, Tolima. Profondo, espressivo e pulito: ogni dettaglio di lavorazione esalta l’identità varietale e territoriale di questo lotto premiatissimo. Lavorazione Solo le ciliegie perfettamente mature vengono raccolte a mano, poi selezionate una seconda volta manualmente e infine sottoposte a flottazione per rimuovere quelle meno dense. Il caffè fermenta in ciliegia per 52 ore in contenitori ermetici, in ambiente anaerobico. Segue un’essiccazione lenta di circa 30 giorni in strutture coperte (marquesinas), con movimentazione frequente per evitare muffe. Una volta raggiunto l’11% di umidità, il caffè riposa in magazzino per stabilizzarsi. Duberney Cifuentes Fajardo è uno dei produttori più premiati della Colombia . Alla guida della Finca Montreal insieme alla moglie Neyireth, ha vinto il primo premio alla Cup of Excellence Colombia 2023 e numerosi concorsi nazionali e regionali. Gestisce 4 ettari dedicati a varietà pregiate come Geisha e Pink Bourbon, con una produzione annua di circa 20.000 kg di caffè specialty. La loro fattoria, situata a Planadas (Tolima), è un laboratorio artigianale e famigliare di eccellenza. Profilo in tazza Tazza dolce, nitida e profumata. Fragola matura e arancia dolce, con note di miele e fiori bianchi. Elegante ma accessibile, si esprime in modo sorprendente sia in filtro che in espresso. Consigliamo almeno 15 giorni di riposo post-tostatura per apprezzarne tutta la complessità.",
     "price": "28.40",
     "tags": "Acidità Media, alta acidità, CAFFE' SPECIALITY, Complessità Media, Intensità Media, microlotto",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-geisha-V01_636192a8-e68c-4532-9f05-f394f53efaf0.webp?v=1770806500",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-geisha-V01_636192a8-e68c-4532-9f05-f394f53efaf0.webp?v=1770806500",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/805912802d5126b31ac4c1400105b3a0.jpg?v=1770806500"
+    ],
     "product_type": "Caffè",
     "vendor": "Coffeeriff"
   },
   {
     "title": "El Salvador – La Dalia Pacamara Anaerobic 120h",
     "handle": "dalia",
-    "description": "Mango • Papaya • Ananas disidratato • Zucchero di canna • Frutta tropicale — Un caffè tropicale, preciso e avvolgente. Note esotiche luminose di mango e papaya si fondono a una dolcezza naturale profonda e raffinata. Un profilo nitido e moderno, costruito con grande attenzione tecnica e una fermentazione lenta che valorizza la varietà Pacamara. — Regione di coltivazione Prodotto nella regione montuosa di Ahuachapán, nella zona di Cuyanauzul (El Salvador occidentale), a un'altitudine di 1.350–1.4",
+    "description": "Mango • Papaya • Ananas disidratato • Zucchero di canna • Frutta tropicale — Un caffè tropicale, preciso e avvolgente. Note esotiche luminose di mango e papaya si fondono a una dolcezza naturale profonda e raffinata. Un profilo nitido e moderno, costruito con grande attenzione tecnica e una fermentazione lenta che valorizza la varietà Pacamara. — Regione di coltivazione Prodotto nella regione montuosa di Ahuachapán, nella zona di Cuyanauzul (El Salvador occidentale), a un'altitudine di 1.350–1.450 m slm La Dalia è una delle quattro aziende della famiglia Guillen (con San Antonio, El Mercurio e Santa Teresa) e si estende su 16 ettari, di cui 7 coltivati ​​a Pacamara su pendii ripidi con terreno argilloso, ombreggiati da alberi di cedro, mogano e pepeto. Le condizioni climatiche, l'altitudine e la biodiversità vegetale contribuiscono allo sviluppo di chicchi densi, aromaticamente complessi e dalla dolcezza naturale spiccata. — Dettagli della lavorazione Le ciliegie perfettamente mature vengono raccolte a mano e poste in barili per alimenti a fermentare in ambiente anaerobico per 120 ore. Le fermentazioni avvengono in una cella a temperatura controllata (8–20 °C). Dopo 96 ore, le ciliegie vengono stese in strato sottile su letti africani per una lenta essiccazione di 29 giorni, con movimentazione delicata 3–4 volte al giorno. Successivamente, il caffè riposa in magazzino ventilato per stabilizzare l'umidità e armonizzare il profilo finale in tazza. Questa cura meticolosa consente una fermentazione profonda, precisa e perfettamente bilanciata. — Informazioni sul produttore La famiglia Guillen coltiva caffè da cinque generazioni sulle montagne di Apaneca. Dal 2013, ha convertito tutte le sue piantagioni alla produzione speciality, lavorando varietà selezionate come Bourbon, Pacamara e Geisha. La Finca La Dalia è un progetto simbolo della nuova generazione, guidato da José Guillen, che ha saputo coniugare tradizione e innovazione. — Profilo in tazza Tazza vibrante e cremosa, con equilibrio perfetto tra dolcezza tropicale e struttura. Note di mango, papaya e ananas disidratato si intrecciano a sentori zuccherini naturali (panela), con corpo medio-pieno e chiusura lunga e succosa.",
     "price": "13.70",
     "tags": "Acidità Media, alta acidità, CAFFE' SPECIALITY, Complessità Media, Intensità Media, microlotto",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-pacamara-V01.jpg?v=1770806360",
-    "product_type": "Caffè",
-    "vendor": "Coffeeriff"
-  },
-  {
-    "title": "Rwanda – Busanze Ikawa House Washed",
-    "handle": "rwanda-busanze-ikawa-house-washed",
-    "description": "Frutti rossi • Arancia • Datteri • Miele • Cioccolato Un caffè che racconta la dolcezza solare del Rwanda: nitido, vibrante e avvolgente . In tazza si apre con note succose di frutti rossi e arancia, per poi cedere il passo a una dolcezza profonda di miele, datteri e cioccolato . È un Bourbon lavato dalla personalità equilibrata, dove ogni sorso ha la forza di res tare. Regione di coltivazione Alle pendici delle colline del Nyaruguru, nella Southern Province, questo lotto nasce da parcelle colti",
-    "price": "12.40",
-    "tags": "Acidità Media, alta acidità, CAFFE' SPECIALITY, Complessità Media, Intensità Media, microlotto",
-    "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-busanze-red-bourbon-V01.webp?v=1770806549",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-pacamara-V01.jpg?v=1770806360",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/6fedf54bb004066f2393ed4fcce744af.jpg?v=1770806360",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/0bd56bc8211f4692bcd4003998106a41.jpg?v=1770806360"
+    ],
     "product_type": "Caffè",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Brasile – Yellow Catuai Natural Mantiqueira de Minas",
     "handle": "brasile-yellow-catuai-natural-mantiqueira-de-minas",
-    "description": "Sentori principali Cioccolato al latte • Caramello • Nocciole Punteggio SCA 84 punti Profilo in tazza Note dolci e avvolgenti di cioccolato al latte, caramello e zucchero di canna si aprono su una struttura morbida e armoniosa. Il finale è lungo, con un retrogusto di frutta secca ben definito. Un caffè classico e confortevole, con una dolcezza naturale ben integrata. Regione di coltivazione Prodotto nella rinomata area di Mantiqueira de Minas, nel sud del Minas Gerais (Brasile), ad altitudini tr",
+    "description": "Sentori principali Cioccolato al latte • Caramello • Nocciole Punteggio SCA 84 punti Profilo in tazza Note dolci e avvolgenti di cioccolato al latte, caramello e zucchero di canna si aprono su una struttura morbida e armoniosa. Il finale è lungo, con un retrogusto di frutta secca ben definito. Un caffè classico e confortevole, con una dolcezza naturale ben integrata. Regione di coltivazione Prodotto nella rinomata area di Mantiqueira de Minas, nel sud del Minas Gerais (Brasile), ad altitudini tra i 900 e i 1.530 m s.l.m. Il terreno montuoso e la raccolta manuale contribuiscono a creare l’ambiente ideale per la produzione di caffè specialty dalla dolcezza pulita e rotonda. Informazioni sul produttore COOPERVASS è una cooperativa fondata nel 1962 che riunisce oltre 1.000 produttori, per l’85% piccoli agricoltori a conduzione familiare. Con un forte impegno per la sostenibilità ambientale e sociale, la cooperativa promuove numerosi progetti: – Café Delas , per sostenere le donne produttrici; – Green Coffee Project , per l’agricoltura rigenerativa e certificazioni ambientali; – Dia C , un programma educativo per le scuole locali. La trasparenza e la qualità condivisa sono al centro della filosofia COOPERVASS, che lavora con fogli di calcolo aperti e relazioni dirette con i produttori. Informazioni generali Varietà: Yellow Catuai Lavorazione: Natural Anno di raccolto: 2024",
     "price": "11.40",
     "tags": "Acidità Media, alta acidità, CAFFE' SPECIALITY, Complessità Media, Intensità Media, microlotto",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-mantiqueira-V01.webp?v=1770806464",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-mantiqueira-V01.webp?v=1770806464"
+    ],
     "product_type": "Caffè",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Abbonamento Specialty coffee",
     "handle": "kenya-kamunyaka-aa-copia",
-    "description": "L’abbonamento pensato per chi vuole il meglio dei nostri specialty , con la libertà di scegliere quanto e quando. Come funziona: Scegli quante confezioni vuoi ricevere (da 4 a 6) Scegli la frequenza: da ogni 4 settimane o oltre Ricevi solo i nostri monorigine specialty , selezionati e tostati al momento Cosa include: S conto immediato rispetto al prezzo di listino di almeno un 10% Spedizione inclusa Anteprima esclusiva dei nuovi caffè in uscita Nuove uscite : ogni spedizione è curata da noi Dal ",
+    "description": "L’abbonamento pensato per chi vuole il meglio dei nostri specialty , con la libertà di scegliere quanto e quando. Come funziona: Scegli quante confezioni vuoi ricevere (da 4 a 6) Scegli la frequenza: da ogni 4 settimane o oltre Ricevi solo i nostri monorigine specialty , selezionati e tostati al momento Cosa include: S conto immediato rispetto al prezzo di listino di almeno un 10% Spedizione inclusa Anteprima esclusiva dei nuovi caffè in uscita Nuove uscite : ogni spedizione è curata da noi Dal 4° ordine : ulteriore 5% di sconto permanente Non devi cercare il prossimo caffè: lo facciamo noi, con la cura e lo standard che già conosci. Tu scegli solo quanto e quando riceverlo. * Sempre presenti almeno 4 tipologie di caffè diversi, potrebbe capitarti di riassagiare uno specialty che hai già provato",
     "price": "54.00",
     "tags": "Acidità Media, alta acidità, CAFFE' SPECIALITY, Complessità Media, Intensità Media, microlotto",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/ChatGPT_Image_7_ago_2025_20_12_59.png?v=1754590402",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/ChatGPT_Image_7_ago_2025_20_12_59.png?v=1754590402"
+    ],
     "product_type": "Caffè",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Confezione da 30 Capsule  POP – L’Equilibrio Contemporaneo in Capsula",
     "handle": "confezione-da-30-capsule-pop",
-    "description": "POP – L’Equilibrio Contemporaneo in Capsula Dietro la sua apparente semplicità, POP cela una miscela studiata con cura per offrire un’esperienza sensoriale sorprendentemente sfaccettata. Una selezione di Arabica pregiate , coltivate tra Sud e Centro America , lavorate con metodi naturali e lavati per esprimere al meglio il potenziale aromatico di ogni origine. All’assaggio rivela una consistenza vellutata e persistente, con una raffinata acidità che dialoga con note calde di cioccolato fondente,",
+    "description": "POP – L’Equilibrio Contemporaneo in Capsula Dietro la sua apparente semplicità, POP cela una miscela studiata con cura per offrire un’esperienza sensoriale sorprendentemente sfaccettata. Una selezione di Arabica pregiate , coltivate tra Sud e Centro America , lavorate con metodi naturali e lavati per esprimere al meglio il potenziale aromatico di ogni origine. All’assaggio rivela una consistenza vellutata e persistente, con una raffinata acidità che dialoga con note calde di cioccolato fondente, mandorle tostate e cereali . Il finale, dolce e caramellato, avvolge il palato con eleganza. POP è pensato per chi desidera un caffè da bere ogni giorno , ma senza rinunciare alla profondità e alla complessità che rendono un espresso davvero memorabile. Un invito a riscoprire l’essenza del caffè italiano, nella sua forma più attuale e curata. Firmato CoffeeRiff, per chi sa cogliere la qualità anche nelle sfumature più sot",
     "price": "13.50",
     "tags": "CAFFE' SPECIALITY, nespresso",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/92c6d8d2-2f68-4faa-88e8-7fa131686f36.jpg?v=1754322168",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/92c6d8d2-2f68-4faa-88e8-7fa131686f36.jpg?v=1754322168",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3672b2d2-ff12-404c-88e4-855c93e64e97.jpg?v=1754322168"
+    ],
     "product_type": "CAFFE'",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Kenya – Kamunyaka AA washed",
     "handle": "kamunyakaaa",
-    "description": "Un’esplosione di frutta rossa e agrumi dolci, elegante e luminosa come un’alba sul Monte Kenya. Questo caffè ci ha conquistati sin dal primo assaggio, come un sorso d’estate in tazza. Le note iniziali ricordano una confettura di frutti di bosco fatta in casa, con la dolcezza matura delle more e la succosità delle fragole. Subito dopo, arriva un’arancia dolce e solare, che illumina il palato con una freschezza agrumata e brillante. Il corpo è setoso, l’acidità elegante: un profilo armonioso e pul",
+    "description": "Un’esplosione di frutta rossa e agrumi dolci, elegante e luminosa come un’alba sul Monte Kenya. Questo caffè ci ha conquistati sin dal primo assaggio, come un sorso d’estate in tazza. Le note iniziali ricordano una confettura di frutti di bosco fatta in casa, con la dolcezza matura delle more e la succosità delle fragole. Subito dopo, arriva un’arancia dolce e solare, che illumina il palato con una freschezza agrumata e brillante. Il corpo è setoso, l’acidità elegante: un profilo armonioso e pulito, che danza tra dolcezza e vivacità. È uno di quei caffè che ti sorprendono per la loro trasparenza e nitidezza aromatica , ma anche per la coerenza dalla fragranza fino al retrogusto: lungo, fresco, con un’eco persistente di arancia e frutti di bosco . Origine Siamo nella contea di Murang’a , nel cuore della regione centrale del Kenya. Qui, tra i pendii ricchi di suolo vulcanico rosso acceso e il clima fresco delle alture (oltre 1.700 m s.l.m.), nasce uno dei terroir più vocati dell’intera Africa orientale. I piccoli lotti coltivati dalla comunità Kikuyu – spesso meno di mezzo ettaro – sono integrati a colture di sussistenza come mais, banane e ortag gi, creando un ecosistema agricolo ricco e d iversificato . Lavorazione La lavorazione è quella tradizionale keniota, meticolosa e lenta: lavaggio completo e doppia fermentazione a secco , seguita da una notte in acqua dolce. Ogni passaggio è pensato per esaltare la brilla ntezza aromatica, selezionando solo le ciliegie migliori. L’asciugatura su letti africani e il riposo in contenitori di condizionamento completano un processo che valorizza tutta la complessità varietale di questo lotto. Chi lo produce? Il merito di questa tazza va alla Kamunyaka Factory , parte della Irani Farmers Cooperative Society , una cooperativa attiva nel supporto ai piccoli produttori locali. Kamunyaka è uno dei centri di lavorazione più rinomati della zona di Mathira, noto per l’impegno verso la sostenibilità, la salute del suolo e salari equi . Il risultato? Una qualità costante, che si percepisce in ogni singolo chicco. In breve ✨ Fruttato, brillante, agrumato. 🍓 Confettura di frutti di bosco, arancia dolce. 🎯 Tazza pulita, corpo setoso, acidità elegante. 📍 Kenya – Murang’a, Kamunyaka Factory 📈 87 punti SCA",
     "price": "14.40",
     "tags": "Acidità Media, alta acidità, CAFFE' SPECIALITY, Complessità Media, Intensità Media, microlotto",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-busanze-kericho-V01.webp?v=1770806416",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/3d-model-coffee-riff-busanze-kericho-V01.webp?v=1770806416",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/49dde89d826938e5e1674c65049f66f25.jpg?v=1770806416",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/595d205247cac80e994456fb94af76f5a.jpg?v=1770806416"
+    ],
     "product_type": "Caffè",
     "vendor": "Coffeeriff"
   },
@@ -176,56 +242,81 @@
     "price": "50.00",
     "tags": "CAFFE'",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/n53IL.heic?v=1738768589",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/n53IL.heic?v=1738768589",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/Schermata2025-02-05alle16.19.40.png?v=1738768808"
+    ],
     "product_type": "",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Box  Degustazione 4 Microlotti Specialty",
     "handle": "kenya-lavato-nyeri-kagunyu-ab-copia",
-    "description": "📦 Nel box troverai: 🔹 Caffè tracciabili e in quantità limitata a rotazione secondo i caffè del momento. El Salvador – La Dalia Pacamara Anaerobica 120h Mango • Papaya • Ananas disidratato • Zucchero panela • Frutta tropicale Un profilo nitido e moderno, costruito con grande attenzione tecnica e una fermentazione lenta che valorizza la varietà Pacamara. Finca Mierisch, Los Placeres - Nicaragua Funky Natural Frutta tropicale, rum, vino rosso, prugna fermentata, menta balsamica. Questo caffè coltiv",
+    "description": "📦 Nel box troverai: 🔹 Caffè tracciabili e in quantità limitata a rotazione secondo i caffè del momento. El Salvador – La Dalia Pacamara Anaerobica 120h Mango • Papaya • Ananas disidratato • Zucchero panela • Frutta tropicale Un profilo nitido e moderno, costruito con grande attenzione tecnica e una fermentazione lenta che valorizza la varietà Pacamara. Finca Mierisch, Los Placeres - Nicaragua Funky Natural Frutta tropicale, rum, vino rosso, prugna fermentata, menta balsamica. Questo caffè coltivato dalla famiglia Mierisch nella finca Los Placeres, Nicaragua, è il risultato di oltre dieci anni di sperimentazione varietale e di una fermentazione naturale spinta. Punteggio di coppettazione: 87 Kenya – Kamunyaka AA Confettura di frutti di bosco, arancia dolce e, corpo setoso, acidità elegante. Ruanda – Casa Busanze Ikawa lavata Un caffè che racconta la dolcezza solare del Rwanda: nitido, vibrante e avvolgente . In tazza si apre con note succose di frutti rossi e arancia, per poi cedere il passo a una dolcezza profonda di miele, datteri e cioccolato .",
     "price": "52.40",
     "tags": "Acidità Media, alta acidità, CAFFE' SPECIALITY, Complessità Media, Intensità Media, microlotto",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/IMG_7254.heic?v=1738753811",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/IMG_7254.heic?v=1738753811",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00751Microlottifrontte_copia.png?v=1748947258",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/BishanWate6.jpg?v=1723207123",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/scaricotostato-ezgif.com-crop.gif?v=1730967368",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/9d39b38fe7509b975da7ed8f418d1632.jpg?v=1763830289",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/45b66e4b911eacfd590c472f97546187.jpg?v=1746193708"
+    ],
     "product_type": "Caffè",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Confezione da 30 Capsule  Brasile Cerrado Dulce",
     "handle": "capsule-compatibili-nespresso-brasile-cerrado-dulce",
-    "description": "Brasile Cerrado Dulce – Dolcezza e Equilibrio in Capsula Il punto d’ingresso ideale per chi desidera scoprire il vero caffè di qualità in capsula. Morbido, avvolgente e perfettamente equilibrato , con note di cioccolato e nocciole tostate , è il compagno perfetto per ogni momento della giornata. Coltivato a pieno sole nel Sul de Minas Gerais , raccolto tra giugno e agosto e lavorato con metodo naturale, questo caffè esprime tutta la ricchezza e la dolcezza tipica del Brasile. Perfetto per un esp",
+    "description": "Brasile Cerrado Dulce – Dolcezza e Equilibrio in Capsula Il punto d’ingresso ideale per chi desidera scoprire il vero caffè di qualità in capsula. Morbido, avvolgente e perfettamente equilibrato , con note di cioccolato e nocciole tostate , è il compagno perfetto per ogni momento della giornata. Coltivato a pieno sole nel Sul de Minas Gerais , raccolto tra giugno e agosto e lavorato con metodo naturale, questo caffè esprime tutta la ricchezza e la dolcezza tipica del Brasile. Perfetto per un espresso cremoso e armonioso, facile da amare sin dal primo sorso. Scopri la qualità artigianale di CoffeeRiff in capsula.",
     "price": "13.50",
     "tags": "CAFFE' SPECIALITY, nespresso",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/Brasile_Cerrado_IMG_1726.heic?v=1738237177",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/Brasile_Cerrado_IMG_1726.heic?v=1738237177",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/IMG_7259.heic?v=1738237177"
+    ],
     "product_type": "CAFFE'",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Miscela ELETTRONICA",
     "handle": "miscela-elettronica",
-    "description": "ELETTRONICA nasce dall’idea di fondere complessità e armonia in una tazza che stupisce con la sua struttura stratificata. Ogni elemento è pensato per dialogare con gli altri, creando un equilibrio tra corposità, vivacità e profondità aromatica. Questa miscela è un invito a esplorare le infinite possibilità del caffè, unendo tradizione, modernità e sperimentazione. La base della miscela è costituita da caffè naturali e lavati provenienti dal Centro America, che apportano morbidezza, dolcezza e no",
+    "description": "ELETTRONICA nasce dall’idea di fondere complessità e armonia in una tazza che stupisce con la sua struttura stratificata. Ogni elemento è pensato per dialogare con gli altri, creando un equilibrio tra corposità, vivacità e profondità aromatica. Questa miscela è un invito a esplorare le infinite possibilità del caffè, unendo tradizione, modernità e sperimentazione. La base della miscela è costituita da caffè naturali e lavati provenienti dal Centro America, che apportano morbidezza, dolcezza e note di frutta secca e cereali. A questi si aggiunge un colombiano anaerobico, che dona una complessità profonda con sfumature liquorose, candite, complesse. Infine, il contributo di un caffè africano porta un’acidità vivace e brillante, arricchendo la miscela con note di agrumi e frutti rossi. Se fosse un brano musicale, sarebbe il perfetto equilibrio tra tradizione orchestrale e innovazione elettronica, come una traccia dei Daft Punk che unisce sintetizzatori cristallini e bassi pulsanti. Il colombiano anaerobico è la profondità del basso che scandisce il ritmo, il caffè africano la melodia acuta e luminosa, e i centroamericani naturali e lavati creano il fondale morbido su cui tutto si armonizza. Ogni sorso è una nuova scoperta, un crescendo che cattura e avvolge, lasciando una lunga e piacevole risonanza.",
     "price": "10.70",
     "tags": "Acidità Bassa, CAFFE', CAFFE' SPECIALITY, Classico, Complessità Bassa, Intensità Media",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00762.jpg?v=1737987987",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00762.jpg?v=1737987987"
+    ],
     "product_type": "Caffè",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Miscela BLUES",
     "handle": "miscela-blues",
-    "description": "BLUES - Miscela arabica che risuona profonda Densità vigorosa e raffinata, in una tazza che trova l’equilibrio perfetto tra intensità e armonia. Le note di cacao in purezza si intrecciano con fragranze di nocciola, pan brioche e miele, frutta matura, creando una melodia che conquista sia i palati più esigenti sia chi cerca una dolcezza avvolgente. Arricchita da pregiate Arabica dal Sud e Centro America e da caffè indiani selezionati, BLUES è una miscela versatile, ideale da gustare in purezza o ",
+    "description": "BLUES - Miscela arabica che risuona profonda Densità vigorosa e raffinata, in una tazza che trova l’equilibrio perfetto tra intensità e armonia. Le note di cacao in purezza si intrecciano con fragranze di nocciola, pan brioche e miele, frutta matura, creando una melodia che conquista sia i palati più esigenti sia chi cerca una dolcezza avvolgente. Arricchita da pregiate Arabica dal Sud e Centro America e da caffè indiani selezionati, BLUES è una miscela versatile, ideale da gustare in purezza o con bevande a base di latte, per esaltare la sua rotondità e complessità. Con BLUES, ogni sorso è un’esperienza intensa e avvolgente, un assolo di chitarra che lascia il segno.",
     "price": "9.20",
     "tags": "Acidità Bassa, CAFFE', CAFFE' SPECIALITY, Classico, Complessità Bassa, Intensità Media",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00757_65fe4131-fa33-45d7-96a7-753211dffeb9.jpg?v=1737987174",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00757_65fe4131-fa33-45d7-96a7-753211dffeb9.jpg?v=1737987174"
+    ],
     "product_type": "Caffè",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Miscela POP",
     "handle": "miscela-pop",
-    "description": "Con POP, abbiamo creato una miscela Arabica che celebra l’arte del caffè italiano con un approccio moderno. In tazza: morbido, essenziale. Quello che vorremmo trovare al bar. Questa combinazione di Arabica selezionate dal Sud e Centro America è un blend di caffè naturali e lavati, per un profilo aromatico che unisce complessità e equilibrio. Consistenza morbida e persistente, con una soave acidità che si arricchisce di note di cioccolato, mandorle tostate e cereali, pane tostato. Il retrogusto c",
+    "description": "Con POP, abbiamo creato una miscela Arabica che celebra l’arte del caffè italiano con un approccio moderno. In tazza: morbido, essenziale. Quello che vorremmo trovare al bar. Questa combinazione di Arabica selezionate dal Sud e Centro America è un blend di caffè naturali e lavati, per un profilo aromatico che unisce complessità e equilibrio. Consistenza morbida e persistente, con una soave acidità che si arricchisce di note di cioccolato, mandorle tostate e cereali, pane tostato. Il retrogusto caramellato aggiunge una dolcezza delicata, bilanciata. POP è un caffè che si distingue per bevibilità e la sua capacità di conquistare anche i palati meno esperti, mantenendo al tempo stesso un fascino da intenditori.",
     "price": "8.90",
     "tags": "Acidità Bassa, CAFFE', CAFFE' SPECIALITY, Classico, Complessità Bassa, Intensità Media",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00749.jpg?v=1737980604",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00749.jpg?v=1737980604"
+    ],
     "product_type": "Caffè",
     "vendor": "Coffeeriff"
   },
@@ -236,6 +327,11 @@
     "price": "37.00",
     "tags": "CAFFE' SPECIALITY, nespresso, sequenza10euro",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/IMG_7259.heic?v=1738237177",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/IMG_7259.heic?v=1738237177",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/IMG_7250.heic?v=1730130025",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/IMG_7252.heic?v=1730130025"
+    ],
     "product_type": "CAFFE'",
     "vendor": "Coffeeriff"
   },
@@ -246,6 +342,9 @@
     "price": "8.20",
     "tags": "accessori, acessori",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/products/filtri-carta-v60-02.jpg?v=1678903227",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/products/filtri-carta-v60-02.jpg?v=1678903227"
+    ],
     "product_type": "",
     "vendor": "Coffeeriff"
   },
@@ -256,6 +355,9 @@
     "price": "4.25",
     "tags": "accessori, acessori",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/products/hario-vcf-01-40w-paper-filter-01w.jpg?v=1678902753",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/products/hario-vcf-01-40w-paper-filter-01w.jpg?v=1678902753"
+    ],
     "product_type": "",
     "vendor": "Coffeeriff"
   },
@@ -266,6 +368,9 @@
     "price": "72.00",
     "tags": "accessori, acessori",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/products/kettle1_2lfoto.jpg?v=1664544891",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/products/kettle1_2lfoto.jpg?v=1664544891"
+    ],
     "product_type": "",
     "vendor": "Coffeeriff"
   },
@@ -276,36 +381,57 @@
     "price": "13.80",
     "tags": "accessori, acessori",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/products/Schermata2022-08-26alle14.13.42.png?v=1664544790",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/products/Schermata2022-08-26alle14.13.42.png?v=1664544790"
+    ],
     "product_type": "",
     "vendor": "Coffeeriff"
   },
   {
     "title": "CHEMEX® 6 tazze",
     "handle": "chemex-6-tazze",
-    "description": "La caffettiera CHEMEX® permette di ottenere una variante del caffè filtro in grado di esaltare gli aromi del caffè stesso e di preparare tazze molto aromatiche e dal gusto pulito e delicato. È stata inventata nel 1941 dall'eccentrico chimico Dr. Peter Schlumbohm che voleva creare un oggetto che potesse estrarre al meglio il caffè ma che allo stesso tempo fosse anche un oggetto di design. Per la caraffa si è ispirato alla scuola di design Bauhaus e ai materiali da laboratorio non porosi che per l",
+    "description": "La caffettiera CHEMEX® permette di ottenere una variante del caffè filtro in grado di esaltare gli aromi del caffè stesso e di preparare tazze molto aromatiche e dal gusto pulito e delicato. È stata inventata nel 1941 dall'eccentrico chimico Dr. Peter Schlumbohm che voleva creare un oggetto che potesse estrarre al meglio il caffè ma che allo stesso tempo fosse anche un oggetto di design. Per la caraffa si è ispirato alla scuola di design Bauhaus e ai materiali da laboratorio non porosi che per le loro caratteristiche non avrebbero compromesso il sapore del caffè. Ha modellato la forma a clessidra da un unico pezzo di vetro borosilicato che ha decorato con un colletto in legno e un nastro in pelle grezza. La CHEMEX® può essere trovata nei musei di tutto il mondo ed è inclusa nella collezione permanente del Brooklyn Museum, del Corning Museum of Glass e del MOMA di New York. È stata inoltre selezionata dall'Illinois Institute of Technology come uno dei migliori 100 prodotti di design al mondo. Materiale per la preparazione: - Filtro in carta per Chemex da 6 tazze - Bollitore - Bilancia - Caffè Metodo di preparazione: Apri il filtro quadrato in modo che tre fogli del filtro siano da un lato separati dal quarto foglio, quindi posiziona la parte con i tre fogli in corrispondenza del beccuccio della caraffa. Metti a bollire l’acqua; una volta portata ad ebollizione attendi qualche secondo che la temperatura scenda leggermente, quindi versa una piccola quantità d'acqua sul filtro con movimenti circolari per bagnarlo; rimuovi l’acqua appena versata. Inserisci nel filtro la dose di caffè. L’indicazione è, come per gli altri metodi a filtro, una ratio di 1:15, utilizzando, per esempio, 10 grammi di polvere per 150 millilitri d'acqua. Versa l’acqua calda sopra il caffè con movimenti circolari, prima il 10% dell’acqua, dopo circa 30 secondi un altro 50% e, infine, dopo altri 30 secondi, tutta l’acqua rimanente.",
     "price": "46.50",
     "tags": "accessori, acessori",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/products/chemex-classic-6cup-detail_1.png?v=1664544837",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/products/chemex-classic-6cup-detail_1.png?v=1664544837",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/products/chemex-classic-6cup-front_1.png?v=1664544828"
+    ],
     "product_type": "",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Brasile serrado dulce",
     "handle": "santos-bbrasile",
-    "description": "Caratteristiche alla degustazione Brasile Cerrado Dulce Caffè pastoso dal gusto rotondo e pieno. Uno dei migliori caffè brasiliani naturali. Spiccano sentori di pane tostato, miele, cacao e nocciola tostata. Presenta un'acidità molto bassa. U n caffè ottimo da gustare alla mattina a colazione. Qualche informazione in più Proveniente dall'ecoregione tropicale del Cerrado, negli altopiani Sul De Minas e Alta Mogiana, nota per il clima e l'altitudine omogenei. Questo è di grande aiuto per i produtt",
+    "description": "Caratteristiche alla degustazione Brasile Cerrado Dulce Caffè pastoso dal gusto rotondo e pieno. Uno dei migliori caffè brasiliani naturali. Spiccano sentori di pane tostato, miele, cacao e nocciola tostata. Presenta un'acidità molto bassa. U n caffè ottimo da gustare alla mattina a colazione. Qualche informazione in più Proveniente dall'ecoregione tropicale del Cerrado, negli altopiani Sul De Minas e Alta Mogiana, nota per il clima e l'altitudine omogenei. Questo è di grande aiuto per i produttori che possono concentrarsi sulla qualità e sulla produzione della materia prima invece che sul clima. Le piantagioni crescono in pieno sole ad un'altitudine tra gli 800 e i 1200 metri sopra il livello del mare. La temperatura media è di circa 20 °C. La sua coltivazione avviene vicino alle piantagioni di cacao che trasmettono l’aroma alla pianta del caffè. Il raccolto avviene a ciliegia rossa e matura rigorosamente selezionata a mano tra Giugno e Agosto. Perché possano trasferire la dolcezza del frutto verso l’interno, le ciliegie vengono asciugate negli spiazzi delle \"fazendas\" brasiliane al calore naturale del sole.",
     "price": "8.70",
     "tags": "Acidità Bassa, CAFFE', CAFFE' SPECIALITY, Classico, Complessità Bassa, Intensità Media",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00771_fe9d8617-5524-457c-a943-14c744d015d2.jpg?v=1721920960",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00771_fe9d8617-5524-457c-a943-14c744d015d2.jpg?v=1721920960",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/products/Santospanetostato_miele_cenocciolatostata.png?v=1721920964"
+    ],
     "product_type": "Caffè",
     "vendor": "Coffeeriff"
   },
   {
     "title": "Box Degustazione + Buono di 10 Euro",
     "handle": "box-degustazione-caffe-artigianale-coffeeriff",
-    "description": "Box degustazione caffè artigianale di Coffeeriff * È possibile acquistare una sola box per cliente. scopri le sue varianti e quali sono le tue preferite! La box contiene queste varietà Arabica: Brasile Santos 250g Miscela POP 250g C. Serrano 250g Indian Plantation Bababudan 70g Guatemala 70g + Buono del valore di 10 Euro valido su tutti i caffè per il tuo prossimo acquisto ( 1 buono per cliente valido per 6 settimana) + Spedizione inclusa codice: Box25 È possibile acquistare una sola box per cli",
+    "description": "Box degustazione caffè artigianale di Coffeeriff * È possibile acquistare una sola box per cliente. scopri le sue varianti e quali sono le tue preferite! La box contiene queste varietà Arabica: Brasile Santos 250g Miscela POP 250g C. Serrano 250g Indian Plantation Bababudan 70g Guatemala 70g + Buono del valore di 10 Euro valido su tutti i caffè per il tuo prossimo acquisto ( 1 buono per cliente valido per 6 settimana) + Spedizione inclusa codice: Box25 È possibile acquistare una sola box per cliente. Se però hai già acquistato la box in passato, ma desideri acquistarla di nuovo per fare un regalo, contattaci! Tostatura: - Espresso (classica) è una tostatura media - Filtro più chiara (circa 90 scala agtron). In base alle disponibilità possono cambiare le tipologie di caffè. Nella versione filtro i caffè saranno diversi per valorizzare al meglio il tipo di estrazione.",
     "price": "37.70",
     "tags": "boxdegustazione, CAFFE', CAFFE' SPECIALITY, sequenza10euro",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00735.jpg?v=1719229476",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00735.jpg?v=1719229476",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00727.jpg?v=1719229488",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00824.jpg?v=1719229499",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00737.jpg?v=1719229512",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00743_9acd230a-2f43-4233-b419-51addbf806a2.jpg?v=1738750749",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00749_b82f4dc6-008e-4b73-a399-ea33fd4e73a9.jpg?v=1738750750",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00757_26d3adec-56bb-479c-9644-799d1432051b.jpg?v=1738750750",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00771_c010bf36-1e90-44d0-a11d-6f8b87d94674.jpg?v=1738750750"
+    ],
     "product_type": "CAFFE'",
     "vendor": "Coffeeriff"
   },
@@ -316,16 +442,24 @@
     "price": "69.90",
     "tags": "accessori",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/eb-lab-induction-moka-pot-3-tazze.jpg?v=1737649640",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/eb-lab-induction-moka-pot-3-tazze.jpg?v=1737649640",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/products/FILTROMOKA_filtro.jpg?v=1737649640"
+    ],
     "product_type": "",
     "vendor": "Coffeeriff"
   },
   {
     "title": "MISCELA DECA",
     "handle": "decafeinato",
-    "description": "Caratteristiche alla degustazione Corposo con un’acidità medio-bassa. Caffè con sentori di cioccolato, mandorla e nocciola e con retrogusto finale di cacao. Qualche informazione in più Si tratta di una miscela di caffè brasiliani naturali provenienti dalle regioni del Minas Gerais e del Cerrado. Ouro Preto, Minas Gerais, Brazil Il processo di decaffeinizzazione viene chiamato “Demus” e sfrutta il metodo “Swiss Water® Process” in grado di mantenere le caratteristiche organolettiche e qualitative ",
+    "description": "Caratteristiche alla degustazione Corposo con un’acidità medio-bassa. Caffè con sentori di cioccolato, mandorla e nocciola e con retrogusto finale di cacao. Qualche informazione in più Si tratta di una miscela di caffè brasiliani naturali provenienti dalle regioni del Minas Gerais e del Cerrado. Ouro Preto, Minas Gerais, Brazil Il processo di decaffeinizzazione viene chiamato “Demus” e sfrutta il metodo “Swiss Water® Process” in grado di mantenere le caratteristiche organolettiche e qualitative del caffè: un processo naturale e al 100% privo di sostanza chimiche. Il caffè crudo viene posto a contatto con l’acqua per circa 10 ore. In questo lasso di tempo l’acqua viene continuamente filtrata attraverso l’utilizzo di carboni attivi che trattengono man mano la caffeina. Durante tale procedimento viene inoltre monitorata la temperatura fino a quando il caffè rimane privo di caffeina. Una volta ottenuto il caffè decaffeinato, questo viene inviato al laboratorio di analisi sensoriale per controllare la qualità del prodotto finale.",
     "price": "8.90",
     "tags": "Acidità Bassa, CAFFE', Complessità Bassa, Intensità Media",
     "image_url": "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00753.jpg?v=1721921041",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/files/CoffeeRiff00753.jpg?v=1721921041",
+      "https://cdn.shopify.com/s/files/1/0592/0784/4020/products/ManizalesColombia_2.png?v=1721921052"
+    ],
     "product_type": "",
     "vendor": "Coffeeriff"
   }

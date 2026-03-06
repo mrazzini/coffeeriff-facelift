@@ -37,7 +37,9 @@ except ImportError:
     )
 
 try:
-    from playwright_stealth import stealth_async
+    from playwright_stealth import Stealth
+    _stealth = Stealth()
+    stealth_async = _stealth.apply_stealth_async
 except ImportError:
     stealth_async = None  # stealth is optional but recommended
 
@@ -49,9 +51,7 @@ BASE_URL = "https://coffeeriff.com"
 TARGET_PAGES = [
     "/",
     "/pages/filosofia",
-    "/collections/caffe",
-    "/collections/capsule",
-    "/pages/la-nostra-storia",  # may 404 — script handles gracefully
+    "/collections/all",
 ]
 
 OUTPUT_DIR = Path(__file__).parent.parent / "frontend" / "public" / "images"
