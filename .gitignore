@@ -19,3 +19,6 @@ out/
 
 # Claude
 .claude/
+
+# TypeScript build info
+tsconfig.tsbuildinfo
