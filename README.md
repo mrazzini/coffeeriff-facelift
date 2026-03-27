@@ -1,5 +1,5 @@
 # Coffeeriff Facelift — AI-Enhanced Storefront
-[**Live demo link**](![Demo](https://coffeeriff-facelift.vercel.app/) 
+[**Live demo link**](https://coffeeriff-facelift.vercel.app/)
 
 A headless frontend + AI backend layer built on top of the existing [Coffeeriff](https://coffeeriff.com) Shopify store. The project adds a coffee recommender quiz powered by an LLM without touching the live Shopify theme.
 
