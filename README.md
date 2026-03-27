@@ -6,6 +6,8 @@ A headless frontend + AI backend layer built on top of the existing [Coffeeriff]
 
 ## What It Does
 
+![Demo](public/demo.gif)
+
 - **Recommender quiz** — 4 questions about taste preferences, brew method, grinder availability, and openness to experimentation. An LLM matches the answers to real products from the live catalog and returns 3 personalised picks with Italian-language explanations.
 - **Product catalogue pages** — browseable category pages for Caffè, Capsule, and Accessori, each pulling live data from the backend.
 - **Brand pages** — homepage and Filosofia page with real brand copy.
