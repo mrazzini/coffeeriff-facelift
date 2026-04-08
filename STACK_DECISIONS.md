@@ -10,7 +10,7 @@ This document explains the architectural and tooling choices made during the bui
 2. [Why not customize the Shopify theme directly](#2-why-not-customize-the-shopify-theme-directly)
 3. [Frontend: Next.js on Vercel](#3-frontend-nextjs-on-vercel)
 4. [The proxy rewrite pattern (and why CORS is irrelevant)](#4-the-proxy-rewrite-pattern-and-why-cors-is-irrelevant)
-5. [Backend: FastAPI on Railway](#5-backend-fastapi-on-railway)
+5. [Backend: FastAPI on AWS Lambda](#5-backend-fastapi-on-aws-lambda)
 6. [AI: Groq + llama-3.3-70b-versatile](#6-ai-groq--llama-33-70b-versatile)
 7. [Product data: local snapshot + enriched index](#7-product-data-local-snapshot--enriched-index)
 8. [The enrichment pipeline](#8-the-enrichment-pipeline)
@@ -18,7 +18,7 @@ This document explains the architectural and tooling choices made during the bui
 10. [Lazy Groq client initialisation](#10-lazy-groq-client-initialisation)
 11. [Category classification logic](#11-category-classification-logic)
 12. [CI pipeline design](#12-ci-pipeline-design)
-13. [Deployment: Railway + Vercel over alternatives](#13-deployment-railway--vercel-over-alternatives)
+13. [Deployment: AWS Lambda + Vercel over alternatives](#13-deployment-aws-lambda--vercel-over-alternatives)
 14. [Environment variables and secrets](#14-environment-variables-and-secrets)
 15. [What was deliberately left out](#15-what-was-deliberately-left-out)
 
@@ -72,15 +72,15 @@ This is the most important architectural decision for understanding how the two 
 
 ### The naive approach (and its problem)
 
-The obvious implementation is: the browser calls the Railway backend directly.
+The obvious implementation is: the browser calls the backend directly.
 
 ```
-Browser → https://coffeeriff-facelift-production.up.railway.app/recommend
+Browser → https://abc123.execute-api.eu-south-1.amazonaws.com/recommend
 ```
 
-This immediately hits the **CORS wall**. CORS (Cross-Origin Resource Sharing) is a browser security mechanism that blocks JavaScript running on one domain (e.g. `coffeeriff-facelift.vercel.app`) from calling another domain (e.g. `coffeeriff-facelift-production.up.railway.app`) unless the server explicitly allows it via response headers.
+This immediately hits the **CORS wall**. CORS (Cross-Origin Resource Sharing) is a browser security mechanism that blocks JavaScript running on one domain (e.g. `coffeeriff-facelift.vercel.app`) from calling another domain (e.g. the API Gateway URL) unless the server explicitly allows it via response headers.
 
-The fix seems simple: add `ALLOWED_ORIGINS` to the backend. But this introduces a dependency: every time the Vercel URL changes (new branch preview, new project), the Railway env var must be updated too. In production, forgetting this step breaks the app silently.
+The fix seems simple: add `ALLOWED_ORIGINS` to the backend. But this introduces a dependency: every time the Vercel URL changes (new branch preview, new project), the Lambda env var must be updated too. In production, forgetting this step breaks the app silently.
 
 ### The proxy pattern (what we actually built)
 
@@ -95,31 +95,31 @@ async rewrites() {
 }
 ```
 
-This means: when the browser calls `/api/recommend`, **the Next.js server** (running on Vercel's infrastructure) intercepts the request and forwards it to Railway. The browser never contacts Railway directly.
+This means: when the browser calls `/api/recommend`, **the Next.js server** (running on Vercel's infrastructure) intercepts the request and forwards it to the Lambda backend via API Gateway. The browser never contacts the backend directly.
 
 ```
 Browser → /api/recommend (same origin: vercel.app)
               ↓
           Next.js server on Vercel
               ↓  server-to-server call, no browser CORS rules apply
-          Railway backend
+          API Gateway → Lambda backend
 ```
 
-Because the call from Next.js to Railway is server-to-server, CORS rules do not apply — CORS is a browser-only mechanism. The `ALLOWED_ORIGINS` configuration in the backend exists as a safety net for direct browser access (e.g. someone calling the Railway URL from their own code), but is not needed for the app to function.
+Because the call from Next.js to the Lambda backend is server-to-server, CORS rules do not apply — CORS is a browser-only mechanism. The `ALLOWED_ORIGINS` configuration in the backend exists as a safety net for direct browser access (e.g. someone calling the API Gateway URL from their own code), but is not needed for the app to function.
 
 ### The trailing slash bug
 
 The rewrite rule concatenates `NEXT_PUBLIC_API_URL` with `/:path*`. If the env var has a trailing slash:
 
 ```
-https://railway.app/  +  /recommend  =  https://railway.app//recommend
+https://abc123.execute-api.eu-south-1.amazonaws.com/  +  /recommend  =  https://…//recommend
 ```
 
 The double slash produces a 404 or 502. This is why `NEXT_PUBLIC_API_URL` must be set **without** a trailing slash in Vercel's environment variables.
 
 ---
 
-## 5. Backend: FastAPI on Railway
+## 5. Backend: FastAPI on AWS Lambda
 
 **Why FastAPI:**
 
@@ -130,11 +130,19 @@ FastAPI is a Python web framework built on top of Starlette (async) and Pydantic
 - Pydantic models (`models.py`) act as a contract between frontend and backend. If the response shape changes, the type error surfaces at the Python layer, not silently in the UI.
 - Auto-generated OpenAPI docs (`/docs`) are useful during development without any extra work.
 
-**Why Railway:**
+**Why AWS Lambda:**
 
-Railway offers one-command Python deployments from a GitHub repo. The `railway.toml` file specifies the start command and health check path. Railway detects Python via nixpacks (its build system) and installs `requirements.txt` automatically.
+Lambda runs the FastAPI app serverlessly via the Mangum adapter, which translates API Gateway events into ASGI requests. This means:
 
-The alternative was Render, which has a similar free tier but slightly slower cold starts. Railway was chosen because its dashboard provides clearer real-time log streaming, useful for debugging LLM prompt/response issues.
+- **Zero cost at low traffic** — Lambda's free tier covers 1M requests/month. For a quiz-style app this effectively means $0/month.
+- **No container to manage** — no process supervisors, no idle resource costs, no manual scaling.
+- **Infrastructure as code** — the entire stack (Lambda functions, API Gateway, S3 bucket, EventBridge schedule) is defined in `template.yaml` and deployed with a single `sam deploy` command.
+
+The trade-off is cold starts (~1-2 seconds on the first request after inactivity), but this is masked by the Groq API latency that users already wait for on the `/recommend` endpoint.
+
+**Why Mangum:**
+
+Mangum is a thin adapter (~200 lines of code) that converts API Gateway HTTP events into ASGI scope/send/receive calls. The FastAPI app does not need to know it is running on Lambda — routes, middleware, and Pydantic validation all work identically. Local development still uses `uvicorn app.main:app --reload` as before.
 
 ---
 
@@ -165,17 +173,19 @@ The backend does not call the Shopify API on every request. Instead, it maintain
 
 | File | Contents | Updated |
 |------|----------|---------|
-| `data/products.json` | Raw Shopify product data (title, price, description, handle, image) | On startup if catalog changed |
-| `data/products_enriched.json` | LLM-generated structured metadata per product | Manually via `enrich_products.py`, or automatically when catalog changes |
+| `products.json` | Raw Shopify product data (title, price, description, handle, image) | Daily by refresh Lambda |
+| `products_enriched.json` | LLM-generated structured metadata per product | Daily by refresh Lambda (if catalog changed), or manually via `enrich_products.py` |
 
-**Why a local snapshot instead of live Shopify API calls:**
+Both files are stored in an S3 bucket and read by the API Lambda at runtime (with in-memory caching across warm invocations). For local development, the files in `data/` are used as a fallback when the `DATA_BUCKET` environment variable is not set.
+
+**Why a snapshot instead of live Shopify API calls:**
 
 1. **Latency.** The recommendation endpoint already calls Groq. Adding a Shopify API call in the same request would double the latency.
 2. **Rate limits.** Shopify's Storefront API has rate limits. A busy demo could exhaust them.
 3. **Reliability.** If Shopify has downtime, the recommender still works from cached data.
 4. **No auth needed.** `coffeeriff.com/products.json` is a public unauthenticated endpoint. No Shopify API credentials are needed, which keeps the setup simple.
 
-The startup background task (`_check_and_refresh` in `main.py`) re-fetches the live catalog and compares it by MD5 hash. If the catalog changed, it updates the snapshot and triggers re-enrichment. This means product additions in Shopify propagate to the recommendation engine automatically on the next backend restart (Railway restarts on every deploy).
+A scheduled Lambda (`refresh_handler.py`) runs daily via EventBridge, re-fetches the live catalog, and compares it by MD5 hash. If the catalog changed, it updates the S3 snapshot and triggers re-enrichment via Groq. This means product additions in Shopify propagate to the recommendation engine automatically within 24 hours.
 
 ---
 
@@ -273,15 +283,18 @@ The grinder is explicitly excluded (`return None`) because recommending a grinde
 
 ## 12. CI pipeline design
 
-The GitHub Actions workflow (`.github/workflows/ci.yml`) runs three independent jobs in parallel on every push to `main` or any `feat/**` branch:
+The GitHub Actions workflow (`.github/workflows/ci.yml`) runs three independent jobs in parallel on every push to `main` or any `feat/**` branch, plus a deploy job on pushes to `main`:
 
 ```
 push → backend-lint (ruff)
      → backend-test (pytest)
      → frontend     (lint + type-check + build)
+     → backend-deploy (sam build + sam deploy, main branch only)
 ```
 
-**Why three separate jobs instead of one:**
+The deploy job depends on `backend-lint` and `backend-test` passing first.
+
+**Why four separate jobs instead of one:**
 
 Separate jobs fail independently. If the frontend build breaks but the backend tests pass, you know exactly which half is broken without reading through a long serial log. They also run in parallel, so total CI time is the duration of the slowest job, not the sum of all three.
 
@@ -299,17 +312,17 @@ The frontend `next.config.js` uses `NEXT_PUBLIC_API_URL` in a rewrite rule. At b
 
 ---
 
-## 13. Deployment: Railway + Vercel over alternatives
+## 13. Deployment: AWS Lambda + Vercel over alternatives
 
 | Alternative | Why not chosen |
 |-------------|---------------|
 | **Heroku** | Free tier was discontinued in 2022. Paid plans start at $7/month with slow cold starts. |
-| **AWS/GCP/Azure** | Serious operational overhead. Requires VPCs, IAM roles, load balancers. Disproportionate for an MVP. |
-| **Fly.io** | Excellent, but requires Docker. Railway's nixpacks auto-detects Python and builds without a Dockerfile — fewer things to maintain. |
+| **Railway** | Previously used. Simple container hosting but costs ~$5-20/month for an always-on process. Lambda's free tier covers this project's traffic at $0/month. |
+| **Fly.io** | Excellent, but still an always-on container model — pays for idle time. |
 | **Self-hosted VPS** | Owner is non-technical. A VPS requires SSH access, OS updates, process management (systemd/supervisor), and manual SSL setup. None of this is sustainable without ongoing developer involvement. |
 | **Netlify** (instead of Vercel) | Netlify supports Next.js but Vercel's support is first-party. Server-side rewrites (the proxy pattern) are more reliably supported on Vercel. |
 
-The guiding principle: both platforms deploy from `git push` to `main` with zero manual steps. This is the correct model for a project with minimal ongoing developer involvement.
+AWS Lambda was chosen over container-based platforms because the backend is stateless and low-traffic — a perfect fit for serverless. The entire infrastructure is defined in `template.yaml` (SAM/CloudFormation) and deployed with `sam deploy`. The guiding principle: both platforms deploy from `git push` to `main` with zero manual steps via CI.
 
 ---
 
@@ -319,9 +332,12 @@ The project uses three secrets:
 
 | Variable | Where | Purpose |
 |----------|-------|---------|
-| `GROQ_API_KEY` | Railway | Authenticates calls to the Groq LLM API |
+| `GROQ_API_KEY` | AWS Lambda | Authenticates calls to the Groq LLM API |
+| `DATA_BUCKET` | AWS Lambda | S3 bucket name for product data files |
 | `NEXT_PUBLIC_API_URL` | Vercel | Tells the Next.js rewrite rule where to proxy `/api/*` requests |
-| `ALLOWED_ORIGINS` | Railway | (Optional) allows direct browser-to-Railway calls for debugging |
+| `ALLOWED_ORIGINS` | AWS Lambda | (Optional) allows direct browser-to-API Gateway calls for debugging |
+| `AWS_ACCESS_KEY_ID` | GitHub Secrets | IAM credentials for CI/CD deploy |
+| `AWS_SECRET_ACCESS_KEY` | GitHub Secrets | IAM credentials for CI/CD deploy |
 
 **Why `NEXT_PUBLIC_API_URL` is a `NEXT_PUBLIC_` variable:**
 
@@ -331,7 +347,7 @@ In this architecture the variable is used in `next.config.js` (server-side rewri
 
 **The trailing slash rule:**
 
-Both `NEXT_PUBLIC_API_URL` and `ALLOWED_ORIGINS` must be set **without** trailing slashes. The rewrite destination is constructed as `${NEXT_PUBLIC_API_URL}/:path*` — a trailing slash produces a double-slash URL that breaks routing on Railway.
+Both `NEXT_PUBLIC_API_URL` and `ALLOWED_ORIGINS` must be set **without** trailing slashes. The rewrite destination is constructed as `${NEXT_PUBLIC_API_URL}/:path*` — a trailing slash produces a double-slash URL that breaks routing.
 
 ---
 
