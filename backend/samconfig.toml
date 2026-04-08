@@ -1,0 +1,14 @@
+version = 0.1
+
+[default.deploy.parameters]
+stack_name = "coffeeriff-backend"
+resolve_s3 = true
+s3_prefix = "coffeeriff-backend"
+region = "eu-south-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "AllowedOrigins=\"https://coffeeriff-facelift.vercel.app/\" DataBucketName=\"coffeeriff-data\""
+image_repositories = []
+
+[default.global.parameters]
+region = "eu-south-1"

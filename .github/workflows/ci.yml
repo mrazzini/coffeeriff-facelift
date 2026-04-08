@@ -23,7 +23,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12"
           cache: pip
           cache-dependency-path: backend/requirements.txt
 
@@ -46,7 +46,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12"
           cache: pip
           cache-dependency-path: backend/requirements.txt
 
@@ -90,3 +90,34 @@ jobs:
         env:
           # Placeholder so the build doesn't fail on missing env var
           NEXT_PUBLIC_API_URL: https://placeholder.example.com
+
+  # ── Job 4: Deploy backend to AWS Lambda ─────────────────────────────────
+  backend-deploy:
+    name: Deploy backend (AWS Lambda)
+    needs: [backend-lint, backend-test]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: aws-actions/setup-sam@v2
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-south-1
+
+      - name: SAM build
+        run: sam build
+
+      - name: SAM deploy
+        run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
