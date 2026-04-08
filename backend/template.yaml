@@ -1,0 +1,101 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Coffeeriff AI Recommender — serverless backend
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 30
+    MemorySize: 256
+    Environment:
+      Variables:
+        GROQ_API_KEY: !Ref GroqApiKey
+        ALLOWED_ORIGINS: !Ref AllowedOrigins
+
+Parameters:
+  GroqApiKey:
+    Type: String
+    NoEcho: true
+    Description: Groq API key for LLM calls
+  AllowedOrigins:
+    Type: String
+    Default: "http://localhost:3000,https://coffeeriff-quiz.vercel.app"
+    Description: Comma-separated CORS origins
+  DataBucketName:
+    Type: String
+    Default: "coffeeriff-data"
+    Description: S3 bucket for product data
+
+Resources:
+  # ── S3 bucket for product data ──────────────────────────────────────────
+  DataBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref DataBucketName
+
+  # ── API Lambda ──────────────────────────────────────────────────────────
+  ApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambda_handler.handler
+      CodeUri: .
+      Description: Coffeeriff API (FastAPI + Mangum)
+      MemorySize: 512
+      Timeout: 30
+      Environment:
+        Variables:
+          DATA_BUCKET: !Ref DataBucketName
+      Policies:
+        - S3ReadPolicy:
+            BucketName: !Ref DataBucketName
+      Events:
+        Api:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+
+  # ── HTTP API (API Gateway v2) ───────────────────────────────────────────
+  HttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: "$default"
+      CorsConfiguration:
+        AllowOrigins:
+          - "*"
+        AllowMethods:
+          - GET
+          - POST
+          - OPTIONS
+        AllowHeaders:
+          - "*"
+
+  # ── Catalog refresh Lambda ──────────────────────────────────────────────
+  RefreshFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: refresh_handler.handler
+      CodeUri: .
+      Description: Shopify catalog refresh + Groq enrichment
+      MemorySize: 512
+      Timeout: 300
+      Environment:
+        Variables:
+          DATA_BUCKET: !Ref DataBucketName
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref DataBucketName
+      Events:
+        DailyRefresh:
+          Type: Schedule
+          Properties:
+            Schedule: rate(1 day)
+            Description: Daily Shopify catalog refresh
+            Enabled: true
+
+Outputs:
+  ApiUrl:
+    Description: API Gateway endpoint URL
+    Value: !Sub "https://${HttpApi}.execute-api.${AWS::Region}.amazonaws.com"
+  DataBucketArn:
+    Description: S3 data bucket ARN
+    Value: !GetAtt DataBucket.Arn

@@ -22,19 +22,24 @@ Browser
   │
   ├── Next.js on Vercel (frontend)
   │     • serves all pages
-  │     • rewrites /api/* → Railway backend (server-side proxy)
+  │     • rewrites /api/* → AWS Lambda backend (server-side proxy)
   │
-  └── FastAPI on Railway (backend)
+  └── FastAPI on AWS Lambda (backend)
         • GET  /              health check
         • GET  /products      Shopify catalog (filtered by category)
         • GET  /quiz-config   dynamic quiz questions
         • POST /recommend     LLM-powered product matching
               │
-              ├── products.json  (local snapshot, refreshed on startup)
-              └── Groq API  (llama-3.3-70b-versatile)
+              ├── S3 bucket  (products.json + products_enriched.json)
+              └── Groq API   (llama-3.3-70b-versatile)
+
+  EventBridge (daily) → Refresh Lambda
+        • fetches Shopify catalog
+        • re-enriches via Groq if changed
+        • writes updated JSON to S3
 ```
 
-The frontend **never calls Railway directly from the browser**. All `/api/*` requests go to the Next.js server, which proxies them to Railway. This means CORS on Railway is only needed for direct browser access (not required for normal app usage).
+The frontend **never calls the Lambda backend directly from the browser**. All `/api/*` requests go to the Next.js server, which proxies them to API Gateway. This means CORS on API Gateway is only needed for direct browser access (not required for normal app usage).
 
 ---
 
@@ -58,7 +63,10 @@ coffeeriff-facelift/
 │   ├── tests/
 │   │   └── test_api.py
 │   ├── requirements.txt
-│   ├── railway.toml
+│   ├── lambda_handler.py      Mangum wrapper (Lambda entry point)
+│   ├── refresh_handler.py     scheduled catalog refresh Lambda
+│   ├── template.yaml          SAM infrastructure template
+│   ├── samconfig.toml         SAM deploy configuration
 │   └── .env.example
 ├── frontend/
 │   ├── app/
@@ -88,7 +96,7 @@ coffeeriff-facelift/
 
 ### Prerequisites
 
-- Python 3.11+
+- Python 3.12+
 - Node.js 18+
 - A Groq API key — [console.groq.com](https://console.groq.com)
 
@@ -125,7 +133,7 @@ python scripts/fetch_products.py        # re-fetch from Shopify
 python scripts/enrich_products.py       # rebuild enriched index (calls Groq)
 ```
 
-The backend also checks for catalog changes automatically on startup.
+The catalog is also refreshed daily by a scheduled Lambda (see Deployment below).
 
 ---
 
@@ -133,23 +141,38 @@ The backend also checks for catalog changes automatically on startup.
 
 | Service | Platform | Trigger |
 |---------|----------|---------|
-| Backend | Railway | push to `main` (auto-deploy) |
+| Backend (API) | AWS Lambda + API Gateway | push to `main` via CI, or `sam deploy` |
+| Backend (refresh) | AWS Lambda + EventBridge | daily schedule (automatic) |
+| Product data | AWS S3 | updated by refresh Lambda |
 | Frontend | Vercel | push to `main` (auto-deploy) |
 
-### Backend environment variables (Railway)
+### Backend environment variables (AWS Lambda)
+
+Set in the AWS Console (Lambda → Configuration → Environment variables) or via the SAM template:
 
 | Variable | Value |
 |----------|-------|
 | `GROQ_API_KEY` | `gsk_...` from Groq console |
+| `DATA_BUCKET` | S3 bucket name (e.g. `coffeeriff-data`) |
 | `ALLOWED_ORIGINS` | Vercel production URL (optional, only for direct browser access) |
 
 ### Frontend environment variables (Vercel)
 
 | Variable | Value |
 |----------|-------|
-| `NEXT_PUBLIC_API_URL` | Railway URL, **no trailing slash** e.g. `https://coffeeriff-facelift-production.up.railway.app` |
+| `NEXT_PUBLIC_API_URL` | API Gateway URL, **no trailing slash** e.g. `https://abc123.execute-api.eu-south-1.amazonaws.com` |
 
 > **Important:** after changing env vars in Vercel, click **Redeploy** on the latest deployment — Vercel only picks up env var changes on a new build.
+
+### Deploying the backend
+
+```bash
+cd backend
+sam build
+sam deploy          # uses saved config in samconfig.toml
+```
+
+On first deploy, use `sam deploy --guided` to configure stack name, region, and parameters interactively.
 
 ---
 
@@ -160,12 +183,13 @@ GitHub Actions runs on every push to `main` and `feat/**` branches:
 1. **Backend lint** — `ruff check` (fast, no dependencies installed beyond ruff)
 2. **Backend tests** — `pytest tests/` with Groq mocked (no real API key required)
 3. **Frontend lint + type-check + build** — `npm run lint`, `npm run type-check`, `npm run build`
+4. **Backend deploy** — `sam build` + `sam deploy` (only on push to `main`, requires `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` GitHub secrets)
 
 ---
 
 ## Maintenance
 
-- **New products in the Shopify store** — the backend fetches the live catalog on startup and re-enriches automatically if the catalog changed. No manual action needed.
-- **Groq API key expiry** — replace `GROQ_API_KEY` in Railway and redeploy.
+- **New products in the Shopify store** — the refresh Lambda runs daily via EventBridge, fetches the live catalog, and re-enriches automatically if the catalog changed. No manual action needed.
+- **Groq API key expiry** — replace `GROQ_API_KEY` in the Lambda environment variables (AWS Console → Lambda → Configuration → Environment variables).
 - **Quiz questions** — edit `backend/app/quiz_config.py`. No frontend changes needed (questions are fetched dynamically via `/quiz-config`).
 - **Brand copy** — edit `frontend/app/page.tsx` (homepage) or `frontend/app/filosofia/page.tsx`.

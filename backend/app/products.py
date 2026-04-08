@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
@@ -8,7 +9,22 @@ _DATA_DIR = Path(__file__).parent.parent / "data"
 _PRODUCTS_FILE = _DATA_DIR / "products.json"
 _ENRICHED_FILE = _DATA_DIR / "products_enriched.json"
 
+_BUCKET = os.environ.get("DATA_BUCKET")
+
 _catalog: list[dict] | None = None
+
+
+def _read_json(filename: str):
+    """Read a JSON file from S3 (if DATA_BUCKET is set) or local disk."""
+    if _BUCKET:
+        import boto3
+        s3 = boto3.client("s3")
+        obj = s3.get_object(Bucket=_BUCKET, Key=filename)
+        return json.loads(obj["Body"].read().decode("utf-8"))
+
+    local_path = _DATA_DIR / filename
+    with open(local_path, encoding="utf-8") as f:
+        return json.load(f)
 
 
 def _get_category(p: dict) -> str | None:
@@ -32,19 +48,19 @@ def _get_category(p: dict) -> str | None:
 
 
 def load_enriched() -> dict[str, dict]:
-    """Return enriched product data keyed by handle. Empty dict if file missing."""
-    if not _ENRICHED_FILE.exists():
+    """Return enriched product data keyed by handle. Empty dict if missing."""
+    try:
+        return _read_json("products_enriched.json")
+    except Exception:
         logger.warning(
             "products_enriched.json not found — "
             "run: python scripts/enrich_products.py"
         )
         return {}
-    with open(_ENRICHED_FILE, encoding="utf-8") as f:
-        return json.load(f)
 
 
 def invalidate_cache() -> None:
-    """Clear in-memory catalog so next call to load_products() re-reads disk."""
+    """Clear in-memory catalog so next call to load_products() re-reads."""
     global _catalog
     _catalog = None
 
@@ -53,8 +69,7 @@ def load_products(category: str | None = None) -> list[dict]:
     """Return products with enriched data merged in, optionally filtered by category."""
     global _catalog
     if _catalog is None:
-        with open(_PRODUCTS_FILE, encoding="utf-8") as f:
-            all_products = json.load(f)
+        all_products = _read_json("products.json")
         enriched = load_enriched()
         _catalog = []
         for p in all_products:
